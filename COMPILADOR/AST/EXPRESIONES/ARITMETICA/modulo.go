@@ -137,15 +137,36 @@ func (modulo OpModulo) Compilar_Expresion(ent *entorno.Entorno, gen *generador.G
 	var tipo_dominante simbolos.TipoExpresion = modulo_dominante[operador_izquierda.Tipo][operador_derecha.Tipo]
 
 	nuevo_temporal := gen.Crear_temporal()
+	etiqueta_verdad := gen.Crear_label()
+	etiqueta_salida := gen.Crear_label()
 
 	if tipo_dominante == simbolos.INTEGER {
+		gen.Agregar_Logica("if (" + operador_derecha.Valor + " != 0) { goto " + etiqueta_verdad + ";}")
+		gen.AgregarErrorMate(strconv.Itoa(modulo.Linea), strconv.Itoa(modulo.Columna))
+		gen.Agregar_Logica(nuevo_temporal + " = 0;")
+		gen.Agregar_Logica("goto " + etiqueta_salida + ";")
+		gen.Agregar_label(etiqueta_verdad)
+		gen.Eliminar_label(etiqueta_verdad)
 		gen.Agregar_Expression(nuevo_temporal, operador_izquierda.Valor, "%", operador_derecha.Valor)
+		//gen.Agregar_Logica(nuevo_temporal + " = (int)fmod(" + operador_izquierda.Valor + ", " + operador_derecha.Valor + ");")
+		gen.Agregar_label(etiqueta_salida)
+		gen.Eliminar_label(etiqueta_salida)
 		return simbolos.ValoresC3D{Valor: nuevo_temporal, EsTemporal: true, Tipo: tipo_dominante, Label_verdadera: "", Label_false: ""}
 	} else if tipo_dominante == simbolos.FLOAT {
+		gen.Agregar_Logica("if (" + operador_derecha.Valor + " != 0) { goto " + etiqueta_verdad + ";}")
+		gen.AgregarErrorMate(strconv.Itoa(modulo.Linea), strconv.Itoa(modulo.Columna))
+		gen.Agregar_Logica(nuevo_temporal + " = 0;")
+		gen.Agregar_Logica("goto " + etiqueta_salida + ";")
+		gen.Agregar_label(etiqueta_verdad)
+		gen.Eliminar_label(etiqueta_verdad)
 		gen.Agregar_Expression(nuevo_temporal, operador_izquierda.Valor, "%", operador_derecha.Valor)
+		//gen.Agregar_Logica(nuevo_temporal + " = (int)fmod(" + operador_izquierda.Valor + ", " + operador_derecha.Valor + ");")
+		gen.Agregar_label(etiqueta_salida)
+		gen.Eliminar_label(etiqueta_salida)
 		return simbolos.ValoresC3D{Valor: nuevo_temporal, EsTemporal: true, Tipo: tipo_dominante, Label_verdadera: "", Label_false: ""}
 	} else {
 		fmt.Println("ERROR, tipos")
+		gen.AgregarError("ERROR-TIPOS", strconv.Itoa(modulo.Linea), strconv.Itoa(modulo.Columna))
 	}
 	return simbolos.ValoresC3D{Valor: "0", EsTemporal: false, Tipo: simbolos.INTEGER, Label_verdadera: "", Label_false: ""}
 }

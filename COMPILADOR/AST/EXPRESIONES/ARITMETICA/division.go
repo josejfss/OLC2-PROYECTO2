@@ -122,12 +122,20 @@ func (division OpDivision) Compilar_Expresion(ent *entorno.Entorno, gen *generad
 		gen.Agregar_label(etiqueta_salida)
 		gen.Eliminar_label(etiqueta_salida)
 		return simbolos.ValoresC3D{Valor: nuevo_temporal, EsTemporal: true, Tipo: tipo_dominante, Label_verdadera: "", Label_false: ""}
-
 	} else if tipo_dominante == simbolos.FLOAT {
+		gen.Agregar_Logica("if (" + operador_derecha.Valor + " != 0) { goto " + etiqueta_verdad + ";}")
+		gen.AgregarErrorMate(strconv.Itoa(division.Linea), strconv.Itoa(division.Columna))
+		gen.Agregar_Logica(nuevo_temporal + " = 0;")
+		gen.Agregar_Logica("goto " + etiqueta_salida + ";")
+		gen.Agregar_label(etiqueta_verdad)
+		gen.Eliminar_label(etiqueta_verdad)
 		gen.Agregar_Expression(nuevo_temporal, operador_izquierda.Valor, "/", operador_derecha.Valor)
+		gen.Agregar_label(etiqueta_salida)
+		gen.Eliminar_label(etiqueta_salida)
 		return simbolos.ValoresC3D{Valor: nuevo_temporal, EsTemporal: true, Tipo: tipo_dominante, Label_verdadera: "", Label_false: ""}
 	} else {
 		fmt.Println("ERROR, tipos")
+		gen.AgregarError("ERROR-TIPOS", strconv.Itoa(division.Linea), strconv.Itoa(division.Columna))
 	}
 	return simbolos.ValoresC3D{Valor: "0", EsTemporal: false, Tipo: simbolos.INTEGER, Label_verdadera: "", Label_false: ""}
 }

@@ -173,6 +173,32 @@ func (g *Generador_C3D) AgregarErrorMate(lin string, col string) {
 	g.Codigo.Add(errors)
 }
 
+func (g *Generador_C3D) AgregarError(mensaje string, lin string, col string) {
+	enlinea := " En la Linea: "
+	encolum := " En la columna: "
+	errores := ""
+	for _, txt := range mensaje {
+		f := int(txt)
+		errores += "printf(\"%c\", " + fmt.Sprintf("%v", f) + "); //LETRA-> " + string(txt) + "\n"
+	}
+	errores += "printf(\"%c\", 46);	//PUNTO\n"
+	for _, txt := range enlinea {
+		f := int(txt)
+		errores += "printf(\"%c\", " + fmt.Sprintf("%v", f) + "); //LETRA-> " + string(txt) + "\n"
+	}
+	errores += "printf(\"%o\", int(" + lin + "));	//NUM\n"
+	errores += "printf(\"%c\", 46);	//PUNTO\n"
+	errores += "printf(\"%c\", 32);	//ESPACIO\n"
+	for _, txt := range encolum {
+		f := int(txt)
+		errores += "printf(\"%c\", " + fmt.Sprintf("%v", f) + "); //LETRA-> " + string(txt) + "\n"
+	}
+	errores += "printf(\"%d\", int(" + col + "));	//NUM\n"
+	errores += "printf(\"%c\", 46);	//PUNTO\n"
+	errores += "printf(\"%c\", 10);	//SALTO LINEA\n"
+	g.Codigo.Add(errores)
+}
+
 func (g *Generador_C3D) Agregar_MetodoPrint() {
 	g.Agregar_Comentario("INICIO DECLARACION FUNCION NATIVA PRINT")
 	temp_puntero := g.Crear_temporal()

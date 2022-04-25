@@ -105,6 +105,7 @@ func (multi OpMultiplicacion) Compilar_Expresion(ent *entorno.Entorno, gen *gene
 		return simbolos.ValoresC3D{Valor: nuevo_temporal, EsTemporal: true, Tipo: tipo_dominante, Label_verdadera: "", Label_false: ""}
 	} else {
 		fmt.Println("ERROR, tipos")
+		gen.AgregarError("ERROR-TIPOS", strconv.Itoa(multi.Linea), strconv.Itoa(multi.Columna))
 	}
 	return simbolos.ValoresC3D{Valor: "0", EsTemporal: false, Tipo: simbolos.INTEGER, Label_verdadera: "", Label_false: ""}
 }
