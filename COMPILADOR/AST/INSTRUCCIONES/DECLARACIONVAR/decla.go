@@ -6,6 +6,7 @@ import (
 	interfaces "OLC2-PROYECTO2/COMPILADOR/INTERFACES"
 	reportes "OLC2-PROYECTO2/COMPILADOR/REPORTES"
 	simbolos "OLC2-PROYECTO2/COMPILADOR/SIMBOLOS"
+	"fmt"
 	"strconv"
 	"time"
 )
@@ -25,49 +26,23 @@ func Ndeclaracion(m bool, id string, tip simbolos.TipoExpresion, val interfaces.
 }
 
 func (decla Declaracion) Ejecutar_Instruccion(ent *entorno.Entorno, ent2 *entorno.Entorno) interface{} {
-	if !ent.ExisteAcual_Variable(decla.Identificador) {
+	if !ent.Existe_Variable(decla.Identificador) {
 		resultado := decla.Valor_exp.Ejecutar_Expresion(ent)
 		if resultado.Tipo == decla.TipoDecla {
-			if ent.Existe_Variable(decla.Identificador) {
-
-				if ent.Nombre_Entorno != ent2.Nombre_Entorno {
-					ent2.Posicion = ent2.Posicion - 1
-					simbguardar := simbolos.Simbolo_Vars{Mutable: decla.Mutable, TipoVariable: resultado.Tipo, NombreVariable: decla.Identificador, ValorVariable: resultado.Valor, PosicionTabla: ent2.Posicion, Linea: decla.Linea, Columna: decla.Columna}
-					ent.Guardar_Variable(decla.Identificador, simbguardar)
-					nombres := decla.Identificador + strconv.Itoa(ent2.ContadorTodo)
-					ent2.AumentarTodo()
-					ent2.Guardar_Variable(nombres, simbguardar)
-					todito1 := simbolos.SimboloTodo{Tipo: "declaracion", Nombre: nombres, Pos: ent2.Posicion}
-					ent2.GuardaLTodo(todito1)
-				} else {
-					simbguardar := simbolos.Simbolo_Vars{Mutable: decla.Mutable, TipoVariable: resultado.Tipo, NombreVariable: decla.Identificador, ValorVariable: resultado.Valor, PosicionTabla: ent2.Posicion, Linea: decla.Linea, Columna: decla.Columna}
-					ent.Guardar_Variable(decla.Identificador, simbguardar)
-					nombres := decla.Identificador + strconv.Itoa(ent2.ContadorTodo)
-					ent2.AumentarTodo()
-					ent2.Guardar_Variable(nombres, simbguardar)
-					todito1 := simbolos.SimboloTodo{Tipo: "declaracion", Nombre: nombres, Pos: ent2.Posicion}
-					ent2.GuardaLTodo(todito1)
-				}
-
+			if ent.Nombre_Entorno != ent2.Nombre_Entorno {
+				ent2.Posicion = ent2.Posicion - 1
+				simbguardar := simbolos.Simbolo_Vars{Mutable: decla.Mutable, TipoVariable: resultado.Tipo, NombreVariable: decla.Identificador, ValorVariable: resultado.Valor, PosicionTabla: ent.Posicion, Linea: decla.Linea, Columna: decla.Columna}
+				ent.Guardar_Variable(decla.Identificador, simbguardar)
+				ent2.Guardar_Variable(decla.Identificador, simbguardar)
+				// todito := simbolos.SimboloTodo{Tipo: "declaracion", Nombre: decla.Identificador, Pos: ent2.Posicion}
+				// ent2.GuardaLTodo(todito)
 			} else {
-
-				if ent.Nombre_Entorno != ent2.Nombre_Entorno {
-					ent2.Posicion = ent2.Posicion - 1
-					simbguardar := simbolos.Simbolo_Vars{Mutable: decla.Mutable, TipoVariable: resultado.Tipo, NombreVariable: decla.Identificador, ValorVariable: resultado.Valor, PosicionTabla: ent.Posicion, Linea: decla.Linea, Columna: decla.Columna}
-					ent.Guardar_Variable(decla.Identificador, simbguardar)
-					ent2.Guardar_Variable(decla.Identificador, simbguardar)
-					todito := simbolos.SimboloTodo{Tipo: "declaracion", Nombre: decla.Identificador, Pos: ent2.Posicion}
-					ent2.GuardaLTodo(todito)
-				} else {
-					simbguardar := simbolos.Simbolo_Vars{Mutable: decla.Mutable, TipoVariable: resultado.Tipo, NombreVariable: decla.Identificador, ValorVariable: resultado.Valor, PosicionTabla: ent.Posicion, Linea: decla.Linea, Columna: decla.Columna}
-					ent.Guardar_Variable(decla.Identificador, simbguardar)
-					ent2.Guardar_Variable(decla.Identificador, simbguardar)
-					todito := simbolos.SimboloTodo{Tipo: "declaracion", Nombre: decla.Identificador, Pos: ent2.Posicion}
-					ent2.GuardaLTodo(todito)
-				}
-
+				simbguardar := simbolos.Simbolo_Vars{Mutable: decla.Mutable, TipoVariable: resultado.Tipo, NombreVariable: decla.Identificador, ValorVariable: resultado.Valor, PosicionTabla: ent.Posicion, Linea: decla.Linea, Columna: decla.Columna}
+				ent.Guardar_Variable(decla.Identificador, simbguardar)
+				ent2.Guardar_Variable(decla.Identificador, simbguardar)
+				// todito := simbolos.SimboloTodo{Tipo: "declaracion", Nombre: decla.Identificador, Pos: ent2.Posicion}
+				// ent2.GuardaLTodo(todito)
 			}
-
 			reportes.ReporteSimbolos(decla.Identificador, "variable--"+reportes.ReportObteniendoSimbolos(resultado.Tipo), ent.Nombre_Entorno, "--", strconv.Itoa(decla.Linea), strconv.Itoa(decla.Columna))
 		} else {
 			t := time.Now()
@@ -82,20 +57,33 @@ func (decla Declaracion) Ejecutar_Instruccion(ent *entorno.Entorno, ent2 *entorn
 
 func (decla Declaracion) Compilar_Instruccion(ent *entorno.Entorno, gen *generador.Generador_C3D) interface{} {
 
-	valtodi := ent.ListaTodo.GetValue(0).(simbolos.SimboloTodo)
-	if valtodi.Tipo == "declaracion" {
-		if ent.Existe_Variable(valtodi.Nombre) {
-			gen.Agregar_Comentario("COMENZANDO DECLARACION")
-			simdecla := ent.Obtener_Variable(valtodi.Nombre)
-			vals := decla.Valor_exp.Compilar_Expresion(ent, gen)
+	if ent.Existe_Variable(decla.Identificador) {
+		gen.Agregar_Comentario("COMENZANDO DECLARACION")
+		simdecla := ent.Obtener_Variable(decla.Identificador)
+		vals := decla.Valor_exp.Compilar_Expresion(ent, gen)
+		if vals.Tipo == simbolos.YTEXTO || vals.Tipo == simbolos.TEXTO {
+			posi := simdecla.PosicionTabla
+			temp1 := gen.Crear_temporal()
+			temp2 := gen.Crear_temporal()
+			impr := temp1 + " = HP;\n"
+			for _, txt := range vals.Valor {
+				f := int(txt)
+				impr += "HEAP[int(HP)] = " + fmt.Sprintf("%v", f) + "; //LETRA-> " + string(txt) + "\n"
+				impr += "HP = HP + 1;\n"
+			}
+			impr += "HEAP[int(HP)] = -1;\nHP = HP + 1;\n"
+			gen.Agregar_Logica(impr)
+			gen.Agregar_Logica(temp2 + " = SP + " + strconv.Itoa(posi) + ";\t\t// POSICION: " + decla.Identificador)
+			gen.Agregar_Stack(temp2, temp1)
+		} else {
 			posi := simdecla.PosicionTabla
 			temp := gen.Crear_temporal()
 			gen.Agregar_Logica(temp + "= SP + " + strconv.Itoa(posi) + ";\t\t// POSICION: " + decla.Identificador)
 			gen.Agregar_Stack(temp, vals.Valor)
-			gen.Agregar_Comentario("FINALIZANDO DECLARACION")
 		}
+
+		gen.Agregar_Comentario("FINALIZANDO DECLARACION")
 	}
-	ent.EliminarLTodo()
 	gen.LiberarTodosTemporales()
 	return 0
 }

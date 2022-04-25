@@ -409,6 +409,7 @@ bloque returns[interfaces.Instruccion instr]
   | loop               {$instr = $loop.instr}
   | c_while            {$instr = $c_while.instr}
   | declaracion        {$instr = $declaracion.instr}
+  | asignacion         {$instr = $asignacion.instr}
   | transferencia      {$instr = $transferencia.instr}
   | llamada            {$instr = $llamada.instr}
 ;

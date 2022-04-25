@@ -6,6 +6,7 @@ import (
 	interfaces "OLC2-PROYECTO2/COMPILADOR/INTERFACES"
 	reportes "OLC2-PROYECTO2/COMPILADOR/REPORTES"
 	simbolos "OLC2-PROYECTO2/COMPILADOR/SIMBOLOS"
+	"fmt"
 	"strconv"
 	"time"
 )
@@ -28,16 +29,9 @@ func (as Asignacion) Ejecutar_Instruccion(ent *entorno.Entorno, ent2 *entorno.En
 		simbolo := ent.Obtener_Variable(as.Identificador)
 		exp := as.Valor.Ejecutar_Expresion(ent)
 		if simbolo.Mutable {
-			if simbolo.TipoVariable == simbolos.NULL {
-				simbolo.TipoVariable = exp.Tipo
+			if simbolo.TipoVariable == exp.Tipo {
 				simbolo.ValorVariable = exp.Valor
 				ent.Modificar_Variable(as.Identificador, simbolo)
-			} else if simbolo.TipoVariable == exp.Tipo {
-				simbolo.ValorVariable = exp.Valor
-				ent.Modificar_Variable(as.Identificador, simbolo)
-			} else {
-				t := time.Now()
-				reportes.Nerror("No se puede asignar distintos tipos a la variable: "+as.Identificador, ent.Nombre_Entorno, strconv.Itoa(as.Linea), strconv.Itoa(as.Columna), t.Format("2006-01-02 15:04:05"))
 			}
 		} else {
 			t := time.Now()
@@ -52,36 +46,34 @@ func (as Asignacion) Ejecutar_Instruccion(ent *entorno.Entorno, ent2 *entorno.En
 }
 
 func (as Asignacion) Compilar_Instruccion(ent *entorno.Entorno, gen *generador.Generador_C3D) interface{} {
-	// if ent.Existe_Variable(as.Identificador){
-	// 	simbolovar := ent.Obtener_Variable(as.Identificador)
-	// 	val := as.Valor.Compilar_Expresion(ent, gen)
-	// 	if val.Tipo == simbolos.YTEXTO || val.Tipo == simbolos.TEXTO{
-
-	// 	}
-	// }
+	gen.Agregar_Comentario("COMENZANDO ASIGNACION")
 	if ent.Existe_Variable(as.Identificador) {
-		simbolo := ent.Obtener_Variable(as.Identificador)
-		exp := as.Valor.Compilar_Expresion(ent, gen)
-		if simbolo.Mutable {
-			if simbolo.TipoVariable == simbolos.NULL {
-				simbolo.TipoVariable = exp.Tipo
-				simbolo.ValorVariable = exp.Valor
-				ent.Modificar_Variable(as.Identificador, simbolo)
-			} else if simbolo.TipoVariable == exp.Tipo {
-				simbolo.ValorVariable = exp.Valor
-				ent.Modificar_Variable(as.Identificador, simbolo)
+		simbolovar := ent.Obtener_Variable(as.Identificador)
+		val := as.Valor.Compilar_Expresion(ent, gen)
+		if simbolovar.TipoVariable == val.Tipo {
+			if val.Tipo == simbolos.YTEXTO || val.Tipo == simbolos.TEXTO {
+				posi := simbolovar.PosicionTabla
+				temp1 := gen.Crear_temporal()
+				temp2 := gen.Crear_temporal()
+				impr := temp1 + " = HP;\n"
+				for _, txt := range val.Valor {
+					f := int(txt)
+					impr += "HEAP[int(HP)] = " + fmt.Sprintf("%v", f) + "; //LETRA-> " + string(txt) + "\n"
+					impr += "HP = HP + 1;\n"
+				}
+				impr += "HEAP[int(HP)] = -1;\nHP = HP + 1;\n"
+				gen.Agregar_Logica(impr)
+				gen.Agregar_Logica(temp2 + " = SP + " + strconv.Itoa(posi) + ";\t\t// POSICION: " + as.Identificador)
+				gen.Agregar_Stack(temp2, temp1)
 			} else {
-				t := time.Now()
-				reportes.Nerror("No se puede asignar distintos tipos a la variable: "+as.Identificador, ent.Nombre_Entorno, strconv.Itoa(as.Linea), strconv.Itoa(as.Columna), t.Format("2006-01-02 15:04:05"))
+				posi := simbolovar.PosicionTabla
+				temp := gen.Crear_temporal()
+				gen.Agregar_Logica(temp + "= SP + " + strconv.Itoa(posi) + ";\t\t// POSICION: " + as.Identificador)
+				gen.Agregar_Stack(temp, val.Valor)
 			}
-		} else {
-			t := time.Now()
-			reportes.Nerror("No se puede asignar valor a una variable no mutable", ent.Nombre_Entorno, strconv.Itoa(as.Linea), strconv.Itoa(as.Columna), t.Format("2006-01-02 15:04:05"))
 		}
-
-	} else {
-		t := time.Now()
-		reportes.Nerror("No se puede asignar valor a una variable no declarada", ent.Nombre_Entorno, strconv.Itoa(as.Linea), strconv.Itoa(as.Columna), t.Format("2006-01-02 15:04:05"))
 	}
+	gen.Agregar_Comentario("FINALIZANDO ASIGNACION")
+	gen.LiberarTodosTemporales()
 	return 0
 }

@@ -78,9 +78,6 @@ func (imp Impres) Compilar_Instruccion(ent *entorno.Entorno, gen *generador.Gene
 						if i != imp.ListaExp.Len() {
 							ex := imp.ListaExp.GetValue(i).(interfaces.Expresion)
 							var ss simbolos.ValoresC3D = ex.Compilar_Expresion(ent, gen)
-							//despues := fmt.Sprintf("%v", ss.Valor)
-							//antes := separador[i] + despues
-							//concatenacion += antes
 
 							//LA PRIMERA VEZ QUE ESTA EN EL FOR
 							if i == 0 {
@@ -103,9 +100,38 @@ func (imp Impres) Compilar_Instruccion(ent *entorno.Entorno, gen *generador.Gene
 									impr += "printf(\"%d\",(int)" + ss.Valor + ");\n"
 								} else if ss.Tipo == simbolos.FLOAT {
 									impr += "printf(\"%f\"," + ss.Valor + ");\n"
+								} else if ss.EsTemporal {
+									temp_conca := gen.Crear_temporal()
+									etiqueta_entrada := gen.Crear_label()
+									gen.Eliminar_label(etiqueta_entrada)
+									etiqueta_salida := gen.Crear_label()
+									gen.Eliminar_label(etiqueta_salida)
+									tempo_valor := ss.Valor
+									impr += etiqueta_entrada + ":\n"
+									impr += temp_conca + " = HEAP[(int)" + tempo_valor + "];\n"
+									impr += "if ( " + temp_conca + " == -1) { goto " + etiqueta_salida + "; }\n"
+									impr += "printf(\"%c\", (char)" + temp_conca + ");\n"
+									impr += tempo_valor + " = " + tempo_valor + " + 1;\ngoto " + etiqueta_entrada + ";\n"
+									impr += etiqueta_salida + ":\n"
 								} else {
-									impr += "printf(\"%f\"," + ss.Valor + ");\n"
+									//SE GUARDA EN EL HEAP EL TXT QUE SE VA A IMPRIMIR
+									//SE CAMBIA EL EL VALOR DEL HEAP EN EL TEMPORAL
+									impr += temp1 + " = HP;\n"
+									for _, txt := range ss.Valor {
+										f := int(txt)
+										impr += "HEAP[int(HP)] = " + fmt.Sprintf("%v", f) + "; //LETRA-> " + string(txt) + "\n"
+										impr += "HP = HP + 1;\n"
+									}
+									//SE GUARDA EL HEAP EL VALOR PARA INDICAR EL FIN DE LA CADENA
+									impr += "HEAP[int(HP)] = -1;\nHP = HP + 1;\n"
+									//SE GUARDA LA REFERENCIA DEL HEAP EN EL STACK
+									impr += temp2 + " = SP + " + strconv.Itoa(valtodi.Pos-1) + "; //POSICION CADENA EN STACK\n"
+									//SE GUARDA EN EL STACK LA CADENA DEL HEAP
+									impr += "STACK[int(" + temp2 + ")] = " + temp1 + ";\n"
+									//SE CAMBIA DE ENTORNO - SE LLAMA EL METODO PRINT - SE REGRESE AL OTRO ENTORNO
+									impr += "SP = SP + " + strconv.Itoa(valtodi.Pos-1) + ";\nprint();\nSP = SP - " + strconv.Itoa(valtodi.Pos-1) + ";\n"
 								}
+								//impr += "printf(\"%c\", (char)10);\n"
 							} else {
 								//SE IMPRIME LOS VALORES DESPUES DE LAS LLAVES
 								//SE CAMBIA EL EL VALOR DEL HEAP EN EL TEMPORAL
@@ -129,9 +155,38 @@ func (imp Impres) Compilar_Instruccion(ent *entorno.Entorno, gen *generador.Gene
 									impr += "printf(\"%d\",(int)" + ss.Valor + ");\n"
 								} else if ss.Tipo == simbolos.FLOAT {
 									impr += "printf(\"%f\"," + ss.Valor + ");\n"
+								} else if ss.EsTemporal {
+									temp_conca := gen.Crear_temporal()
+									etiqueta_entrada := gen.Crear_label()
+									gen.Eliminar_label(etiqueta_entrada)
+									etiqueta_salida := gen.Crear_label()
+									gen.Eliminar_label(etiqueta_salida)
+									tempo_valor := ss.Valor
+									impr += etiqueta_entrada + ":\n"
+									impr += temp_conca + " = HEAP[(int)" + tempo_valor + "];\n"
+									impr += "if ( " + temp_conca + " == -1) { goto " + etiqueta_salida + "; }\n"
+									impr += "printf(\"%c\", (char)" + temp_conca + ");\n"
+									impr += tempo_valor + " = " + tempo_valor + " + 1;\ngoto " + etiqueta_entrada + ";\n"
+									impr += etiqueta_salida + ":\n"
 								} else {
-									impr += "printf(\"%f\"," + ss.Valor + ");\n"
+									//SE GUARDA EN EL HEAP EL TXT QUE SE VA A IMPRIMIR
+									//SE CAMBIA EL EL VALOR DEL HEAP EN EL TEMPORAL
+									impr += temp1 + " = HP;\n"
+									for _, txt := range ss.Valor {
+										f := int(txt)
+										impr += "HEAP[int(HP)] = " + fmt.Sprintf("%v", f) + "; //LETRA-> " + string(txt) + "\n"
+										impr += "HP = HP + 1;\n"
+									}
+									//SE GUARDA EL HEAP EL VALOR PARA INDICAR EL FIN DE LA CADENA
+									impr += "HEAP[int(HP)] = -1;\nHP = HP + 1;\n"
+									//SE GUARDA LA REFERENCIA DEL HEAP EN EL STACK
+									impr += temp2 + " = SP + " + strconv.Itoa(valtodi.Pos-1) + "; //POSICION CADENA EN STACK\n"
+									//SE GUARDA EN EL STACK LA CADENA DEL HEAP
+									impr += "STACK[int(" + temp2 + ")] = " + temp1 + ";\n"
+									//SE CAMBIA DE ENTORNO - SE LLAMA EL METODO PRINT - SE REGRESE AL OTRO ENTORNO
+									impr += "SP = SP + " + strconv.Itoa(valtodi.Pos-1) + ";\nprint();\nSP = SP - " + strconv.Itoa(valtodi.Pos-1) + ";\n"
 								}
+								//impr += "printf(\"%c\", (char)10);\n"
 							}
 
 						} else {
