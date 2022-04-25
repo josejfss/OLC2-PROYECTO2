@@ -45,6 +45,7 @@ func (not OpNot) Compilar_Expresion(ent *entorno.Entorno, gen *generador.Generad
 		return simbolos.ValoresC3D{Valor: opera_unario.Valor, EsTemporal: opera_unario.EsTemporal, Tipo: opera_unario.Tipo, Label_verdadera: opera_unario.Label_false, Label_false: opera_unario.Label_verdadera}
 	} else {
 		fmt.Println("ERROR, tipos")
+		gen.AgregarError("ERROR-TIPOS--NOT", strconv.Itoa(not.Linea), strconv.Itoa(not.Columna))
 	}
 	return simbolos.ValoresC3D{Valor: "0", EsTemporal: false, Tipo: simbolos.INTEGER, Label_verdadera: "", Label_false: ""}
 }

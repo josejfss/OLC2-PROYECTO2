@@ -132,11 +132,11 @@ func (pot Potencia) Compilar_Expresion(ent *entorno.Entorno, gen *generador.Gene
 			tipo_potencia = potencia_dominante[operador_izq.Tipo][operador_der.Tipo]
 			//SE VERIFICA QUE SEA ENTERA
 			if tipo_potencia == simbolos.INTEGER {
-				gen.Agregar_Logica(nuevo_temporal + " = pow(" + operador_izq.Valor + ", " + operador_der.Valor + ");")
+				gen.Agregar_Logica(nuevo_temporal + " = pow(" + operador_izq.Valor + ", " + operador_der.Valor + "); \t\t//OPERACION POTENCIA")
 				return simbolos.ValoresC3D{Valor: nuevo_temporal, EsTemporal: true, Tipo: simbolos.FLOAT, Label_verdadera: "", Label_false: ""}
 			} else {
 				//ERROR
-				gen.AgregarError("ERROR-TIPOS", strconv.Itoa(pot.Linea), strconv.Itoa(pot.Columna))
+				gen.AgregarError("ERROR-TIPOS--POTENCIA", strconv.Itoa(pot.Linea), strconv.Itoa(pot.Columna))
 			}
 		}
 	case "f64":
@@ -145,11 +145,11 @@ func (pot Potencia) Compilar_Expresion(ent *entorno.Entorno, gen *generador.Gene
 			tipo_potencia = potencia_dominante[operador_izq.Tipo][operador_der.Tipo]
 			//SE VERIFICA QUE SEA DECIMAL
 			if tipo_potencia == simbolos.FLOAT {
-				gen.Agregar_Logica(nuevo_temporal + " = pow(" + operador_izq.Valor + ", " + operador_der.Valor + ");")
+				gen.Agregar_Logica(nuevo_temporal + " = pow(" + operador_izq.Valor + ", " + operador_der.Valor + "); \t\t//OPERACION POTENCIA")
 				return simbolos.ValoresC3D{Valor: nuevo_temporal, EsTemporal: true, Tipo: tipo_potencia, Label_verdadera: "", Label_false: ""}
 			} else {
 				//ERROR
-				gen.AgregarError("ERROR-TIPOS", strconv.Itoa(pot.Linea), strconv.Itoa(pot.Columna))
+				gen.AgregarError("ERROR-TIPOS--POTENCIA", strconv.Itoa(pot.Linea), strconv.Itoa(pot.Columna))
 			}
 		}
 	}

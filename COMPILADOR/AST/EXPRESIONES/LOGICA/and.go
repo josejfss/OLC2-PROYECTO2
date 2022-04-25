@@ -97,6 +97,8 @@ func (and OpAnd) Compilar_Expresion(ent *entorno.Entorno, gen *generador.Generad
 		gen.Eliminar_label(operador_izq.Label_verdadera)
 		gen.Agregar_Logica(ands)
 		return simbolos.ValoresC3D{Valor: ands, EsTemporal: false, Tipo: simbolos.BOOLEAN, Label_verdadera: operador_der.Label_verdadera, Label_false: operador_der.Label_false}
+	} else {
+		gen.AgregarError("ERROR-TIPOS--AND", strconv.Itoa(and.Linea), strconv.Itoa(and.Columna))
 	}
 	return simbolos.ValoresC3D{Valor: "0", EsTemporal: false, Tipo: simbolos.INTEGER, Label_verdadera: "", Label_false: ""}
 }

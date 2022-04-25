@@ -50,6 +50,8 @@ func (neg OpNegativo) Compilar_Expresion(ent *entorno.Entorno, gen *generador.Ge
 	} else if opneg.Tipo == simbolos.FLOAT {
 		gen.Agregar_Expression(nuevo_temporal, opneg.Valor, "*", "-1")
 		return simbolos.ValoresC3D{Valor: nuevo_temporal, EsTemporal: true, Tipo: opneg.Tipo, Label_verdadera: "", Label_false: ""}
+	} else {
+		gen.AgregarError("ERROR-TIPOS--NEGATIVO", strconv.Itoa(neg.Linea), strconv.Itoa(neg.Columna))
 	}
 	return simbolos.ValoresC3D{Valor: "0", EsTemporal: false, Tipo: simbolos.INTEGER, Label_verdadera: "", Label_false: ""}
 }

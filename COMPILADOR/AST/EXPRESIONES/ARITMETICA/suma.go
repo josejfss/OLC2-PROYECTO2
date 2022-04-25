@@ -129,7 +129,7 @@ func (suma OpSuma) Compilar_Expresion(ent *entorno.Entorno, gen *generador.Gener
 		return simbolos.ValoresC3D{Valor: nuevo_temporal, EsTemporal: true, Tipo: tipo_dominante, Label_verdadera: "", Label_false: ""}
 	} else {
 		fmt.Println("ERROR, tipos")
-		gen.AgregarError("ERROR-TIPOS", strconv.Itoa(suma.Linea), strconv.Itoa(suma.Columna))
+		gen.AgregarError("ERROR-TIPOS--SUMA", strconv.Itoa(suma.Linea), strconv.Itoa(suma.Columna))
 	}
 	return simbolos.ValoresC3D{Valor: "0", EsTemporal: false, Tipo: simbolos.INTEGER, Label_verdadera: "", Label_false: ""}
 }

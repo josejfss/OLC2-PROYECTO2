@@ -166,7 +166,7 @@ func (modulo OpModulo) Compilar_Expresion(ent *entorno.Entorno, gen *generador.G
 		return simbolos.ValoresC3D{Valor: nuevo_temporal, EsTemporal: true, Tipo: tipo_dominante, Label_verdadera: "", Label_false: ""}
 	} else {
 		fmt.Println("ERROR, tipos")
-		gen.AgregarError("ERROR-TIPOS", strconv.Itoa(modulo.Linea), strconv.Itoa(modulo.Columna))
+		gen.AgregarError("ERROR-TIPOS--MODULO", strconv.Itoa(modulo.Linea), strconv.Itoa(modulo.Columna))
 	}
 	return simbolos.ValoresC3D{Valor: "0", EsTemporal: false, Tipo: simbolos.INTEGER, Label_verdadera: "", Label_false: ""}
 }

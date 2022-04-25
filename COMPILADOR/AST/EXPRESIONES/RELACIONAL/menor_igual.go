@@ -125,6 +125,7 @@ func (menorigual OpMenorIgual) Compilar_Expresion(ent *entorno.Entorno, gen *gen
 		return simbolos.ValoresC3D{Valor: rmenorigual, EsTemporal: false, Tipo: simbolos.BOOLEAN, Label_verdadera: etiqueta_verdadera, Label_false: etiqueta_falsa}
 	} else {
 		fmt.Println("ERROR, tipos")
+		gen.AgregarError("ERROR-TIPOS--MENORIGUAL", strconv.Itoa(menorigual.Linea), strconv.Itoa(menorigual.Columna))
 	}
 	return simbolos.ValoresC3D{Valor: "0", EsTemporal: false, Tipo: simbolos.INTEGER, Label_verdadera: "", Label_false: ""}
 }

@@ -125,6 +125,7 @@ func (desigualdad OpDesigualdad) Compilar_Expresion(ent *entorno.Entorno, gen *g
 		return simbolos.ValoresC3D{Valor: rdesigual, EsTemporal: false, Tipo: simbolos.BOOLEAN, Label_verdadera: etiqueta_verdadera, Label_false: etiqueta_falsa}
 	} else {
 		fmt.Println("ERROR, tipos")
+		gen.AgregarError("ERROR-TIPOS--DESIGUALDAD", strconv.Itoa(desigualdad.Linea), strconv.Itoa(desigualdad.Columna))
 	}
 	return simbolos.ValoresC3D{Valor: "0", EsTemporal: false, Tipo: simbolos.INTEGER, Label_verdadera: "", Label_false: ""}
 }

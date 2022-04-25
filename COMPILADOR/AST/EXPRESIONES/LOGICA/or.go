@@ -99,6 +99,8 @@ func (or OpOr) Compilar_Expresion(ent *entorno.Entorno, gen *generador.Generador
 		ors += "\n/*--SALIENDO OPERACION OR--*/\n"
 		gen.Agregar_Logica(ors)
 		return simbolos.ValoresC3D{Valor: ors, EsTemporal: false, Tipo: simbolos.BOOLEAN, Label_verdadera: operador_der.Label_verdadera, Label_false: operador_der.Label_false}
+	} else {
+		gen.AgregarError("ERROR-TIPOS--OR", strconv.Itoa(or.Linea), strconv.Itoa(or.Columna))
 	}
 	return simbolos.ValoresC3D{Valor: "0", EsTemporal: false, Tipo: simbolos.INTEGER, Label_verdadera: "", Label_false: ""}
 }

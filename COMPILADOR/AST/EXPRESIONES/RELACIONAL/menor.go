@@ -125,6 +125,7 @@ func (menor OpMenor) Compilar_Expresion(ent *entorno.Entorno, gen *generador.Gen
 		return simbolos.ValoresC3D{Valor: rmenor, EsTemporal: false, Tipo: simbolos.BOOLEAN, Label_verdadera: etiqueta_verdadera, Label_false: etiqueta_falsa}
 	} else {
 		fmt.Println("ERROR, tipos")
+		gen.AgregarError("ERROR-TIPOS--MENOR", strconv.Itoa(menor.Linea), strconv.Itoa(menor.Columna))
 	}
 
 	return simbolos.ValoresC3D{Valor: "0", EsTemporal: false, Tipo: simbolos.INTEGER, Label_verdadera: "", Label_false: ""}

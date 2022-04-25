@@ -125,6 +125,7 @@ func (mayorigual OpMayorIgual) Compilar_Expresion(ent *entorno.Entorno, gen *gen
 		return simbolos.ValoresC3D{Valor: rmayorigual, EsTemporal: false, Tipo: simbolos.BOOLEAN, Label_verdadera: etiqueta_verdadera, Label_false: etiqueta_falsa}
 	} else {
 		fmt.Println("ERROR, tipos")
+		gen.AgregarError("ERROR-TIPOS--MAYORIGUAL", strconv.Itoa(mayorigual.Linea), strconv.Itoa(mayorigual.Columna))
 	}
 	return simbolos.ValoresC3D{Valor: "0", EsTemporal: false, Tipo: simbolos.INTEGER, Label_verdadera: "", Label_false: ""}
 }
