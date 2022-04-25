@@ -90,11 +90,11 @@ func (imp Impres) Compilar_Instruccion(ent *entorno.Entorno, gen *generador.Gene
 								//SE GUARDA EL HEAP EL VALOR PARA INDICAR EL FIN DE LA CADENA
 								impr += "HEAP[int(HP)] = -1;\nHP = HP + 1;\n"
 								//SE GUARDA LA REFERENCIA DEL HEAP EN EL STACK
-								impr += temp2 + " = SP + " + strconv.Itoa(valtodi.Pos-1) + "; //POSICION CADENA EN STACK\n"
+								impr += temp2 + " = SP + " + strconv.Itoa(valtodi.Pos) + "; //POSICION CADENA EN STACK\n"
 								//SE GUARDA EN EL STACK LA CADENA DEL HEAP
 								impr += "STACK[int(" + temp2 + ")] = " + temp1 + ";\n"
 								//SE CAMBIA DE ENTORNO - SE LLAMA EL METODO PRINT - SE REGRESE AL OTRO ENTORNO
-								impr += "SP = SP + " + strconv.Itoa(valtodi.Pos-1) + ";\nprint();\nSP = SP - " + strconv.Itoa(valtodi.Pos-1) + ";\n"
+								impr += "SP = SP + " + strconv.Itoa(valtodi.Pos) + ";\nprint();\nSP = SP - " + strconv.Itoa(valtodi.Pos) + ";\n"
 								//SE IMPRIME EL VALOR DE LA EXPRESION
 								if ss.Tipo == simbolos.INTEGER {
 									impr += "printf(\"%d\",(int)" + ss.Valor + ");\n"
@@ -125,11 +125,11 @@ func (imp Impres) Compilar_Instruccion(ent *entorno.Entorno, gen *generador.Gene
 									//SE GUARDA EL HEAP EL VALOR PARA INDICAR EL FIN DE LA CADENA
 									impr += "HEAP[int(HP)] = -1;\nHP = HP + 1;\n"
 									//SE GUARDA LA REFERENCIA DEL HEAP EN EL STACK
-									impr += temp2 + " = SP + " + strconv.Itoa(valtodi.Pos-1) + "; //POSICION CADENA EN STACK\n"
+									impr += temp2 + " = SP + " + strconv.Itoa(valtodi.Pos) + "; //POSICION CADENA EN STACK\n"
 									//SE GUARDA EN EL STACK LA CADENA DEL HEAP
 									impr += "STACK[int(" + temp2 + ")] = " + temp1 + ";\n"
 									//SE CAMBIA DE ENTORNO - SE LLAMA EL METODO PRINT - SE REGRESE AL OTRO ENTORNO
-									impr += "SP = SP + " + strconv.Itoa(valtodi.Pos-1) + ";\nprint();\nSP = SP - " + strconv.Itoa(valtodi.Pos-1) + ";\n"
+									impr += "SP = SP + " + strconv.Itoa(valtodi.Pos) + ";\nprint();\nSP = SP - " + strconv.Itoa(valtodi.Pos) + ";\n"
 								}
 								//impr += "printf(\"%c\", (char)10);\n"
 							} else {
@@ -145,11 +145,11 @@ func (imp Impres) Compilar_Instruccion(ent *entorno.Entorno, gen *generador.Gene
 								//SE GUARDA EL HEAP EL VALOR PARA INDICAR EL FIN DE LA CADENA
 								impr += "HEAP[int(HP)] = -1;\nHP = HP + 1;\n"
 								//SE GUARDA LA REFERENCIA DEL HEAP EN EL STACK
-								impr += temp2 + " = SP + " + strconv.Itoa(valtodi.Pos-1) + "; //POSICION CADENA EN STACK\n"
+								impr += temp2 + " = SP + " + strconv.Itoa(valtodi.Pos) + "; //POSICION CADENA EN STACK\n"
 								//SE GUARDA EN EL STACK LA CADENA DEL HEAP
 								impr += "STACK[int(" + temp2 + ")] = " + temp1 + ";\n"
 								//SE CAMBIA DE ENTORNO - SE LLAMA EL METODO PRINT - SE REGRESA AL OTRO ENTORNO
-								impr += "SP = SP + " + strconv.Itoa(valtodi.Pos-1) + ";\nprint();\nSP = SP - " + strconv.Itoa(valtodi.Pos-1) + ";\n"
+								impr += "SP = SP + " + strconv.Itoa(valtodi.Pos) + ";\nprint();\nSP = SP - " + strconv.Itoa(valtodi.Pos) + ";\n"
 								//SE IMPRIME EL VALOR DE LA EXPRESION
 								if ss.Tipo == simbolos.INTEGER {
 									impr += "printf(\"%d\",(int)" + ss.Valor + ");\n"
@@ -180,11 +180,11 @@ func (imp Impres) Compilar_Instruccion(ent *entorno.Entorno, gen *generador.Gene
 									//SE GUARDA EL HEAP EL VALOR PARA INDICAR EL FIN DE LA CADENA
 									impr += "HEAP[int(HP)] = -1;\nHP = HP + 1;\n"
 									//SE GUARDA LA REFERENCIA DEL HEAP EN EL STACK
-									impr += temp2 + " = SP + " + strconv.Itoa(valtodi.Pos-1) + "; //POSICION CADENA EN STACK\n"
+									impr += temp2 + " = SP + " + strconv.Itoa(valtodi.Pos) + "; //POSICION CADENA EN STACK\n"
 									//SE GUARDA EN EL STACK LA CADENA DEL HEAP
 									impr += "STACK[int(" + temp2 + ")] = " + temp1 + ";\n"
 									//SE CAMBIA DE ENTORNO - SE LLAMA EL METODO PRINT - SE REGRESE AL OTRO ENTORNO
-									impr += "SP = SP + " + strconv.Itoa(valtodi.Pos-1) + ";\nprint();\nSP = SP - " + strconv.Itoa(valtodi.Pos-1) + ";\n"
+									impr += "SP = SP + " + strconv.Itoa(valtodi.Pos) + ";\nprint();\nSP = SP - " + strconv.Itoa(valtodi.Pos) + ";\n"
 								}
 								//impr += "printf(\"%c\", (char)10);\n"
 							}
