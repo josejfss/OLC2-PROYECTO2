@@ -32,6 +32,12 @@ func (clon Clone) Ejecutar_Expresion(ent *entorno.Entorno) simbolos.Valor {
 	return simbolos.Valor{Tipo: simbolos.NULL, Valor: -1}
 }
 
-func (tstring Clone) Compilar_Expresion(ent *entorno.Entorno, gen *generador.Generador_C3D) simbolos.ValoresC3D {
+func (clon Clone) Compilar_Expresion(ent *entorno.Entorno, gen *generador.Generador_C3D) simbolos.ValoresC3D {
+	resultado := clon.Val.Compilar_Expresion(ent, gen)
+	if resultado.Valor != "" {
+		return simbolos.ValoresC3D{Valor: resultado.Valor, EsTemporal: resultado.EsTemporal, Tipo: simbolos.INTEGER, Label_verdadera: "", Label_false: ""}
+	} else {
+		gen.AgregarError("ERROR-TIPOS--CLONE", strconv.Itoa(clon.Linea), strconv.Itoa(clon.Columna))
+	}
 	return simbolos.ValoresC3D{Valor: "0", EsTemporal: false, Tipo: simbolos.INTEGER, Label_verdadera: "", Label_false: ""}
 }

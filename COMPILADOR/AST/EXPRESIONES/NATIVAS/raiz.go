@@ -43,5 +43,16 @@ func (raiz Raiz) Ejecutar_Expresion(ent *entorno.Entorno) simbolos.Valor {
 }
 
 func (raiz Raiz) Compilar_Expresion(ent *entorno.Entorno, gen *generador.Generador_C3D) simbolos.ValoresC3D {
+	resultado := raiz.Val.Compilar_Expresion(ent, gen)
+	nuevo_temporal := gen.Crear_temporal()
+	if resultado.Tipo == simbolos.INTEGER {
+		gen.Agregar_Logica(nuevo_temporal + " = sqrt(" + resultado.Valor + "); \t\t//FUN. NATIVA RAIZ")
+		return simbolos.ValoresC3D{Valor: nuevo_temporal, EsTemporal: true, Tipo: simbolos.FLOAT, Label_verdadera: "", Label_false: ""}
+	} else if resultado.Tipo == simbolos.FLOAT {
+		gen.Agregar_Logica(nuevo_temporal + " = sqrt(" + resultado.Valor + "); \t\t//FUN. NATIVA RAIZ")
+		return simbolos.ValoresC3D{Valor: nuevo_temporal, EsTemporal: true, Tipo: simbolos.FLOAT, Label_verdadera: "", Label_false: ""}
+	} else {
+		gen.AgregarError("ERROR-TIPOS--RAIZ", strconv.Itoa(raiz.Linea), strconv.Itoa(raiz.Columna))
+	}
 	return simbolos.ValoresC3D{Valor: "0", EsTemporal: false, Tipo: simbolos.INTEGER, Label_verdadera: "", Label_false: ""}
 }

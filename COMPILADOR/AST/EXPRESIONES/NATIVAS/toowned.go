@@ -33,5 +33,11 @@ func (towned ToOwned) Ejecutar_Expresion(ent *entorno.Entorno) simbolos.Valor {
 }
 
 func (towned ToOwned) Compilar_Expresion(ent *entorno.Entorno, gen *generador.Generador_C3D) simbolos.ValoresC3D {
+	resultado := towned.Val.Compilar_Expresion(ent, gen)
+	if resultado.Tipo == simbolos.YTEXTO {
+		return simbolos.ValoresC3D{Valor: resultado.Valor, EsTemporal: resultado.EsTemporal, Tipo: simbolos.TEXTO, Label_verdadera: "", Label_false: ""}
+	} else {
+		gen.AgregarError("ERROR-TIPOS--TOOWNED", strconv.Itoa(towned.Linea), strconv.Itoa(towned.Columna))
+	}
 	return simbolos.ValoresC3D{Valor: "0", EsTemporal: false, Tipo: simbolos.INTEGER, Label_verdadera: "", Label_false: ""}
 }

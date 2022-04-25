@@ -43,5 +43,16 @@ func (abs Absoluto) Ejecutar_Expresion(ent *entorno.Entorno) simbolos.Valor {
 }
 
 func (abs Absoluto) Compilar_Expresion(ent *entorno.Entorno, gen *generador.Generador_C3D) simbolos.ValoresC3D {
+	resultado := abs.Val.Compilar_Expresion(ent, gen)
+	nuevo_temporal := gen.Crear_temporal()
+	if resultado.Tipo == simbolos.INTEGER {
+		gen.Agregar_Logica(nuevo_temporal + " = fabs(" + resultado.Valor + "); \t\t//FUN. NATIVA ABSOLUTO")
+		return simbolos.ValoresC3D{Valor: nuevo_temporal, EsTemporal: true, Tipo: simbolos.FLOAT, Label_verdadera: "", Label_false: ""}
+	} else if resultado.Tipo == simbolos.FLOAT {
+		gen.Agregar_Logica(nuevo_temporal + " = fabs(" + resultado.Valor + "); \t\t//FUN. NATIVA ABSOLUTO")
+		return simbolos.ValoresC3D{Valor: nuevo_temporal, EsTemporal: true, Tipo: simbolos.FLOAT, Label_verdadera: "", Label_false: ""}
+	} else {
+		gen.AgregarError("ERROR-TIPOS--ABSOLUTO", strconv.Itoa(abs.Linea), strconv.Itoa(abs.Columna))
+	}
 	return simbolos.ValoresC3D{Valor: "0", EsTemporal: false, Tipo: simbolos.INTEGER, Label_verdadera: "", Label_false: ""}
 }

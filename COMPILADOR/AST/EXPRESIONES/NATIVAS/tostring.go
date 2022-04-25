@@ -33,5 +33,11 @@ func (tstring ToString) Ejecutar_Expresion(ent *entorno.Entorno) simbolos.Valor 
 }
 
 func (tstring ToString) Compilar_Expresion(ent *entorno.Entorno, gen *generador.Generador_C3D) simbolos.ValoresC3D {
+	resultado := tstring.Val.Compilar_Expresion(ent, gen)
+	if resultado.Tipo == simbolos.YTEXTO {
+		return simbolos.ValoresC3D{Valor: resultado.Valor, EsTemporal: resultado.EsTemporal, Tipo: simbolos.TEXTO, Label_verdadera: "", Label_false: ""}
+	} else {
+		gen.AgregarError("ERROR-TIPOS--TOSTRING", strconv.Itoa(tstring.Linea), strconv.Itoa(tstring.Columna))
+	}
 	return simbolos.ValoresC3D{Valor: "0", EsTemporal: false, Tipo: simbolos.INTEGER, Label_verdadera: "", Label_false: ""}
 }
