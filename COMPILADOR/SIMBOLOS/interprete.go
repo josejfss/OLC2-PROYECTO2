@@ -24,16 +24,19 @@ type Simbolo_Vars struct {
 }
 
 type Simbolo_ArreVect struct {
-	Mutable       bool
-	EsArreVect    int
-	TipoVect      TipoExpresion
-	Nombre        string
-	ValorArreVect []interface{}
-	Lintdim       *arraylist.List
-	Lintcap       *arraylist.List
-	PosicionTabla int
-	Linea         int
-	Columna       int
+	Mutable          bool
+	EsArreVect       int
+	TipoVect         TipoExpresion
+	Nombre           string
+	Dimensiones      int
+	DimensionesLista *arraylist.List
+	ValorArreVect    []interface{}
+	ValorLista       *arraylist.List
+	Lintdim          *arraylist.List
+	Lintcap          *arraylist.List
+	PosicionTabla    int
+	Linea            int
+	Columna          int
 }
 
 type Simbolo_Struct struct {

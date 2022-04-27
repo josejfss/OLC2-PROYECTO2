@@ -18,6 +18,8 @@ func Nvalor_arreglo(le *arraylist.List) ValorArreglo {
 	return ValorArreglo{Lexpres: le}
 }
 
+var ValArreglo = arraylist.New()
+
 func (vv ValorArreglo) Obteniendo_Valores(ent *entorno.Entorno) (interface{}, simbolos.TipoExpresion) {
 	tipo := simbolos.NULL
 	data := arraylist.New()
@@ -29,9 +31,15 @@ func (vv ValorArreglo) Obteniendo_Valores(ent *entorno.Entorno) (interface{}, si
 		if i == 0 {
 			tipo = valexp.Tipo
 			data.Add(valexp)
+			if valexp.Tipo != simbolos.ARRAY {
+				ValArreglo.Add(valexp)
+			}
 		} else {
 			if tipo == valexp.Tipo {
 				data.Add(valexp)
+				if valexp.Tipo != simbolos.ARRAY {
+					ValArreglo.Add(valexp)
+				}
 			} else {
 				fmt.Println("ERROR")
 			}

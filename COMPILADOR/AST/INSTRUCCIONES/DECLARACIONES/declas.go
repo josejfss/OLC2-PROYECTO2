@@ -31,7 +31,7 @@ func (decla Declarar) Ejecutar_Instruccion(ent *entorno.Entorno, ent2 *entorno.E
 			if !ent.ExisteAcual_ArreVect(decla.Identificador) {
 				val := resultado.Valor.(simbolos.Valor)
 				obvect := val.Valor.(simbolos.Simbolo_ArreVect)
-				ent.Guardar_ArreVect(decla.Mutable, obvect.TipoVect, obvect.Nombre, obvect.ValorArreVect, obvect.Lintdim.Clone(), obvect.Lintcap.Clone(), decla.Linea, decla.Columna)
+				//ent.Guardar_ArreVect(decla.Mutable, obvect.TipoVect, obvect.Nombre, obvect.ValorArreVect, obvect.Lintdim.Clone(), obvect.Lintcap.Clone(), decla.Linea, decla.Columna)
 				reportes.ReporteSimbolos(decla.Identificador, "arreglo--"+reportes.ReportObteniendoSimbolos(obvect.TipoVect), ent.Nombre_Entorno, "--", strconv.Itoa(decla.Linea), strconv.Itoa(decla.Columna))
 			} else {
 				t := time.Now()
@@ -46,7 +46,7 @@ func (decla Declarar) Ejecutar_Instruccion(ent *entorno.Entorno, ent2 *entorno.E
 			if !ent.ExisteAcual_ArreVect(decla.Identificador) {
 				val := resultado.Valor.(simbolos.Valor)
 				obvect := val.Valor.(simbolos.Simbolo_ArreVect)
-				ent.Guardar_ArreVect(decla.Mutable, obvect.TipoVect, obvect.Nombre, obvect.ValorArreVect, obvect.Lintdim.Clone(), obvect.Lintcap.Clone(), decla.Linea, decla.Columna)
+				//ent.Guardar_ArreVect(decla.Mutable, obvect.TipoVect, obvect.Nombre, obvect.ValorArreVect, obvect.Lintdim.Clone(), obvect.Lintcap.Clone(), decla.Linea, decla.Columna)
 				reportes.ReporteSimbolos(decla.Identificador, "vector--"+reportes.ReportObteniendoSimbolos(obvect.TipoVect), ent.Nombre_Entorno, "--", strconv.Itoa(decla.Linea), strconv.Itoa(decla.Columna))
 			} else {
 				t := time.Now()

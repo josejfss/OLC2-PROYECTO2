@@ -273,6 +273,24 @@ func (s *Basedb_rustparserListener) EnterResumen_arre(ctx *Resumen_arreContext) 
 // ExitResumen_arre is called when production resumen_arre is exited.
 func (s *Basedb_rustparserListener) ExitResumen_arre(ctx *Resumen_arreContext) {}
 
+// EnterAccesso_arreglo is called when production accesso_arreglo is entered.
+func (s *Basedb_rustparserListener) EnterAccesso_arreglo(ctx *Accesso_arregloContext) {}
+
+// ExitAccesso_arreglo is called when production accesso_arreglo is exited.
+func (s *Basedb_rustparserListener) ExitAccesso_arreglo(ctx *Accesso_arregloContext) {}
+
+// EnterLista_acceso is called when production lista_acceso is entered.
+func (s *Basedb_rustparserListener) EnterLista_acceso(ctx *Lista_accesoContext) {}
+
+// ExitLista_acceso is called when production lista_acceso is exited.
+func (s *Basedb_rustparserListener) ExitLista_acceso(ctx *Lista_accesoContext) {}
+
+// EnterAccess is called when production access is entered.
+func (s *Basedb_rustparserListener) EnterAccess(ctx *AccessContext) {}
+
+// ExitAccess is called when production access is exited.
+func (s *Basedb_rustparserListener) ExitAccess(ctx *AccessContext) {}
+
 // EnterFun_nativas is called when production fun_nativas is entered.
 func (s *Basedb_rustparserListener) EnterFun_nativas(ctx *Fun_nativasContext) {}
 

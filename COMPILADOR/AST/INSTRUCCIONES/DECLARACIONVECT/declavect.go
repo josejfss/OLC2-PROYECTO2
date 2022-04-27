@@ -38,11 +38,11 @@ func (dvect DeclaVector) Ejecutar_Instruccion(ent *entorno.Entorno, ent2 *entorn
 				if obvect.Lintdim.Len() != 1 {
 					if dvect.Dimension.Len() == obvect.Lintdim.GetValue(0) {
 						if tipovect.Tipo == obvect.TipoVect {
-							ent.Guardar_ArreVect(dvect.Mutable, obvect.TipoVect, obvect.Nombre, obvect.ValorArreVect, obvect.Lintdim.Clone(), obvect.Lintcap.Clone(), dvect.Linea, dvect.Columna)
+							//ent.Guardar_ArreVect(dvect.Mutable, obvect.TipoVect, obvect.Nombre, obvect.ValorArreVect, obvect.Lintdim.Clone(), obvect.Lintcap.Clone(), dvect.Linea, dvect.Columna)
 							ent.ListaTodo.Add(simbolos.SimboloTodo{Tipo: "arrevect", Nombre: dvect.Identificador})
 							reportes.ReporteSimbolos(dvect.Identificador, "vector--"+reportes.ReportObteniendoSimbolos(obvect.TipoVect), ent.Nombre_Entorno, "--", strconv.Itoa(dvect.Linea), strconv.Itoa(dvect.Columna))
 						} else if tipovect.Tipo == simbolos.STRUCT {
-							ent.Guardar_ArreVect(dvect.Mutable, obvect.TipoVect, dvect.Identificador, obvect.ValorArreVect, obvect.Lintdim.Clone(), obvect.Lintcap.Clone(), dvect.Linea, dvect.Columna)
+							//ent.Guardar_ArreVect(dvect.Mutable, obvect.TipoVect, dvect.Identificador, obvect.ValorArreVect, obvect.Lintdim.Clone(), obvect.Lintcap.Clone(), dvect.Linea, dvect.Columna)
 							ent.ListaTodo.Add(simbolos.SimboloTodo{Tipo: "arrevect", Nombre: dvect.Identificador})
 							reportes.ReporteSimbolos(dvect.Identificador, "vector--"+reportes.ReportObteniendoSimbolos(tipovect.Tipo), ent.Nombre_Entorno, "--", strconv.Itoa(dvect.Linea), strconv.Itoa(dvect.Columna))
 						} else {
@@ -57,11 +57,11 @@ func (dvect DeclaVector) Ejecutar_Instruccion(ent *entorno.Entorno, ent2 *entorn
 				} else {
 					if dvect.Dimension.Len() == 1 {
 						if tipovect.Tipo == obvect.TipoVect {
-							ent.Guardar_ArreVect(dvect.Mutable, obvect.TipoVect, obvect.Nombre, obvect.ValorArreVect, obvect.Lintdim.Clone(), obvect.Lintcap.Clone(), dvect.Linea, dvect.Columna)
+							//ent.Guardar_ArreVect(dvect.Mutable, obvect.TipoVect, obvect.Nombre, obvect.ValorArreVect, obvect.Lintdim.Clone(), obvect.Lintcap.Clone(), dvect.Linea, dvect.Columna)
 							ent.ListaTodo.Add(simbolos.SimboloTodo{Tipo: "arrevect", Nombre: dvect.Identificador})
 							reportes.ReporteSimbolos(dvect.Identificador, "vector--"+reportes.ReportObteniendoSimbolos(obvect.TipoVect), ent.Nombre_Entorno, "--", strconv.Itoa(dvect.Linea), strconv.Itoa(dvect.Columna))
 						} else if tipovect.Tipo == simbolos.STRUCT {
-							ent.Guardar_ArreVect(dvect.Mutable, obvect.TipoVect, dvect.Identificador, obvect.ValorArreVect, obvect.Lintdim.Clone(), obvect.Lintcap.Clone(), dvect.Linea, dvect.Columna)
+							//ent.Guardar_ArreVect(dvect.Mutable, obvect.TipoVect, dvect.Identificador, obvect.ValorArreVect, obvect.Lintdim.Clone(), obvect.Lintcap.Clone(), dvect.Linea, dvect.Columna)
 							ent.ListaTodo.Add(simbolos.SimboloTodo{Tipo: "arrevect", Nombre: dvect.Identificador})
 							reportes.ReporteSimbolos(dvect.Identificador, "vector--"+reportes.ReportObteniendoSimbolos(tipovect.Tipo), ent.Nombre_Entorno, "--", strconv.Itoa(dvect.Linea), strconv.Itoa(dvect.Columna))
 						} else {

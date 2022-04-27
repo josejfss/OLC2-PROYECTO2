@@ -44,7 +44,7 @@ func (vari Variable) Compilar_Expresion(ent *entorno.Entorno, gen *generador.Gen
 		obtvar := ent.Obtener_Variable(vari.Identificador)
 		temp1 := gen.Crear_temporal()
 		temp2 := gen.Crear_temporal()
-		gen.Agregar_Logica(temp1 + " = SP +" + strconv.Itoa(obtvar.PosicionTabla) + ";")
+		gen.Agregar_Logica(temp1 + " = SP + " + strconv.Itoa(obtvar.PosicionTabla) + ";")
 		gen.Agregar_Logica(temp2 + " = STACK[int(" + temp1 + ")];")
 		return simbolos.ValoresC3D{Valor: temp2, EsTemporal: true, Tipo: obtvar.TipoVariable, Label_verdadera: "", Label_false: ""}
 	}

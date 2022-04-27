@@ -143,8 +143,8 @@ func (ent *Entorno) ExisteAcual_Variable(nom string) bool {
 /*----------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 /*----------------------------------------------------------------------METODOS PARA LA TABLA DE ARREVECT---------------------------------------------------------*/
 /* METODO PARA GUADAR ARREGLOS Y VECTORES */
-func (ent *Entorno) Guardar_ArreVect(mut bool, tip simbolos.TipoExpresion, nom string, vexp []interface{}, ldim *arraylist.List, lcap *arraylist.List, l int, c int) {
-	ent.Tabla_ArreVect[nom] = simbolos.Simbolo_ArreVect{Mutable: mut, TipoVect: tip, Nombre: nom, ValorArreVect: vexp, Lintdim: ldim, Lintcap: lcap, PosicionTabla: ent.Posicion, Linea: l, Columna: c}
+func (ent *Entorno) Guardar_ArregloVector(nom string, arrevect simbolos.Simbolo_ArreVect) {
+	ent.Tabla_ArreVect[nom] = arrevect
 	ent.Posicion = ent.Posicion + 1
 	ent.Tamaño = ent.Tamaño + 1
 }

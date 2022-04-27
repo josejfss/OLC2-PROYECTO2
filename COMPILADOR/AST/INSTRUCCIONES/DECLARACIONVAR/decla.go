@@ -26,32 +26,35 @@ func Ndeclaracion(m bool, id string, tip simbolos.TipoExpresion, val interfaces.
 }
 
 func (decla Declaracion) Ejecutar_Instruccion(ent *entorno.Entorno, ent2 *entorno.Entorno) interface{} {
-	if !ent.Existe_Variable(decla.Identificador) {
-		resultado := decla.Valor_exp.Ejecutar_Expresion(ent)
-		if resultado.Tipo == decla.TipoDecla {
-			if ent.Nombre_Entorno != ent2.Nombre_Entorno {
-				ent2.Posicion = ent2.Posicion - 1
-				simbguardar := simbolos.Simbolo_Vars{Mutable: decla.Mutable, TipoVariable: resultado.Tipo, NombreVariable: decla.Identificador, ValorVariable: resultado.Valor, PosicionTabla: ent.Posicion, Linea: decla.Linea, Columna: decla.Columna}
-				ent.Guardar_Variable(decla.Identificador, simbguardar)
-				ent2.Guardar_Variable(decla.Identificador, simbguardar)
-				// todito := simbolos.SimboloTodo{Tipo: "declaracion", Nombre: decla.Identificador, Pos: ent2.Posicion}
-				// ent2.GuardaLTodo(todito)
+	if !ent.Existe_ArreVect(decla.Identificador) {
+		if !ent.Existe_Variable(decla.Identificador) {
+			resultado := decla.Valor_exp.Ejecutar_Expresion(ent)
+			if resultado.Tipo == decla.TipoDecla {
+				if ent.Nombre_Entorno != ent2.Nombre_Entorno {
+					ent2.Posicion = ent2.Posicion - 1
+					simbguardar := simbolos.Simbolo_Vars{Mutable: decla.Mutable, TipoVariable: resultado.Tipo, NombreVariable: decla.Identificador, ValorVariable: resultado.Valor, PosicionTabla: ent.Posicion, Linea: decla.Linea, Columna: decla.Columna}
+					ent.Guardar_Variable(decla.Identificador, simbguardar)
+					ent2.Guardar_Variable(decla.Identificador, simbguardar)
+					// todito := simbolos.SimboloTodo{Tipo: "declaracion", Nombre: decla.Identificador, Pos: ent2.Posicion}
+					// ent2.GuardaLTodo(todito)
+				} else {
+					simbguardar := simbolos.Simbolo_Vars{Mutable: decla.Mutable, TipoVariable: resultado.Tipo, NombreVariable: decla.Identificador, ValorVariable: resultado.Valor, PosicionTabla: ent.Posicion, Linea: decla.Linea, Columna: decla.Columna}
+					ent.Guardar_Variable(decla.Identificador, simbguardar)
+					ent2.Guardar_Variable(decla.Identificador, simbguardar)
+					// todito := simbolos.SimboloTodo{Tipo: "declaracion", Nombre: decla.Identificador, Pos: ent2.Posicion}
+					// ent2.GuardaLTodo(todito)
+				}
+				reportes.ReporteSimbolos(decla.Identificador, "variable--"+reportes.ReportObteniendoSimbolos(resultado.Tipo), ent.Nombre_Entorno, "--", strconv.Itoa(decla.Linea), strconv.Itoa(decla.Columna))
 			} else {
-				simbguardar := simbolos.Simbolo_Vars{Mutable: decla.Mutable, TipoVariable: resultado.Tipo, NombreVariable: decla.Identificador, ValorVariable: resultado.Valor, PosicionTabla: ent.Posicion, Linea: decla.Linea, Columna: decla.Columna}
-				ent.Guardar_Variable(decla.Identificador, simbguardar)
-				ent2.Guardar_Variable(decla.Identificador, simbguardar)
-				// todito := simbolos.SimboloTodo{Tipo: "declaracion", Nombre: decla.Identificador, Pos: ent2.Posicion}
-				// ent2.GuardaLTodo(todito)
+				t := time.Now()
+				reportes.Nerror("No se puede declarar la variable: "+decla.Identificador+" con distinto tipo", ent.Nombre_Entorno, strconv.Itoa(decla.Linea), strconv.Itoa(decla.Columna), t.Format("2006-01-02 15:04:05"))
 			}
-			reportes.ReporteSimbolos(decla.Identificador, "variable--"+reportes.ReportObteniendoSimbolos(resultado.Tipo), ent.Nombre_Entorno, "--", strconv.Itoa(decla.Linea), strconv.Itoa(decla.Columna))
 		} else {
 			t := time.Now()
-			reportes.Nerror("No se puede declarar la variable: "+decla.Identificador+" con distinto tipo", ent.Nombre_Entorno, strconv.Itoa(decla.Linea), strconv.Itoa(decla.Columna), t.Format("2006-01-02 15:04:05"))
+			reportes.Nerror("Variables con el mismo nombre en el entorno.", ent.Nombre_Entorno, strconv.Itoa(decla.Linea), strconv.Itoa(decla.Columna), t.Format("2006-01-02 15:04:05"))
 		}
-	} else {
-		t := time.Now()
-		reportes.Nerror("Variables con el mismo nombre en el entorno.", ent.Nombre_Entorno, strconv.Itoa(decla.Linea), strconv.Itoa(decla.Columna), t.Format("2006-01-02 15:04:05"))
 	}
+
 	return 0
 }
 

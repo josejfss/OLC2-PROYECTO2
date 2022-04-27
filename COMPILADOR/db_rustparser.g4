@@ -15,6 +15,7 @@ options {
     import "OLC2-PROYECTO2/COMPILADOR/AST/EXPRESIONES/RELACIONAL"
     import "OLC2-PROYECTO2/COMPILADOR/AST/EXPRESIONES/INICIANDO_VECT"
     import "OLC2-PROYECTO2/COMPILADOR/AST/EXPRESIONES/INICIANDO_ARRE"
+    import "OLC2-PROYECTO2/COMPILADOR/AST/EXPRESIONES/ACCESO_ARRE"
     import "OLC2-PROYECTO2/COMPILADOR/AST/INSTRUCCIONES/IMPRESION"
     import "OLC2-PROYECTO2/COMPILADOR/AST/INSTRUCCIONES/S_CONDICIONAL"
     import "OLC2-PROYECTO2/COMPILADOR/AST/INSTRUCCIONES/S_MATCH"
@@ -279,8 +280,8 @@ tamarre returns[*arrayList.List tam_arre]
     $tam_arre=$l.tam_arre
   }
   | TK_CI tipos_vectorarre TK_PYC expression TK_CD {
-    $tam_arre.Add($tipos_vectorarre.p)
-    $tam_arre.Add($expression.p)
+    guardar := declaracionarre.Ntipodeclarre($tipos_vectorarre.p,$expression.p)
+    $tam_arre.Add(guardar)
   }
 ;
 
@@ -426,6 +427,7 @@ expression returns[interfaces.Expresion p]
     | TK_PI expression TK_PD  {$p = $expression.p}
     | vectores_inicio         {$p = $vectores_inicio.p}
     | arreglos_inicio         {$p = $arreglos_inicio.p}
+    | accesso_arreglo         {$p = $accesso_arreglo.p}
     | valores                 {$p = $valores.p}
 ;
 
@@ -473,6 +475,29 @@ resumen_arre returns[interfaces.Expresion p]
   : TK_CI ex1 = expression TK_PYC ex2 = expression TK_CD { 
     $p = iniciandoarre.Nresumenarre($ex1.p,$ex2.p) 
   }
+;
+
+accesso_arreglo returns[interfaces.Expresion p]
+  : TK_IDENTIFICADOR lista_acceso {
+    $p = accesoarre.Naccessarre($TK_IDENTIFICADOR.text,$lista_acceso.lacceso, $TK_IDENTIFICADOR.line, localctx.(*Accesso_arregloContext).Get_TK_IDENTIFICADOR().GetColumn())
+  }
+;
+
+lista_acceso returns[*arrayList.List lacceso]
+  @init {
+    $lacceso =  arrayList.New()
+  }
+  : lacc = lista_acceso access {
+    $lacc.lacceso.Add($access.p)
+    $lacceso=$lacc.lacceso
+  }
+  | access {
+    $lacceso.Add($access.p)
+  }
+;
+
+access returns[interfaces.Expresion p]
+  : TK_CI expression TK_CD { $p = $expression.p}
 ;
 
 /* FUNCIONES NATIVAS */

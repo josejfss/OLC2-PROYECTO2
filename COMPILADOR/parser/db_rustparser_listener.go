@@ -134,6 +134,15 @@ type db_rustparserListener interface {
 	// EnterResumen_arre is called when entering the resumen_arre production.
 	EnterResumen_arre(c *Resumen_arreContext)
 
+	// EnterAccesso_arreglo is called when entering the accesso_arreglo production.
+	EnterAccesso_arreglo(c *Accesso_arregloContext)
+
+	// EnterLista_acceso is called when entering the lista_acceso production.
+	EnterLista_acceso(c *Lista_accesoContext)
+
+	// EnterAccess is called when entering the access production.
+	EnterAccess(c *AccessContext)
+
 	// EnterFun_nativas is called when entering the fun_nativas production.
 	EnterFun_nativas(c *Fun_nativasContext)
 
@@ -280,6 +289,15 @@ type db_rustparserListener interface {
 
 	// ExitResumen_arre is called when exiting the resumen_arre production.
 	ExitResumen_arre(c *Resumen_arreContext)
+
+	// ExitAccesso_arreglo is called when exiting the accesso_arreglo production.
+	ExitAccesso_arreglo(c *Accesso_arregloContext)
+
+	// ExitLista_acceso is called when exiting the lista_acceso production.
+	ExitLista_acceso(c *Lista_accesoContext)
+
+	// ExitAccess is called when exiting the access production.
+	ExitAccess(c *AccessContext)
 
 	// ExitFun_nativas is called when exiting the fun_nativas production.
 	ExitFun_nativas(c *Fun_nativasContext)
