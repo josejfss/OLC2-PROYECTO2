@@ -35,6 +35,9 @@ func (ini ResumenArreglo) Obteniendo_Valores(ent *entorno.Entorno) (interface{},
 	for i := 0; i < ex2.Valor.(int); i++ {
 		//tipo = ex1.Tipo
 		data.Add(ex1)
+		if ex1.Tipo != simbolos.ARRAY {
+			simbolos.ValArreglo.Add(ex1)
+		}
 	}
 
 	lista_dimensiones := arraylist.New()

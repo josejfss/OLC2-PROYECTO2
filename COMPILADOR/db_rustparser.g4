@@ -16,6 +16,7 @@ options {
     import "OLC2-PROYECTO2/COMPILADOR/AST/EXPRESIONES/INICIANDO_VECT"
     import "OLC2-PROYECTO2/COMPILADOR/AST/EXPRESIONES/INICIANDO_ARRE"
     import "OLC2-PROYECTO2/COMPILADOR/AST/EXPRESIONES/ACCESO_ARRE"
+    import "OLC2-PROYECTO2/COMPILADOR/AST/EXPRESIONES/ACCESO_VECT"
     import "OLC2-PROYECTO2/COMPILADOR/AST/INSTRUCCIONES/IMPRESION"
     import "OLC2-PROYECTO2/COMPILADOR/AST/INSTRUCCIONES/S_CONDICIONAL"
     import "OLC2-PROYECTO2/COMPILADOR/AST/INSTRUCCIONES/S_MATCH"
@@ -428,6 +429,7 @@ expression returns[interfaces.Expresion p]
     | vectores_inicio         {$p = $vectores_inicio.p}
     | arreglos_inicio         {$p = $arreglos_inicio.p}
     | accesso_arreglo         {$p = $accesso_arreglo.p}
+    | acceso_vector           {$p = $acceso_vector.p}
     | valores                 {$p = $valores.p}
 ;
 
@@ -498,6 +500,12 @@ lista_acceso returns[*arrayList.List lacceso]
 
 access returns[interfaces.Expresion p]
   : TK_CI expression TK_CD { $p = $expression.p}
+;
+
+acceso_vector returns[interfaces.Expresion p]
+  : TK_IDENTIFICADOR TK_MENOR expression TK_MAYOR {
+    $p = accesovect.Naccessvect($TK_IDENTIFICADOR.text,$expression.p, $TK_IDENTIFICADOR.line, localctx.(*Acceso_vectorContext).Get_TK_IDENTIFICADOR().GetColumn())
+  }
 ;
 
 /* FUNCIONES NATIVAS */

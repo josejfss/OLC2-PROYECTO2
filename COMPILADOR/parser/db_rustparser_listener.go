@@ -143,6 +143,9 @@ type db_rustparserListener interface {
 	// EnterAccess is called when entering the access production.
 	EnterAccess(c *AccessContext)
 
+	// EnterAcceso_vector is called when entering the acceso_vector production.
+	EnterAcceso_vector(c *Acceso_vectorContext)
+
 	// EnterFun_nativas is called when entering the fun_nativas production.
 	EnterFun_nativas(c *Fun_nativasContext)
 
@@ -298,6 +301,9 @@ type db_rustparserListener interface {
 
 	// ExitAccess is called when exiting the access production.
 	ExitAccess(c *AccessContext)
+
+	// ExitAcceso_vector is called when exiting the acceso_vector production.
+	ExitAcceso_vector(c *Acceso_vectorContext)
 
 	// ExitFun_nativas is called when exiting the fun_nativas production.
 	ExitFun_nativas(c *Fun_nativasContext)

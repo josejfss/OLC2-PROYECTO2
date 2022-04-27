@@ -78,7 +78,7 @@ func (ac AccessArre) Ejecutar_Expresion(ent *entorno.Entorno) simbolos.Valor {
 				posi0 := ac.Posicion.GetValue(0).(interfaces.Expresion).Ejecutar_Expresion(ent)
 				posi1 := ac.Posicion.GetValue(1).(interfaces.Expresion).Ejecutar_Expresion(ent)
 				tama0 := arrvect.DimensionesLista.GetValue(0).(declaracionarre.TipoDeclaArre).Dimension.Ejecutar_Expresion(ent)
-				posifinal := posi0.Valor.(int)*tama0.Valor.(int) + posi1.Valor.(int)
+				posifinal := posi1.Valor.(int)*tama0.Valor.(int) + posi0.Valor.(int)
 				for i := 0; i < arrvect.ValorLista.Len(); i++ {
 					act := arrvect.ValorLista.GetValue(i).(simbolos.Valor)
 					if posifinal == i {
@@ -107,7 +107,7 @@ func (ac AccessArre) Ejecutar_Expresion(ent *entorno.Entorno) simbolos.Valor {
 }
 
 func (ac AccessArre) Compilar_Expresion(ent *entorno.Entorno, gen *generador.Generador_C3D) simbolos.ValoresC3D {
-	gen.Agregar_Comentario("INCIO ACCESO A ARREGLO/VECTOR -- " + ac.Nombre)
+	gen.Agregar_Comentario("INCIO ACCESO A ARREGLO -- " + ac.Nombre)
 	if ent.Existe_ArreVect(ac.Nombre) {
 		arrvect := ent.Obtener_ArreVect(ac.Nombre)
 		conta := 0
@@ -179,8 +179,8 @@ func (ac AccessArre) Compilar_Expresion(ent *entorno.Entorno, gen *generador.Gen
 				temp1 := gen.Crear_temporal()
 				temp2 := gen.Crear_temporal()
 
-				gen.Agregar_Logica(temp1 + " = " + posi0.Valor + " * " + tama0.Valor + ";")
-				gen.Agregar_Logica(temp2 + " = " + temp1 + " + " + posi1.Valor + ";")
+				gen.Agregar_Logica(temp1 + " = " + posi1.Valor + " * " + tama0.Valor + ";")
+				gen.Agregar_Logica(temp2 + " = " + temp1 + " + " + posi0.Valor + ";")
 				//posifinal := posi0.Valor.(int)*tama0.Valor.(int) + posi1.Valor.(int)
 				temp3 := gen.Crear_temporal()
 				temp4 := gen.Crear_temporal()
@@ -212,7 +212,7 @@ func (ac AccessArre) Compilar_Expresion(ent *entorno.Entorno, gen *generador.Gen
 	} else {
 		gen.AgregarError("ERROR-VECTOR NO EXISTE", strconv.Itoa(ac.Linea), strconv.Itoa(ac.Columna))
 	}
-	gen.Agregar_Comentario("FIN ACCESO A ARREGLO/VECTOR -- " + ac.Nombre)
+	gen.Agregar_Comentario("FIN ACCESO A ARREGLO -- " + ac.Nombre)
 	gen.LiberarTodosTemporales()
 	return simbolos.ValoresC3D{Valor: "0", EsTemporal: false, Tipo: simbolos.INTEGER, Label_verdadera: "", Label_false: ""}
 }

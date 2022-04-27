@@ -1,7 +1,6 @@
 package declaracionarre
 
 import (
-	iniciandoarre "OLC2-PROYECTO2/COMPILADOR/AST/EXPRESIONES/INICIANDO_ARRE"
 	entorno "OLC2-PROYECTO2/COMPILADOR/ENTORNO"
 	generador "OLC2-PROYECTO2/COMPILADOR/GENERADOR"
 	interfaces "OLC2-PROYECTO2/COMPILADOR/INTERFACES"
@@ -57,7 +56,7 @@ func (darre DeclaArre) Ejecutar_Instruccion(ent *entorno.Entorno, ent2 *entorno.
 							Dimensiones:      dim.Valor.(int),
 							DimensionesLista: darre.Dimension.Clone(),
 							ValorArreVect:    obj_vect.ValorArreVect,
-							ValorLista:       iniciandoarre.ValArreglo.Clone(),
+							ValorLista:       simbolos.ValArreglo.Clone(),
 							Lintdim:          obj_vect.Lintdim.Clone(),
 							Lintcap:          obj_vect.Lintcap.Clone(),
 							PosicionTabla:    ent.Posicion,
@@ -81,7 +80,7 @@ func (darre DeclaArre) Ejecutar_Instruccion(ent *entorno.Entorno, ent2 *entorno.
 							Dimensiones:      dim.Valor.(int),
 							DimensionesLista: darre.Dimension.Clone(),
 							ValorArreVect:    obj_vect.ValorArreVect,
-							ValorLista:       iniciandoarre.ValArreglo.Clone(),
+							ValorLista:       simbolos.ValArreglo.Clone(),
 							Lintdim:          obj_vect.Lintdim.Clone(),
 							Lintcap:          obj_vect.Lintcap.Clone(),
 							PosicionTabla:    ent.Posicion,
@@ -120,7 +119,7 @@ func (darre DeclaArre) Ejecutar_Instruccion(ent *entorno.Entorno, ent2 *entorno.
 							Dimensiones:      tam,
 							DimensionesLista: darre.Dimension.Clone(),
 							ValorArreVect:    obj_vect.ValorArreVect,
-							ValorLista:       iniciandoarre.ValArreglo.Clone(),
+							ValorLista:       simbolos.ValArreglo.Clone(),
 							Lintdim:          obj_vect.Lintdim.Clone(),
 							Lintcap:          obj_vect.Lintcap.Clone(),
 							PosicionTabla:    ent.Posicion,
@@ -143,7 +142,7 @@ func (darre DeclaArre) Ejecutar_Instruccion(ent *entorno.Entorno, ent2 *entorno.
 							Dimensiones:      tam,
 							DimensionesLista: darre.Dimension.Clone(),
 							ValorArreVect:    obj_vect.ValorArreVect,
-							ValorLista:       iniciandoarre.ValArreglo.Clone(),
+							ValorLista:       simbolos.ValArreglo.Clone(),
 							Lintdim:          obj_vect.Lintdim.Clone(),
 							Lintcap:          obj_vect.Lintcap.Clone(),
 							PosicionTabla:    ent.Posicion,
@@ -175,7 +174,7 @@ func (darre DeclaArre) Ejecutar_Instruccion(ent *entorno.Entorno, ent2 *entorno.
 		t := time.Now()
 		reportes.Nerror("Variables con el mismo nombre en el entorno.", ent.Nombre_Entorno, strconv.Itoa(darre.Linea), strconv.Itoa(darre.Columna), t.Format("2006-01-02 15:04:05"))
 	}
-	iniciandoarre.ValArreglo.Clear()
+	simbolos.ValArreglo.Clear()
 	return 0
 }
 

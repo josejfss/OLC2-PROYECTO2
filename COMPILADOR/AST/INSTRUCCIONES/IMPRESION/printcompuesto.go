@@ -50,6 +50,29 @@ func (imp Impres) Ejecutar_Instruccion(ent *entorno.Entorno, ent2 *entorno.Entor
 					}
 				}
 			}
+		} else if strings.Contains(prexp, "{:?}") {
+			conteo := strings.Count(prexp, "{:?}")
+			if conteo == imp.ListaExp.Len() {
+				separador := strings.Split(prexp, "{:?}")
+				for i := 0; i < len(separador); i++ {
+					if i != imp.ListaExp.Len() {
+						ex := imp.ListaExp.GetValue(i).(interfaces.Expresion)
+						var ss simbolos.Valor = ex.Ejecutar_Expresion(ent)
+						simbs := ss.Valor.(simbolos.Simbolo_ArreVect)
+						despues := ""
+						for i := 0; i < simbs.ValorLista.Len(); i++ {
+							act := simbs.ValorLista.GetValue(i).(simbolos.Valor)
+							despues += fmt.Sprintf("%v", act.Valor)
+							if i != simbs.ValorLista.Len()-1 {
+								despues += ","
+							}
+						}
+						concatenacion += separador[i] + despues
+					} else {
+						concatenacion += separador[i]
+					}
+				}
+			}
 		}
 	}
 	fmt.Println(concatenacion)

@@ -29,9 +29,15 @@ func (vv ValorVector) Obteniendo_Valores(ent *entorno.Entorno) (interface{}, sim
 		if i == 0 {
 			tipo = valexp.Tipo
 			data.Add(valexp)
+			if valexp.Tipo != simbolos.VECTOR {
+				simbolos.ValArreglo.Add(valexp)
+			}
 		} else {
 			if tipo == valexp.Tipo {
 				data.Add(valexp)
+				if valexp.Tipo != simbolos.VECTOR {
+					simbolos.ValArreglo.Add(valexp)
+				}
 			} else {
 				fmt.Println("ERROR")
 			}
