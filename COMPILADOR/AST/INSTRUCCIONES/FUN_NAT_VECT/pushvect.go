@@ -92,7 +92,7 @@ func (pushvect PushVect) Compilar_Instruccion(ent *entorno.Entorno, gen *generad
 				}
 			}
 		}
-
 	}
+	gen.Agregar_Comentario("FIN PUSH VECTOR -- " + pushvect.Identificador)
 	return 0
 }
