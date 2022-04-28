@@ -33,7 +33,7 @@ func (dvect DeclaVector) Ejecutar_Instruccion(ent *entorno.Entorno, ent2 *entorn
 	resultado := dvect.ValExp.Ejecutar_Expresion(ent)
 	if !ent.Existe_Variable(dvect.Identificador) {
 		if !ent.Existe_ArreVect(dvect.Identificador) {
-			if resultado.Tipo == simbolos.ARRAY {
+			if resultado.Tipo == simbolos.VECTOR {
 				val_resultado := resultado.Valor.(simbolos.Valor)
 				obj_vect := val_resultado.Valor.(simbolos.Simbolo_ArreVect)
 				if dvect.Dimension.Len() == 1 {
@@ -162,7 +162,27 @@ func (dvect DeclaVector) Compilar_Instruccion(ent *entorno.Entorno, gen *generad
 		gen.Agregar_Comentario("INICIO DECLARACION VECTOR -- " + dvect.Identificador)
 		simarreglo := ent.Obtener_ArreVect(dvect.Identificador)
 		if simarreglo.TipoVect == simbolos.TEXTO || simarreglo.TipoVect == simbolos.YTEXTO {
-			fmt.Println("decla arreglo")
+			tempo1 := gen.Crear_temporal()
+			posi := simarreglo.PosicionTabla
+			gen.Agregar_Logica(tempo1 + " = SP + " + strconv.Itoa(posi) + ";\t\t// POSICION: " + dvect.Identificador)
+			gen.Agregar_Stack(tempo1, "HP")
+			tempo2 := gen.Crear_temporal()
+			gen.Agregar_Logica(tempo2 + " = HP;")
+			gen.Agregar_Logica("HP = HP +" + strconv.Itoa(simarreglo.ValorLista.Len()) + ";")
+			gen.Agregar_Logica("HEAP[int(HP)] = -2;\nHP = HP + 1;")
+			tempo3 := gen.Crear_temporal()
+			for i := 0; i < simarreglo.ValorLista.Len(); i++ {
+				act := simarreglo.ValorLista.GetValue(i).(simbolos.Valor)
+				guardar := fmt.Sprintf("%v", act.Valor)
+				gen.Agregar_Logica(tempo3 + " = " + tempo2 + " + " + strconv.Itoa(i) + ";")
+				gen.Agregar_Logica("HEAP[int(" + tempo3 + ")] = HP;")
+				for _, txt := range guardar {
+					f := int(txt)
+					gen.Agregar_Logica("HEAP[int(HP)] = " + fmt.Sprintf("%v", f) + "; //LETRA-> " + string(txt))
+					gen.Agregar_Logica("HP = HP + 1;")
+				}
+				gen.Agregar_Logica("HEAP[int(HP)] = -1;\nHP = HP + 1;")
+			}
 		} else {
 			tempo1 := gen.Crear_temporal()
 			posi := simarreglo.PosicionTabla
@@ -171,7 +191,8 @@ func (dvect DeclaVector) Compilar_Instruccion(ent *entorno.Entorno, gen *generad
 			tempo2 := gen.Crear_temporal()
 			tempo3 := gen.Crear_temporal()
 			gen.Agregar_Logica(tempo2 + " = HP;")
-			gen.Agregar_Logica("HP = HP +" + strconv.Itoa(simarreglo.Dimensiones) + ";")
+			gen.Agregar_Logica("HP = HP +" + strconv.Itoa(simarreglo.ValorLista.Len()) + ";")
+			gen.Agregar_Logica("HEAP[int(HP)] = -2;\nHP = HP + 1;")
 			for i := 0; i < simarreglo.ValorLista.Len(); i++ {
 				act := simarreglo.ValorLista.GetValue(i).(simbolos.Valor)
 				gen.Agregar_Logica(tempo3 + " = " + tempo2 + " + " + strconv.Itoa(i) + ";")

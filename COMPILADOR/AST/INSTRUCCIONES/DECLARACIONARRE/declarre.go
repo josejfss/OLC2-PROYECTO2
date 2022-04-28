@@ -184,7 +184,27 @@ func (darre DeclaArre) Compilar_Instruccion(ent *entorno.Entorno, gen *generador
 		gen.Agregar_Comentario("INICIO DECLARACION ARREGLO -- " + darre.Identificador)
 		simarreglo := ent.Obtener_ArreVect(darre.Identificador)
 		if simarreglo.TipoVect == simbolos.TEXTO || simarreglo.TipoVect == simbolos.YTEXTO {
-			fmt.Println("decla arreglo")
+			tempo1 := gen.Crear_temporal()
+			posi := simarreglo.PosicionTabla
+			gen.Agregar_Logica(tempo1 + " = SP + " + strconv.Itoa(posi) + ";\t\t// POSICION: " + darre.Identificador)
+			gen.Agregar_Stack(tempo1, "HP")
+			tempo2 := gen.Crear_temporal()
+			gen.Agregar_Logica(tempo2 + " = HP;")
+			gen.Agregar_Logica("HP = HP +" + strconv.Itoa(simarreglo.ValorLista.Len()) + ";")
+			gen.Agregar_Logica("HEAP[int(HP)] = -2;\nHP = HP + 1;")
+			tempo3 := gen.Crear_temporal()
+			for i := 0; i < simarreglo.ValorLista.Len(); i++ {
+				act := simarreglo.ValorLista.GetValue(i).(simbolos.Valor)
+				guardar := fmt.Sprintf("%v", act.Valor)
+				gen.Agregar_Logica(tempo3 + " = " + tempo2 + " + " + strconv.Itoa(i) + ";")
+				gen.Agregar_Logica("HEAP[int(" + tempo3 + ")] = HP;")
+				for _, txt := range guardar {
+					f := int(txt)
+					gen.Agregar_Logica("HEAP[int(HP)] = " + fmt.Sprintf("%v", f) + "; //LETRA-> " + string(txt))
+					gen.Agregar_Logica("HP = HP + 1;")
+				}
+				gen.Agregar_Logica("HEAP[int(HP)] = -1;\nHP = HP + 1;")
+			}
 		} else {
 			tempo1 := gen.Crear_temporal()
 			posi := simarreglo.PosicionTabla
@@ -194,11 +214,15 @@ func (darre DeclaArre) Compilar_Instruccion(ent *entorno.Entorno, gen *generador
 			tempo3 := gen.Crear_temporal()
 			gen.Agregar_Logica(tempo2 + " = HP;")
 			gen.Agregar_Logica("HP = HP +" + strconv.Itoa(simarreglo.Dimensiones) + ";")
-			for i := 0; i < simarreglo.ValorLista.Len(); i++ {
-				act := simarreglo.ValorLista.GetValue(i).(simbolos.Valor)
-				gen.Agregar_Logica(tempo3 + " = " + tempo2 + " + " + strconv.Itoa(i) + ";")
-				gen.Agregar_Logica("HEAP[int(" + tempo3 + ")] = " + fmt.Sprintf("%v", act.Valor) + ";")
+			gen.Agregar_Logica("HEAP[int(HP)] = -2;\nHP = HP + 1;")
+			if simarreglo.TipoVect == simbolos.INTEGER {
+				for i := 0; i < simarreglo.ValorLista.Len(); i++ {
+					act := simarreglo.ValorLista.GetValue(i).(simbolos.Valor)
+					gen.Agregar_Logica(tempo3 + " = " + tempo2 + " + " + strconv.Itoa(i) + ";")
+					gen.Agregar_Logica("HEAP[int(" + tempo3 + ")] = " + fmt.Sprintf("%v", act.Valor) + ";")
+				}
 			}
+
 		}
 		gen.Agregar_Comentario("FIN DECLARACION ARREGLO -- " + darre.Identificador)
 		gen.LiberarTodosTemporales()

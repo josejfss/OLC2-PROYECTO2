@@ -47,6 +47,13 @@ func (vari Variable) Compilar_Expresion(ent *entorno.Entorno, gen *generador.Gen
 		gen.Agregar_Logica(temp1 + " = SP + " + strconv.Itoa(obtvar.PosicionTabla) + ";")
 		gen.Agregar_Logica(temp2 + " = STACK[int(" + temp1 + ")];")
 		return simbolos.ValoresC3D{Valor: temp2, EsTemporal: true, Tipo: obtvar.TipoVariable, Label_verdadera: "", Label_false: ""}
+	} else if ent.Existe_ArreVect(vari.Identificador) {
+		obtvar := ent.Obtener_ArreVect(vari.Identificador)
+		temp1 := gen.Crear_temporal()
+		temp2 := gen.Crear_temporal()
+		gen.Agregar_Logica(temp1 + " = SP + " + strconv.Itoa(obtvar.PosicionTabla) + ";")
+		gen.Agregar_Logica(temp2 + " = STACK[int(" + temp1 + ")];")
+		return simbolos.ValoresC3D{Valor: temp2, EsTemporal: true, Tipo: obtvar.TipoVect, Label_verdadera: "", Label_false: ""}
 	}
 	return simbolos.ValoresC3D{Valor: "0", EsTemporal: false, Tipo: simbolos.INTEGER, Label_verdadera: "", Label_false: ""}
 
