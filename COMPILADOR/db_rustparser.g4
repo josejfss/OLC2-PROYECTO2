@@ -26,6 +26,7 @@ options {
     import "OLC2-PROYECTO2/COMPILADOR/AST/INSTRUCCIONES/DECLARACIONES"
     import "OLC2-PROYECTO2/COMPILADOR/AST/INSTRUCCIONES/DECLARACIONVAR"
     import "OLC2-PROYECTO2/COMPILADOR/AST/INSTRUCCIONES/DECLARACIONVECT"
+    import "OLC2-PROYECTO2/COMPILADOR/AST/INSTRUCCIONES/FUN_NAT_VECT"
     import "OLC2-PROYECTO2/COMPILADOR/AST/INSTRUCCIONES/DECLARACIONARRE"
     import "OLC2-PROYECTO2/COMPILADOR/AST/INSTRUCCIONES/S_TRANSFERENCIA"
     import "OLC2-PROYECTO2/COMPILADOR/AST/INSTRUCCIONES/ASIGNACIONES"
@@ -249,6 +250,12 @@ declaracion returns[interfaces.Instruccion instr]
   | TK_LET mutable TK_IDENTIFICADOR TK_DP tamvector TK_IGUAL expression TK_PYC {
     $instr = declaracionvect.Ndeclavector($mutable.m, $TK_IDENTIFICADOR.text, $tamvector.tam_vect, $expression.p, $TK_IDENTIFICADOR.line, localctx.(*DeclaracionContext).Get_TK_IDENTIFICADOR().GetColumn())
   }
+  | TK_LET mutable TK_IDENTIFICADOR TK_DP TK_VECTOR TK_MENOR tipos_vectorarre TK_MAYOR TK_IGUAL TK_VECTOR TK_NEW TK_PYC {
+    $instr = funnatvect.Nnewvect($mutable.m, $TK_IDENTIFICADOR.text, $tipos_vectorarre.p, $TK_IDENTIFICADOR.line, localctx.(*DeclaracionContext).Get_TK_IDENTIFICADOR().GetColumn())
+  }
+  | TK_LET mutable TK_IDENTIFICADOR TK_DP TK_VECTOR TK_MENOR tipos_vectorarre TK_MAYOR TK_IGUAL TK_VECTOR TK_WCAPACITY TK_PI expression TK_PD TK_PYC {
+    $instr = funnatvect.Nwcvect($mutable.m, $TK_IDENTIFICADOR.text, $tipos_vectorarre.p, $expression.p, $TK_IDENTIFICADOR.line, localctx.(*DeclaracionContext).Get_TK_IDENTIFICADOR().GetColumn())
+  }
 ;
 
 /* VARIIABLE, ARREGLO, VECTOR MUTABLE */
@@ -337,6 +344,13 @@ tipos returns[simbolos.TipoExpresion tip]
   |                   {$tip=simbolos.NULL}
 ;
 
+/* ------------------------------------------------------------------FUNCIONES NATIVAS VECTORES----------------------------------------------------------- */
+fn_vector returns[interfaces.Instruccion instr]
+  : TK_IDENTIFICADOR TK_PUNTO TK_PUSH TK_PI expression TK_PD TK_PYC {
+    $instr = funnatvect.Npushvect($TK_IDENTIFICADOR.text, $expression.p, $TK_IDENTIFICADOR.line, localctx.(*Fn_vectorContext).Get_TK_IDENTIFICADOR().GetColumn())
+  }
+;
+
 /* ------------------------------------------------------------------ASIGNACION DE VARIABLES-------------------------------------------------------------- */
 asignacion returns[interfaces.Instruccion instr]
   : TK_IDENTIFICADOR TK_IGUAL expression TK_PYC {
@@ -414,6 +428,7 @@ bloque returns[interfaces.Instruccion instr]
   | asignacion         {$instr = $asignacion.instr}
   | transferencia      {$instr = $transferencia.instr}
   | llamada            {$instr = $llamada.instr}
+  | fn_vector          {$instr = $fn_vector.instr}
 ;
 
 /* EXPRESIONES */
@@ -479,6 +494,7 @@ resumen_arre returns[interfaces.Expresion p]
   }
 ;
 
+/* ACCESO A OBJETOS DEL ARREGLO */
 accesso_arreglo returns[interfaces.Expresion p]
   : TK_IDENTIFICADOR lista_acceso {
     $p = accesoarre.Naccessarre($TK_IDENTIFICADOR.text,$lista_acceso.lacceso, $TK_IDENTIFICADOR.line, localctx.(*Accesso_arregloContext).Get_TK_IDENTIFICADOR().GetColumn())
@@ -502,6 +518,7 @@ access returns[interfaces.Expresion p]
   : TK_CI expression TK_CD { $p = $expression.p}
 ;
 
+/* ACCESO A OBJETOS DEL VECTOR */
 acceso_vector returns[interfaces.Expresion p]
   : TK_IDENTIFICADOR TK_MENOR expression TK_MAYOR {
     $p = accesovect.Naccessvect($TK_IDENTIFICADOR.text,$expression.p, $TK_IDENTIFICADOR.line, localctx.(*Acceso_vectorContext).Get_TK_IDENTIFICADOR().GetColumn())
@@ -565,7 +582,6 @@ expre_relacional returns[interfaces.Expresion p]
 ;
 
 /* ARITMETICA */
-
 expre_aritmetica returns[interfaces.Expresion p]
   : opera = TK_RESTA opUn = expre_aritmetica {
       $p = aritmetica.Nopnegativo($opUn.p, $opera.line, localctx.(*Expre_aritmeticaContext).opera.GetColumn())

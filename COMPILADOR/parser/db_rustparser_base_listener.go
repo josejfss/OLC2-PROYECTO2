@@ -177,6 +177,12 @@ func (s *Basedb_rustparserListener) EnterTipos(ctx *TiposContext) {}
 // ExitTipos is called when production tipos is exited.
 func (s *Basedb_rustparserListener) ExitTipos(ctx *TiposContext) {}
 
+// EnterFn_vector is called when production fn_vector is entered.
+func (s *Basedb_rustparserListener) EnterFn_vector(ctx *Fn_vectorContext) {}
+
+// ExitFn_vector is called when production fn_vector is exited.
+func (s *Basedb_rustparserListener) ExitFn_vector(ctx *Fn_vectorContext) {}
+
 // EnterAsignacion is called when production asignacion is entered.
 func (s *Basedb_rustparserListener) EnterAsignacion(ctx *AsignacionContext) {}
 

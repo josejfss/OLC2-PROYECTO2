@@ -23,7 +23,7 @@ type Simbolo_Vars struct {
 	Columna        int
 }
 
-var ValArreglo = arraylist.New()
+var ValArreglo = *arraylist.New()
 
 type Simbolo_ArreVect struct {
 	Mutable          bool

@@ -86,6 +86,9 @@ type db_rustparserListener interface {
 	// EnterTipos is called when entering the tipos production.
 	EnterTipos(c *TiposContext)
 
+	// EnterFn_vector is called when entering the fn_vector production.
+	EnterFn_vector(c *Fn_vectorContext)
+
 	// EnterAsignacion is called when entering the asignacion production.
 	EnterAsignacion(c *AsignacionContext)
 
@@ -244,6 +247,9 @@ type db_rustparserListener interface {
 
 	// ExitTipos is called when exiting the tipos production.
 	ExitTipos(c *TiposContext)
+
+	// ExitFn_vector is called when exiting the fn_vector production.
+	ExitFn_vector(c *Fn_vectorContext)
 
 	// ExitAsignacion is called when exiting the asignacion production.
 	ExitAsignacion(c *AsignacionContext)

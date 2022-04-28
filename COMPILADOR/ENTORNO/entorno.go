@@ -167,6 +167,11 @@ func (ent *Entorno) Obtener_ArreVect(nom string) simbolos.Simbolo_ArreVect {
 	return simbolos.Simbolo_ArreVect{Mutable: false, Nombre: "", TipoVect: simbolos.NULL, Linea: 0, Columna: 0}
 }
 
+/* MODIFICAR VECTOR POR VALOR */
+func (ent *Entorno) Modificar_Vector(nombre string, sim simbolos.Simbolo_ArreVect) {
+	ent.Tabla_ArreVect[nombre] = sim
+}
+
 /* METODO PARA VERIFICAR SI EXISTE ARREGLOS Y VECTORES */
 func (ent *Entorno) Existe_ArreVect(nom string) bool {
 	var entemp *Entorno
