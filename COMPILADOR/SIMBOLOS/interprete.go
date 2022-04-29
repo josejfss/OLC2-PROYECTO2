@@ -44,6 +44,7 @@ type Simbolo_ArreVect struct {
 type Simbolo_Struct struct {
 	Identificador string
 	L_Atributos   *arraylist.List
+	Tamaño        int
 	Linea         int
 	Columna       int
 }

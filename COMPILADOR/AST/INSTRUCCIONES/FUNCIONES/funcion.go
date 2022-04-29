@@ -179,39 +179,39 @@ func (fun Funciones) Compilar_Instruccion(ent *entorno.Entorno, gen *generador.G
 				if ent.Existe_Funciones(fun.NombreFunca) {
 					ento := ent.Retornar_Entorno("fn_" + fun.NombreFunca)
 					gen.Agregar_Comentario("------------EMPEZANDO FUNCION " + fun.NombreFunca + "------------")
-					gen.Agregar_Logica("func " + fun.NombreFunca + "() {")
+					gen.Agregar_Logica("void " + fun.NombreFunca + "() {")
 
-					if fun.LParametros.Len() != 0 {
-						gen.Agregar_Comentario("EMPEZANDO DECLARACION PARAMETROS")
-						for i := 0; i < fun.LParametros.Len(); i++ {
-							parpivote := fun.LParametros.GetValue(i).(parametros.Param)
-							if parpivote.ParametroT == "variable" {
-								var declapar declaracionvar.Declaracion
-								declapar.Identificador = parpivote.Identificador
-								declapar.TipoDecla = parpivote.TipoVar
-								vals := primitivo.Nuevo_Dato_Primitivo(Valor_Explicito(parpivote.TipoVar), parpivote.TipoVar)
-								declapar.Valor_exp = vals
-								declapar.Linea = parpivote.Linea
-								declapar.Columna = parpivote.Columna
-								declapar.Compilar_Instruccion(ento, gen)
-							}
-							// else if parpivote.ParametroT == "vector" {
-							// 	var declavecpar declaracionvect.DeclaVector
-							// 	declavecpar.Identificador = parpivote.Identificador
-							// 	nuevadim := arraylist.New()
-							// 	declavecpar.Dimension = nuevadim
-							// } else if parpivote.ParametroT == "arreglo" {
+					// if fun.LParametros.Len() != 0 {
+					// 	gen.Agregar_Comentario("EMPEZANDO DECLARACION PARAMETROS")
+					// 	for i := 0; i < fun.LParametros.Len(); i++ {
+					// 		parpivote := fun.LParametros.GetValue(i).(parametros.Param)
+					// 		if parpivote.ParametroT == "variable" {
+					// 			var declapar declaracionvar.Declaracion
+					// 			declapar.Identificador = parpivote.Identificador
+					// 			declapar.TipoDecla = parpivote.TipoVar
+					// 			vals := primitivo.Nuevo_Dato_Primitivo(Valor_Explicito(parpivote.TipoVar), parpivote.TipoVar)
+					// 			declapar.Valor_exp = vals
+					// 			declapar.Linea = parpivote.Linea
+					// 			declapar.Columna = parpivote.Columna
+					// 			declapar.Compilar_Instruccion(ento, gen)
+					// 		}
+					// 		// else if parpivote.ParametroT == "vector" {
+					// 		// 	var declavecpar declaracionvect.DeclaVector
+					// 		// 	declavecpar.Identificador = parpivote.Identificador
+					// 		// 	nuevadim := arraylist.New()
+					// 		// 	declavecpar.Dimension = nuevadim
+					// 		// } else if parpivote.ParametroT == "arreglo" {
 
-							// }
-						}
-						gen.Agregar_Comentario("FINALIZANDO DECLARACION PARAMETROS")
-					}
+					// 		// }
+					// 	}
+					// 	gen.Agregar_Comentario("FINALIZANDO DECLARACION PARAMETROS")
+					// }
 
 					for i := 0; i < fun.Linstrucc.Len(); i++ {
 						instr := fun.Linstrucc.GetValue(i).(interfaces.Instruccion)
 						instr.Compilar_Instruccion(ento, gen)
 					}
-					gen.Agregar_Logica("}")
+					gen.Agregar_Logica("\nreturn;\n}")
 					gen.Agregar_Comentario("------------FINALIZANDO FUNCION " + fun.NombreFunca + "------------")
 				}
 			}

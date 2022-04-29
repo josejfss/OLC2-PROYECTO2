@@ -3,6 +3,7 @@ package main
 import (
 	//reportando "OLC2-PROYECTO2/ANALIZADOR/REPORTANDO"
 	funciones "OLC2-PROYECTO2/COMPILADOR/AST/INSTRUCCIONES/FUNCIONES"
+	structs "OLC2-PROYECTO2/COMPILADOR/AST/INSTRUCCIONES/STRUCTS"
 	entorno "OLC2-PROYECTO2/COMPILADOR/ENTORNO"
 	generador "OLC2-PROYECTO2/COMPILADOR/GENERADOR"
 	interfaces "OLC2-PROYECTO2/COMPILADOR/INTERFACES"
@@ -78,7 +79,7 @@ func (*TreeShapeListener) ExitStart(ctx *parser.StartContext) {
 					instr.Compilar_Instruccion(EntGlobal, gen)
 				}
 				//result.RemoveAtIndex(i)
-			} else {
+			} else if reflect.TypeOf(instr) != reflect.TypeOf(structs.StructRust{}) {
 				lista_declas.Add(instr)
 			}
 		}

@@ -29,6 +29,7 @@ func Nuevo_Entorno(nombre string, anterior *Entorno) *Entorno {
 	ent.Tabla_Variables2 = make(map[string]simbolos.Simbolo_Vars)
 	ent.Tabla_ArreVect = make(map[string]simbolos.Simbolo_ArreVect)
 	ent.Tabla_Funcines = make(map[string]simbolos.Simbolo_Funciones)
+	ent.Tabla_Struct = make(map[string]simbolos.Simbolo_Struct)
 	ent.ListaTodo = arraylist.New()
 	ent.ContadorTodo = 0
 	ent.Posicion = 0
@@ -252,6 +253,21 @@ func (ent *Entorno) ExisteAcual_Funciones(nom string) bool {
 
 /*----------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 /*----------------------------------------------------------------------METODOS PARA LA TABLA DE STRUCTS----------------------------------------------------------*/
+/* EXISTE FUNCION EN LOS ENTORNOS */
+func (ent *Entorno) Existe_Structs(nom string) bool {
+	var entemp *Entorno
+	for entemp = ent; entemp != nil; entemp = entemp.Entorno_Anterior {
+		if _, ok := entemp.Tabla_Struct[nom]; ok {
+			return true
+		}
+	}
+	return false
+}
+
+func (ent *Entorno) Guardar_Struct(nom string, stru simbolos.Simbolo_Struct) {
+	ent.Tabla_Struct[nom] = stru
+}
+
 /*----------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 /*----------------------------------------------------------------------------------------------------------------------------------------------------------------*/

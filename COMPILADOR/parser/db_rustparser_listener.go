@@ -17,6 +17,15 @@ type db_rustparserListener interface {
 	// EnterInstruccion is called when entering the instruccion production.
 	EnterInstruccion(c *InstruccionContext)
 
+	// EnterStucts is called when entering the stucts production.
+	EnterStucts(c *StuctsContext)
+
+	// EnterL_structs is called when entering the l_structs production.
+	EnterL_structs(c *L_structsContext)
+
+	// EnterDefstruct is called when entering the defstruct production.
+	EnterDefstruct(c *DefstructContext)
+
 	// EnterFuncas is called when entering the funcas production.
 	EnterFuncas(c *FuncasContext)
 
@@ -181,6 +190,15 @@ type db_rustparserListener interface {
 
 	// ExitInstruccion is called when exiting the instruccion production.
 	ExitInstruccion(c *InstruccionContext)
+
+	// ExitStucts is called when exiting the stucts production.
+	ExitStucts(c *StuctsContext)
+
+	// ExitL_structs is called when exiting the l_structs production.
+	ExitL_structs(c *L_structsContext)
+
+	// ExitDefstruct is called when exiting the defstruct production.
+	ExitDefstruct(c *DefstructContext)
 
 	// ExitFuncas is called when exiting the funcas production.
 	ExitFuncas(c *FuncasContext)

@@ -39,6 +39,24 @@ func (s *Basedb_rustparserListener) EnterInstruccion(ctx *InstruccionContext) {}
 // ExitInstruccion is called when production instruccion is exited.
 func (s *Basedb_rustparserListener) ExitInstruccion(ctx *InstruccionContext) {}
 
+// EnterStucts is called when production stucts is entered.
+func (s *Basedb_rustparserListener) EnterStucts(ctx *StuctsContext) {}
+
+// ExitStucts is called when production stucts is exited.
+func (s *Basedb_rustparserListener) ExitStucts(ctx *StuctsContext) {}
+
+// EnterL_structs is called when production l_structs is entered.
+func (s *Basedb_rustparserListener) EnterL_structs(ctx *L_structsContext) {}
+
+// ExitL_structs is called when production l_structs is exited.
+func (s *Basedb_rustparserListener) ExitL_structs(ctx *L_structsContext) {}
+
+// EnterDefstruct is called when production defstruct is entered.
+func (s *Basedb_rustparserListener) EnterDefstruct(ctx *DefstructContext) {}
+
+// ExitDefstruct is called when production defstruct is exited.
+func (s *Basedb_rustparserListener) ExitDefstruct(ctx *DefstructContext) {}
+
 // EnterFuncas is called when production funcas is entered.
 func (s *Basedb_rustparserListener) EnterFuncas(ctx *FuncasContext) {}
 

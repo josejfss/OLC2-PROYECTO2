@@ -34,6 +34,7 @@ options {
     import "OLC2-PROYECTO2/COMPILADOR/AST/INSTRUCCIONES/FUNCIONES/PARAMETROS"
     import "OLC2-PROYECTO2/COMPILADOR/AST/INSTRUCCIONES/FUNCIONES/TIPOS"
     import "OLC2-PROYECTO2/COMPILADOR/AST/INSTRUCCIONES/FUNCIONES"    
+    import "OLC2-PROYECTO2/COMPILADOR/AST/INSTRUCCIONES/STRUCTS"    
 	  import "OLC2-PROYECTO2/COMPILADOR/SIMBOLOS"
     import arrayList "github.com/colegno/arraylist"
 }
@@ -58,6 +59,31 @@ instruccion returns[interfaces.Instruccion instr]
   : imprimir          {$instr = $imprimir.instr}
   | declaracion       {$instr = $declaracion.instr}
   | funcas            {$instr = $funcas.instr}
+  | stucts            {$instr = $stucts.instr}
+;
+
+/* -------------------------------------------------------------------ESTRUCTURAS------------------------------------------------------------------------------- */
+stucts returns[interfaces.Instruccion instr]
+  : TK_STRUCT TK_IDENTIFICADOR TK_LI l_structs TK_LD {
+    $instr = structs.Nstructrust($TK_IDENTIFICADOR.text, $l_structs.lstr, $TK_IDENTIFICADOR.line, localctx.(*StuctsContext).Get_TK_IDENTIFICADOR().GetColumn())
+  }
+;
+
+l_structs returns[*arrayList.List lstr]
+  @init {
+    $lstr =  arrayList.New()
+  }
+  : lista = l_structs TK_COMA defstruct {
+    $lista.lstr.Add($defstruct.stru)
+    $lstr=$lista.lstr
+  }
+  | defstruct { $lstr.Add($defstruct.stru) }
+;
+
+defstruct returns[structs.DefStruct stru]
+  : TK_IDENTIFICADOR tipado {
+    $stru = structs.Ndefstruct($TK_IDENTIFICADOR.text, $tipado.tip)
+  }
 ;
 
 /* -------------------------------------------------------------------FUNCIONES--------------------------------------------------------------------------------- */

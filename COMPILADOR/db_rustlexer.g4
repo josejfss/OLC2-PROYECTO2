@@ -54,7 +54,7 @@ TK_BREAK:       'break';
 TK_CONTINUE:    'continue';
 TK_RETURN:      'return';
 //STRUCT
-TK_STRUCT:      'struct';
+TK_STRUCT:      'Struct';
 //MODULO
 TK_MOD:         'mod';
 //POTENCIAS
