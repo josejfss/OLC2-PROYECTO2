@@ -50,49 +50,133 @@ func (pushvect PushVect) Compilar_Instruccion(ent *entorno.Entorno, gen *generad
 				pusheo := pushvect.Pushear.Compilar_Expresion(ent, gen)
 				pusheo1 := pushvect.Pushear.Ejecutar_Expresion(ent)
 				if simbvect.TipoVect == pusheo.Tipo {
-					tempo1 := gen.Crear_temporal()
-					posi := simbvect.PosicionTabla
-					temp2 := gen.Crear_temporal()
-					gen.Agregar_Logica(tempo1 + " = SP + " + strconv.Itoa(posi) + ";\t\t// POSICION: " + pushvect.Identificador)
-					gen.Agregar_Logica(temp2 + " = STACK[int(" + tempo1 + ")];")
-					temp3 := gen.Crear_temporal()
-					gen.Agregar_Logica(temp3 + " = " + temp2 + " + " + strconv.Itoa(simbvect.ValorLista.Len()) + ";")
-					gen.Agregar_Logica("HEAP[int(" + temp3 + ")] = " + fmt.Sprintf("%v", pusheo.Valor) + ";")
+					if pusheo.Tipo == simbolos.TEXTO || pusheo.Tipo == simbolos.YTEXTO {
+						tempo1 := gen.Crear_temporal()
+						posi := simbvect.PosicionTabla
+						temp2 := gen.Crear_temporal()
+						gen.Agregar_Logica(tempo1 + " = SP + " + strconv.Itoa(posi) + ";\t\t// POSICION: " + pushvect.Identificador)
+						gen.Agregar_Logica(temp2 + " = STACK[(int)" + tempo1 + "];")
+						temp3 := gen.Crear_temporal()
+						gen.Agregar_Logica(temp3 + " = " + temp2 + " + " + strconv.Itoa(simbvect.ValorLista.Len()) + ";")
+						gen.Agregar_Logica("HEAP[(int)" + temp3 + "] = HP;")
+						for _, txt := range pusheo.Valor {
+							f := int(txt)
+							gen.Agregar_Logica("HEAP[(int)HP] = " + fmt.Sprintf("%v", f) + "; //LETRA-> " + string(txt))
+							gen.Agregar_Logica("HP = HP + 1;")
+						}
+						gen.Agregar_Logica("HEAP[(int)HP] = -1;\nHP = HP + 1;")
 
-					//MODIFICACIONES EN EL VECTOR
-					simbvect.ValorLista.Add(pusheo1)
-					ent.Guardar_ArregloVector(simbvect.Nombre, simbvect)
+						//MODIFICACIONES EN EL VECTOR
+						simbvect.ValorLista.Add(pusheo1)
+						ent.Guardar_ArregloVector(simbvect.Nombre, simbvect)
+					} else {
+						tempo1 := gen.Crear_temporal()
+						posi := simbvect.PosicionTabla
+						temp2 := gen.Crear_temporal()
+						gen.Agregar_Logica(tempo1 + " = SP + " + strconv.Itoa(posi) + ";\t\t// POSICION: " + pushvect.Identificador)
+						gen.Agregar_Logica(temp2 + " = STACK[(int)" + tempo1 + "];")
+						temp3 := gen.Crear_temporal()
+						gen.Agregar_Logica(temp3 + " = " + temp2 + " + " + strconv.Itoa(simbvect.ValorLista.Len()) + ";")
+						gen.Agregar_Logica("HEAP[(int)" + temp3 + "] = " + fmt.Sprintf("%v", pusheo.Valor) + ";")
+
+						//MODIFICACIONES EN EL VECTOR
+						simbvect.ValorLista.Add(pusheo1)
+						ent.Guardar_ArregloVector(simbvect.Nombre, simbvect)
+					}
 
 				}
 			} else {
 				pusheo := pushvect.Pushear.Compilar_Expresion(ent, gen)
 				pusheo1 := pushvect.Pushear.Ejecutar_Expresion(ent)
 				if simbvect.TipoVect == pusheo.Tipo {
-					tempo1 := gen.Crear_temporal()
-					posi := simbvect.PosicionTabla
-					gen.Agregar_Logica(tempo1 + " = SP + " + strconv.Itoa(posi) + ";\t\t// POSICION: " + pushvect.Identificador)
-					gen.Agregar_Stack(tempo1, "HP")
-					temp2 := gen.Crear_temporal()
-					gen.Agregar_Logica(temp2 + " = HP;")
-					simbvect.EsArreVect = simbvect.EsArreVect * 2
-					gen.Agregar_Logica("HP = HP +" + strconv.Itoa(simbvect.EsArreVect) + ";")
-					gen.Agregar_Logica("HEAP[int(HP)] = -2;\nHP = HP + 1;")
-					temp3 := gen.Crear_temporal()
-					for i := 0; i < simbvect.ValorLista.Len(); i++ {
-						act := simbvect.ValorLista.GetValue(i).(simbolos.Valor)
-						gen.Agregar_Logica(temp3 + " = " + temp2 + " + " + strconv.Itoa(i) + ";")
-						gen.Agregar_Logica("HEAP[int(" + temp3 + ")] = " + fmt.Sprintf("%v", act.Valor) + ";")
-					}
-					gen.Agregar_Logica(temp3 + " = " + temp2 + " + " + strconv.Itoa(simbvect.ValorLista.Len()) + ";")
-					gen.Agregar_Logica("HEAP[int(" + temp3 + ")] = " + fmt.Sprintf("%v", pusheo.Valor) + ";")
+					if simbvect.TipoVect == simbolos.TEXTO || simbvect.TipoVect == simbolos.YTEXTO {
+						tempo1 := gen.Crear_temporal()
+						posi := simbvect.PosicionTabla
+						gen.Agregar_Logica(tempo1 + " = SP + " + strconv.Itoa(posi) + ";\t\t// POSICION: " + pushvect.Identificador)
+						temp2 := gen.Crear_temporal()
+						gen.Agregar_Logica(temp2 + " = STACK[(int)" + tempo1 + "];")
+						//tempo4 := gen.Crear_temporal()
+						gen.Agregar_Stack(tempo1, "HP")
+						temp3 := gen.Crear_temporal()
+						gen.Agregar_Logica(temp3 + " = HP;")
+						simbvect.EsArreVect = simbvect.EsArreVect * 2
+						gen.Agregar_Logica("HP = HP +" + strconv.Itoa(simbvect.EsArreVect) + ";")
+						gen.Agregar_Logica("HEAP[(int)HP] = -2;\nHP = HP + 1;")
 
-					//MODIFICACIONES EN EL VECTOR
-					simbvect.ValorLista.Add(pusheo1)
-					ent.Guardar_ArregloVector(simbvect.Nombre, simbvect)
+						temp_conca := gen.Crear_temporal()
+						etiqueta_entrada := gen.Crear_label()
+						gen.Eliminar_label(etiqueta_entrada)
+						etiqueta_salida := gen.Crear_label()
+						gen.Eliminar_label(etiqueta_salida)
+						tempo_valor := temp2
+						// conta := gen.Crear_temporal()
+
+						gen.Agregar_Logica(etiqueta_entrada + ":")
+						gen.Agregar_Logica(temp_conca + " = HEAP[(int)" + tempo_valor + "];")
+						gen.Agregar_Logica("if ( " + temp_conca + " == -2) { goto " + etiqueta_salida + "; }")
+
+						gen.Agregar_Logica("HEAP[(int)" + temp3 + "] = " + temp_conca + ";")
+						gen.Agregar_Logica(temp3 + " = " + temp3 + " + 1;")
+						// gen.Agregar_Logica(conta + " = " + conta + " + 1;")
+						gen.Agregar_Logica(tempo_valor + " = " + tempo_valor + " + 1;\ngoto " + etiqueta_entrada + ";\n")
+						gen.Agregar_Logica(etiqueta_salida + ":")
+						//gen.Agregar_Logica(temp3 + " = " + tempo4 + " + " + strconv.Itoa(simbvect.ValorLista.Len()) + ";")
+						gen.Agregar_Logica("HEAP[(int)" + temp3 + "] = HP;")
+						for _, txt := range pusheo.Valor {
+							f := int(txt)
+							gen.Agregar_Logica("HEAP[(int)HP] = " + fmt.Sprintf("%v", f) + "; //LETRA-> " + string(txt))
+							gen.Agregar_Logica("HP = HP + 1;")
+						}
+						gen.Agregar_Logica("HEAP[(int)HP] = -1;\nHP = HP + 1;")
+						gen.Agregar_Logica(temp3 + " = " + temp3 + " + 1;")
+
+						tconca := gen.Crear_temporal()
+						etiqueta_entrada1 := gen.Crear_label()
+						gen.Eliminar_label(etiqueta_entrada1)
+						etiqueta_salida1 := gen.Crear_label()
+						gen.Eliminar_label(etiqueta_salida1)
+						otrotemp := gen.Crear_temporal()
+
+						gen.Agregar_Logica(etiqueta_entrada1 + ":")
+						gen.Agregar_Logica(tconca + " = HEAP[(int)" + temp3 + "];")
+						gen.Agregar_Logica("if ( " + tconca + " == -2) { goto " + etiqueta_salida1 + "; }")
+						gen.Agregar_Logica("HEAP[(int)" + temp3 + "] = HP;")
+						gen.Agregar_Logica(otrotemp + " = HP;\nHP = HP + 1;")
+						gen.Agregar_Logica("HEAP[(int)" + otrotemp + "] = -1;")
+						gen.Agregar_Logica(temp3 + " = " + temp3 + " + 1;\ngoto " + etiqueta_entrada1 + ";")
+						gen.Agregar_Logica(etiqueta_salida1 + ":")
+
+						//MODIFICACIONES EN EL VECTOR
+						simbvect.ValorLista.Add(pusheo1)
+						ent.Guardar_ArregloVector(simbvect.Nombre, simbvect)
+					} else {
+						tempo1 := gen.Crear_temporal()
+						posi := simbvect.PosicionTabla
+						gen.Agregar_Logica(tempo1 + " = SP + " + strconv.Itoa(posi) + ";\t\t// POSICION: " + pushvect.Identificador)
+						gen.Agregar_Stack(tempo1, "HP")
+						temp2 := gen.Crear_temporal()
+						gen.Agregar_Logica(temp2 + " = HP;")
+						simbvect.EsArreVect = simbvect.EsArreVect * 2
+						gen.Agregar_Logica("HP = HP +" + strconv.Itoa(simbvect.EsArreVect) + ";")
+						gen.Agregar_Logica("HEAP[(int)HP] = -2;\nHP = HP + 1;")
+						temp3 := gen.Crear_temporal()
+						for i := 0; i < simbvect.ValorLista.Len(); i++ {
+							act := simbvect.ValorLista.GetValue(i).(simbolos.Valor)
+							gen.Agregar_Logica(temp3 + " = " + temp2 + " + " + strconv.Itoa(i) + ";")
+							gen.Agregar_Logica("HEAP[(int)" + temp3 + "] = " + fmt.Sprintf("%v", act.Valor) + ";")
+						}
+						gen.Agregar_Logica(temp3 + " = " + temp2 + " + " + strconv.Itoa(simbvect.ValorLista.Len()) + ";")
+						gen.Agregar_Logica("HEAP[(int)" + temp3 + "] = " + fmt.Sprintf("%v", pusheo.Valor) + ";")
+
+						//MODIFICACIONES EN EL VECTOR
+						simbvect.ValorLista.Add(pusheo1)
+						ent.Guardar_ArregloVector(simbvect.Nombre, simbvect)
+					}
 				}
 			}
 		}
 	}
 	gen.Agregar_Comentario("FIN PUSH VECTOR -- " + pushvect.Identificador)
+	gen.LiberarTodosTemporales()
 	return 0
 }

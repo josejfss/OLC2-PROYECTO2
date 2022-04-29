@@ -76,7 +76,7 @@ func (nvect NewVect) Compilar_Instruccion(ent *entorno.Entorno, gen *generador.G
 		gen.Agregar_Logica(tempo1 + " = SP + " + strconv.Itoa(posi) + ";\t\t// POSICION: " + nvect.Identificador)
 		gen.Agregar_Stack(tempo1, "HP")
 		gen.Agregar_Logica("HP = HP + 1;")
-		gen.Agregar_Logica("HEAP[int(HP)] = -2;\nHP = HP + 1;")
+		gen.Agregar_Logica("HEAP[(int)HP] = -2;\nHP = HP + 1;")
 		gen.Agregar_Comentario("FIN DECLARACION VECTOR -- " + nvect.Identificador)
 		gen.LiberarTodosTemporales()
 	}

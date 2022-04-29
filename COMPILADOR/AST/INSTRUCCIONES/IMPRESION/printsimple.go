@@ -41,18 +41,18 @@ func (print Imprimir) Compilar_Instruccion(ent *entorno.Entorno, gen *generador.
 			impr += temp1 + " = HP;\n"
 			for _, txt := range ex.Valor {
 				f := int(txt)
-				impr += "HEAP[int(HP)] = " + fmt.Sprintf("%v", f) + "; //LETRA-> " + string(txt) + "\n"
+				impr += "HEAP[(int)HP] = " + fmt.Sprintf("%v", f) + "; //LETRA-> " + string(txt) + "\n"
 				impr += "HP = HP + 1;\n"
 			}
-			impr += "HEAP[int(HP)] = 10;\nHP = HP + 1;\n"
-			impr += "HEAP[int(HP)] = -1;\nHP = HP + 1;\n"
+			impr += "HEAP[(int)HP] = 10;\nHP = HP + 1;\n"
+			impr += "HEAP[(int)HP] = -1;\nHP = HP + 1;\n"
 			if valtodi.Pos != 0 {
 				impr += temp2 + " = SP +" + strconv.Itoa(valtodi.Pos) + "; //POSICION CADENA EN STACK\n"
-				impr += "STACK[int(" + temp2 + ")] = " + temp1 + ";\n"
+				impr += "STACK[(int)" + temp2 + "] = " + temp1 + ";\n"
 				impr += "SP = SP + " + strconv.Itoa(valtodi.Pos) + ";\nprint();\nSP = SP - " + strconv.Itoa(valtodi.Pos) + ";\n"
 			} else {
 				impr += temp2 + " = SP +" + strconv.Itoa(valtodi.Pos) + "; //POSICION CADENA EN STACK\n"
-				impr += "STACK[int(" + temp2 + ")] = " + temp1 + ";\n"
+				impr += "STACK[(int)" + temp2 + "] = " + temp1 + ";\n"
 				impr += "SP = SP + " + strconv.Itoa(valtodi.Pos) + ";\nprint();\nSP = SP - " + strconv.Itoa(valtodi.Pos) + ";\n"
 			}
 			impr += "printf(\"%c\", (char)10);\n"

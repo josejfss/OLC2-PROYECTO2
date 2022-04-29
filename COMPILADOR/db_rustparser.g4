@@ -352,6 +352,9 @@ fn_vector returns[interfaces.Instruccion instr]
   | TK_IDENTIFICADOR TK_PUNTO TK_INSERT TK_PI pos = expression TK_COMA val = expression TK_PD TK_PYC {
     $instr = funnatvect.Ninsertvect($TK_IDENTIFICADOR.text, $pos.p, $val.p, $TK_IDENTIFICADOR.line, localctx.(*Fn_vectorContext).Get_TK_IDENTIFICADOR().GetColumn())
   }
+  | TK_IDENTIFICADOR TK_PUNTO TK_REMOVE TK_PI expression TK_PD TK_PYC {
+    $instr = funnatvect.Nremovevect($TK_IDENTIFICADOR.text, $expression.p, $TK_IDENTIFICADOR.line, localctx.(*Fn_vectorContext).Get_TK_IDENTIFICADOR().GetColumn())
+  }
 ;
 
 /* ------------------------------------------------------------------ASIGNACION DE VARIABLES-------------------------------------------------------------- */

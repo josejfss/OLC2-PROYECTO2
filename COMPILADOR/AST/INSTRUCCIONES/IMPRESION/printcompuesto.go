@@ -107,15 +107,15 @@ func (imp Impres) Compilar_Instruccion(ent *entorno.Entorno, gen *generador.Gene
 								//SE GUARDA EN EL HEAP EL TXT QUE SE VA A IMPRIMIR
 								for _, txt := range separador[i] {
 									f := int(txt)
-									impr += "HEAP[int(HP)] = " + fmt.Sprintf("%v", f) + "; //LETRA-> " + string(txt) + "\n"
+									impr += "HEAP[(int)HP] = " + fmt.Sprintf("%v", f) + "; //LETRA-> " + string(txt) + "\n"
 									impr += "HP = HP + 1;\n"
 								}
 								//SE GUARDA EL HEAP EL VALOR PARA INDICAR EL FIN DE LA CADENA
-								impr += "HEAP[int(HP)] = -1;\nHP = HP + 1;\n"
+								impr += "HEAP[(int)HP] = -1;\nHP = HP + 1;\n"
 								//SE GUARDA LA REFERENCIA DEL HEAP EN EL STACK
 								impr += temp2 + " = SP + " + strconv.Itoa(valtodi.Pos) + "; //POSICION CADENA EN STACK\n"
 								//SE GUARDA EN EL STACK LA CADENA DEL HEAP
-								impr += "STACK[int(" + temp2 + ")] = " + temp1 + ";\n"
+								impr += "STACK[(int)" + temp2 + "] = " + temp1 + ";\n"
 								//SE CAMBIA DE ENTORNO - SE LLAMA EL METODO PRINT - SE REGRESE AL OTRO ENTORNO
 								impr += "SP = SP + " + strconv.Itoa(valtodi.Pos) + ";\nprint();\nSP = SP - " + strconv.Itoa(valtodi.Pos) + ";\n"
 								//SE IMPRIME EL VALOR DE LA EXPRESION
@@ -142,15 +142,15 @@ func (imp Impres) Compilar_Instruccion(ent *entorno.Entorno, gen *generador.Gene
 									impr += temp1 + " = HP;\n"
 									for _, txt := range ss.Valor {
 										f := int(txt)
-										impr += "HEAP[int(HP)] = " + fmt.Sprintf("%v", f) + "; //LETRA-> " + string(txt) + "\n"
+										impr += "HEAP[(int)HP] = " + fmt.Sprintf("%v", f) + "; //LETRA-> " + string(txt) + "\n"
 										impr += "HP = HP + 1;\n"
 									}
 									//SE GUARDA EL HEAP EL VALOR PARA INDICAR EL FIN DE LA CADENA
-									impr += "HEAP[int(HP)] = -1;\nHP = HP + 1;\n"
+									impr += "HEAP[(int)HP] = -1;\nHP = HP + 1;\n"
 									//SE GUARDA LA REFERENCIA DEL HEAP EN EL STACK
 									impr += temp2 + " = SP + " + strconv.Itoa(valtodi.Pos) + "; //POSICION CADENA EN STACK\n"
 									//SE GUARDA EN EL STACK LA CADENA DEL HEAP
-									impr += "STACK[int(" + temp2 + ")] = " + temp1 + ";\n"
+									impr += "STACK[(int)" + temp2 + "] = " + temp1 + ";\n"
 									//SE CAMBIA DE ENTORNO - SE LLAMA EL METODO PRINT - SE REGRESE AL OTRO ENTORNO
 									impr += "SP = SP + " + strconv.Itoa(valtodi.Pos) + ";\nprint();\nSP = SP - " + strconv.Itoa(valtodi.Pos) + ";\n"
 								}
@@ -162,15 +162,15 @@ func (imp Impres) Compilar_Instruccion(ent *entorno.Entorno, gen *generador.Gene
 								//SE GUARDA EN EL TXT EN EL HEAP
 								for _, txt := range separador[i] {
 									f := int(txt)
-									impr += "HEAP[int(HP)] = " + fmt.Sprintf("%v", f) + "; //LETRA-> " + string(txt) + "\n"
+									impr += "HEAP[(int)HP] = " + fmt.Sprintf("%v", f) + "; //LETRA-> " + string(txt) + "\n"
 									impr += "HP = HP + 1;\n"
 								}
 								//SE GUARDA EL HEAP EL VALOR PARA INDICAR EL FIN DE LA CADENA
-								impr += "HEAP[int(HP)] = -1;\nHP = HP + 1;\n"
+								impr += "HEAP[(int)HP] = -1;\nHP = HP + 1;\n"
 								//SE GUARDA LA REFERENCIA DEL HEAP EN EL STACK
 								impr += temp2 + " = SP + " + strconv.Itoa(valtodi.Pos) + "; //POSICION CADENA EN STACK\n"
 								//SE GUARDA EN EL STACK LA CADENA DEL HEAP
-								impr += "STACK[int(" + temp2 + ")] = " + temp1 + ";\n"
+								impr += "STACK[(int)" + temp2 + "] = " + temp1 + ";\n"
 								//SE CAMBIA DE ENTORNO - SE LLAMA EL METODO PRINT - SE REGRESA AL OTRO ENTORNO
 								impr += "SP = SP + " + strconv.Itoa(valtodi.Pos) + ";\nprint();\nSP = SP - " + strconv.Itoa(valtodi.Pos) + ";\n"
 								//SE IMPRIME EL VALOR DE LA EXPRESION
@@ -197,15 +197,15 @@ func (imp Impres) Compilar_Instruccion(ent *entorno.Entorno, gen *generador.Gene
 									impr += temp1 + " = HP;\n"
 									for _, txt := range ss.Valor {
 										f := int(txt)
-										impr += "HEAP[int(HP)] = " + fmt.Sprintf("%v", f) + "; //LETRA-> " + string(txt) + "\n"
+										impr += "HEAP[(int)HP] = " + fmt.Sprintf("%v", f) + "; //LETRA-> " + string(txt) + "\n"
 										impr += "HP = HP + 1;\n"
 									}
 									//SE GUARDA EL HEAP EL VALOR PARA INDICAR EL FIN DE LA CADENA
-									impr += "HEAP[int(HP)] = -1;\nHP = HP + 1;\n"
+									impr += "HEAP[(int)HP] = -1;\nHP = HP + 1;\n"
 									//SE GUARDA LA REFERENCIA DEL HEAP EN EL STACK
 									impr += temp2 + " = SP + " + strconv.Itoa(valtodi.Pos) + "; //POSICION CADENA EN STACK\n"
 									//SE GUARDA EN EL STACK LA CADENA DEL HEAP
-									impr += "STACK[int(" + temp2 + ")] = " + temp1 + ";\n"
+									impr += "STACK[(int)" + temp2 + "] = " + temp1 + ";\n"
 									//SE CAMBIA DE ENTORNO - SE LLAMA EL METODO PRINT - SE REGRESE AL OTRO ENTORNO
 									impr += "SP = SP + " + strconv.Itoa(valtodi.Pos) + ";\nprint();\nSP = SP - " + strconv.Itoa(valtodi.Pos) + ";\n"
 								}
@@ -220,15 +220,15 @@ func (imp Impres) Compilar_Instruccion(ent *entorno.Entorno, gen *generador.Gene
 								//SE GUARDA TXT EN EL HEAP
 								for _, txt := range separador[i] {
 									f := int(txt)
-									impr += "HEAP[int(HP)] = " + fmt.Sprintf("%v", f) + "; //LETRA-> " + string(txt) + "\n"
+									impr += "HEAP[(int)HP] = " + fmt.Sprintf("%v", f) + "; //LETRA-> " + string(txt) + "\n"
 									impr += "HP = HP + 1;\n"
 								}
 								//SE GUARDA EN EL HEAP EL VALOR PARA INDICAR EL FIN DE LA CADENA
-								impr += "HEAP[int(HP)] = -1;\nHP = HP + 1;\n"
+								impr += "HEAP[(int)HP] = -1;\nHP = HP + 1;\n"
 								//SE GUARDA LA REFERENCIA DEL HEAP EN EL STACK
 								impr += temp2 + " = SP + " + strconv.Itoa(valtodi.Pos) + "; //POSICION CADENA EN STACK\n"
 								//SE GUARDA EN EL STACK LA CADENA DEL HEAP
-								impr += "STACK[int(" + temp2 + ")] = " + temp1 + ";\n"
+								impr += "STACK[(int)" + temp2 + "] = " + temp1 + ";\n"
 								//SE CAMBIA DE ENTORNO - SE LLAMA EL METODO PRINT - SE REGRESA AL OTRO ENTORNO
 								impr += "SP = SP + " + strconv.Itoa(valtodi.Pos) + ";\nprint();\nSP = SP - " + strconv.Itoa(valtodi.Pos) + ";\n"
 							}
@@ -250,15 +250,15 @@ func (imp Impres) Compilar_Instruccion(ent *entorno.Entorno, gen *generador.Gene
 								//SE GUARDA EN EL HEAP EL TXT QUE SE VA A IMPRIMIR
 								for _, txt := range separador[i] {
 									f := int(txt)
-									impr += "HEAP[int(HP)] = " + fmt.Sprintf("%v", f) + "; //LETRA-> " + string(txt) + "\n"
+									impr += "HEAP[(int)HP] = " + fmt.Sprintf("%v", f) + "; //LETRA-> " + string(txt) + "\n"
 									impr += "HP = HP + 1;\n"
 								}
 								//SE GUARDA EL HEAP EL VALOR PARA INDICAR EL FIN DE LA CADENA
-								impr += "HEAP[int(HP)] = -1;\nHP = HP + 1;\n"
+								impr += "HEAP[(int)HP] = -1;\nHP = HP + 1;\n"
 								//SE GUARDA LA REFERENCIA DEL HEAP EN EL STACK
 								impr += temp2 + " = SP + " + strconv.Itoa(valtodi.Pos) + "; //POSICION CADENA EN STACK\n"
 								//SE GUARDA EN EL STACK LA CADENA DEL HEAP
-								impr += "STACK[int(" + temp2 + ")] = " + temp1 + ";\n"
+								impr += "STACK[(int)" + temp2 + "] = " + temp1 + ";\n"
 								//SE CAMBIA DE ENTORNO - SE LLAMA EL METODO PRINT - SE REGRESE AL OTRO ENTORNO
 								impr += "SP = SP + " + strconv.Itoa(valtodi.Pos) + ";\nprint();\nSP = SP - " + strconv.Itoa(valtodi.Pos) + ";\n"
 								//SE IMPRIME EL VALOR DE LA EXPRESION
@@ -317,15 +317,15 @@ func (imp Impres) Compilar_Instruccion(ent *entorno.Entorno, gen *generador.Gene
 									impr += temp1 + " = HP;\n"
 									for _, txt := range ss.Valor {
 										f := int(txt)
-										impr += "HEAP[int(HP)] = " + fmt.Sprintf("%v", f) + "; //LETRA-> " + string(txt) + "\n"
+										impr += "HEAP[(int)HP] = " + fmt.Sprintf("%v", f) + "; //LETRA-> " + string(txt) + "\n"
 										impr += "HP = HP + 1;\n"
 									}
 									//SE GUARDA EL HEAP EL VALOR PARA INDICAR EL FIN DE LA CADENA
-									impr += "HEAP[int(HP)] = -1;\nHP = HP + 1;\n"
+									impr += "HEAP[(int)HP] = -1;\nHP = HP + 1;\n"
 									//SE GUARDA LA REFERENCIA DEL HEAP EN EL STACK
 									impr += temp2 + " = SP + " + strconv.Itoa(valtodi.Pos) + "; //POSICION CADENA EN STACK\n"
 									//SE GUARDA EN EL STACK LA CADENA DEL HEAP
-									impr += "STACK[int(" + temp2 + ")] = " + temp1 + ";\n"
+									impr += "STACK[(int)" + temp2 + "] = " + temp1 + ";\n"
 									//SE CAMBIA DE ENTORNO - SE LLAMA EL METODO PRINT - SE REGRESE AL OTRO ENTORNO
 									impr += "SP = SP + " + strconv.Itoa(valtodi.Pos) + ";\nprint();\nSP = SP - " + strconv.Itoa(valtodi.Pos) + ";\n"
 								}
@@ -337,15 +337,15 @@ func (imp Impres) Compilar_Instruccion(ent *entorno.Entorno, gen *generador.Gene
 								//SE GUARDA EN EL TXT EN EL HEAP
 								for _, txt := range separador[i] {
 									f := int(txt)
-									impr += "HEAP[int(HP)] = " + fmt.Sprintf("%v", f) + "; //LETRA-> " + string(txt) + "\n"
+									impr += "HEAP[(int)HP] = " + fmt.Sprintf("%v", f) + "; //LETRA-> " + string(txt) + "\n"
 									impr += "HP = HP + 1;\n"
 								}
 								//SE GUARDA EL HEAP EL VALOR PARA INDICAR EL FIN DE LA CADENA
-								impr += "HEAP[int(HP)] = -1;\nHP = HP + 1;\n"
+								impr += "HEAP[(int)HP] = -1;\nHP = HP + 1;\n"
 								//SE GUARDA LA REFERENCIA DEL HEAP EN EL STACK
 								impr += temp2 + " = SP + " + strconv.Itoa(valtodi.Pos) + "; //POSICION CADENA EN STACK\n"
 								//SE GUARDA EN EL STACK LA CADENA DEL HEAP
-								impr += "STACK[int(" + temp2 + ")] = " + temp1 + ";\n"
+								impr += "STACK[(int)" + temp2 + "] = " + temp1 + ";\n"
 								//SE CAMBIA DE ENTORNO - SE LLAMA EL METODO PRINT - SE REGRESA AL OTRO ENTORNO
 								impr += "SP = SP + " + strconv.Itoa(valtodi.Pos) + ";\nprint();\nSP = SP - " + strconv.Itoa(valtodi.Pos) + ";\n"
 								//SE IMPRIME EL VALOR DE LA EXPRESION
@@ -378,15 +378,15 @@ func (imp Impres) Compilar_Instruccion(ent *entorno.Entorno, gen *generador.Gene
 									impr += temp1 + " = HP;\n"
 									for _, txt := range ss.Valor {
 										f := int(txt)
-										impr += "HEAP[int(HP)] = " + fmt.Sprintf("%v", f) + "; //LETRA-> " + string(txt) + "\n"
+										impr += "HEAP[(int)HP] = " + fmt.Sprintf("%v", f) + "; //LETRA-> " + string(txt) + "\n"
 										impr += "HP = HP + 1;\n"
 									}
 									//SE GUARDA EL HEAP EL VALOR PARA INDICAR EL FIN DE LA CADENA
-									impr += "HEAP[int(HP)] = -1;\nHP = HP + 1;\n"
+									impr += "HEAP[(int)HP] = -1;\nHP = HP + 1;\n"
 									//SE GUARDA LA REFERENCIA DEL HEAP EN EL STACK
 									impr += temp2 + " = SP + " + strconv.Itoa(valtodi.Pos) + "; //POSICION CADENA EN STACK\n"
 									//SE GUARDA EN EL STACK LA CADENA DEL HEAP
-									impr += "STACK[int(" + temp2 + ")] = " + temp1 + ";\n"
+									impr += "STACK[(int)" + temp2 + "] = " + temp1 + ";\n"
 									//SE CAMBIA DE ENTORNO - SE LLAMA EL METODO PRINT - SE REGRESE AL OTRO ENTORNO
 									impr += "SP = SP + " + strconv.Itoa(valtodi.Pos) + ";\nprint();\nSP = SP - " + strconv.Itoa(valtodi.Pos) + ";\n"
 								}
@@ -401,15 +401,15 @@ func (imp Impres) Compilar_Instruccion(ent *entorno.Entorno, gen *generador.Gene
 								//SE GUARDA TXT EN EL HEAP
 								for _, txt := range separador[i] {
 									f := int(txt)
-									impr += "HEAP[int(HP)] = " + fmt.Sprintf("%v", f) + "; //LETRA-> " + string(txt) + "\n"
+									impr += "HEAP[(int)HP] = " + fmt.Sprintf("%v", f) + "; //LETRA-> " + string(txt) + "\n"
 									impr += "HP = HP + 1;\n"
 								}
 								//SE GUARDA EN EL HEAP EL VALOR PARA INDICAR EL FIN DE LA CADENA
-								impr += "HEAP[int(HP)] = -1;\nHP = HP + 1;\n"
+								impr += "HEAP[(int)HP] = -1;\nHP = HP + 1;\n"
 								//SE GUARDA LA REFERENCIA DEL HEAP EN EL STACK
 								impr += temp2 + " = SP + " + strconv.Itoa(valtodi.Pos) + "; //POSICION CADENA EN STACK\n"
 								//SE GUARDA EN EL STACK LA CADENA DEL HEAP
-								impr += "STACK[int(" + temp2 + ")] = " + temp1 + ";\n"
+								impr += "STACK[(int)" + temp2 + "] = " + temp1 + ";\n"
 								//SE CAMBIA DE ENTORNO - SE LLAMA EL METODO PRINT - SE REGRESA AL OTRO ENTORNO
 								impr += "SP = SP + " + strconv.Itoa(valtodi.Pos) + ";\nprint();\nSP = SP - " + strconv.Itoa(valtodi.Pos) + ";\n"
 							}

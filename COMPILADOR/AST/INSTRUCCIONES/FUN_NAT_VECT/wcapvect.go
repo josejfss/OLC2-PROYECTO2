@@ -85,7 +85,7 @@ func (wcvect WCapVect) Compilar_Instruccion(ent *entorno.Entorno, gen *generador
 		gen.Agregar_Logica(tempo1 + " = SP + " + strconv.Itoa(posi) + ";\t\t// POSICION: " + wcvect.Identificador)
 		gen.Agregar_Stack(tempo1, "HP")
 		gen.Agregar_Logica("HP = HP +" + strconv.Itoa(simbvect.EsArreVect) + ";")
-		gen.Agregar_Logica("HEAP[int(HP)] = -2;\nHP = HP + 1;")
+		gen.Agregar_Logica("HEAP[(int)HP] = -2;\nHP = HP + 1;")
 		gen.Agregar_Comentario("FIN DECLARACION VECTOR -- " + wcvect.Identificador)
 		gen.LiberarTodosTemporales()
 	}

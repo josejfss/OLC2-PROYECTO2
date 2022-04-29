@@ -71,10 +71,10 @@ func (decla Declaracion) Compilar_Instruccion(ent *entorno.Entorno, gen *generad
 			impr := temp1 + " = HP;\n"
 			for _, txt := range vals.Valor {
 				f := int(txt)
-				impr += "HEAP[int(HP)] = " + fmt.Sprintf("%v", f) + "; //LETRA-> " + string(txt) + "\n"
+				impr += "HEAP[(int)HP] = " + fmt.Sprintf("%v", f) + "; //LETRA-> " + string(txt) + "\n"
 				impr += "HP = HP + 1;\n"
 			}
-			impr += "HEAP[int(HP)] = -1;\nHP = HP + 1;\n"
+			impr += "HEAP[(int)HP] = -1;\nHP = HP + 1;\n"
 			gen.Agregar_Logica(impr)
 			gen.Agregar_Logica(temp2 + " = SP + " + strconv.Itoa(posi) + ";\t\t// POSICION: " + decla.Identificador)
 			gen.Agregar_Stack(temp2, temp1)
