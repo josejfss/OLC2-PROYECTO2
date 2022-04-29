@@ -17,6 +17,7 @@ options {
     import "OLC2-PROYECTO2/COMPILADOR/AST/EXPRESIONES/INICIANDO_ARRE"
     import "OLC2-PROYECTO2/COMPILADOR/AST/EXPRESIONES/ACCESO_ARRE"
     import "OLC2-PROYECTO2/COMPILADOR/AST/EXPRESIONES/ACCESO_VECT"
+    import "OLC2-PROYECTO2/COMPILADOR/AST/EXPRESIONES/NATIVAS_VECT"
     import "OLC2-PROYECTO2/COMPILADOR/AST/INSTRUCCIONES/IMPRESION"
     import "OLC2-PROYECTO2/COMPILADOR/AST/INSTRUCCIONES/S_CONDICIONAL"
     import "OLC2-PROYECTO2/COMPILADOR/AST/INSTRUCCIONES/S_MATCH"
@@ -440,6 +441,7 @@ bloque returns[interfaces.Instruccion instr]
 /* EXPRESIONES */
 expression returns[interfaces.Expresion p]
     : fun_nativas             {$p = $fun_nativas.p}
+    | nativas_vector          {$p = $nativas_vector.p}
     | expre_logica            {$p = $expre_logica.p}
     | expre_relacional        {$p = $expre_relacional.p}
     | expre_aritmetica        {$p = $expre_aritmetica.p}
@@ -528,6 +530,12 @@ access returns[interfaces.Expresion p]
 acceso_vector returns[interfaces.Expresion p]
   : TK_IDENTIFICADOR TK_MENOR expression TK_MAYOR {
     $p = accesovect.Naccessvect($TK_IDENTIFICADOR.text,$expression.p, $TK_IDENTIFICADOR.line, localctx.(*Acceso_vectorContext).Get_TK_IDENTIFICADOR().GetColumn())
+  }
+;
+
+nativas_vector returns[interfaces.Expresion p]
+  : TK_IDENTIFICADOR TK_PUNTO TK_LEN {
+    $p = nativasvect.Nlenvect($TK_IDENTIFICADOR.text, $TK_IDENTIFICADOR.line, localctx.(*Nativas_vectorContext).Get_TK_IDENTIFICADOR().GetColumn())
   }
 ;
 

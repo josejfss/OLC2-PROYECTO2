@@ -303,6 +303,12 @@ func (s *Basedb_rustparserListener) EnterAcceso_vector(ctx *Acceso_vectorContext
 // ExitAcceso_vector is called when production acceso_vector is exited.
 func (s *Basedb_rustparserListener) ExitAcceso_vector(ctx *Acceso_vectorContext) {}
 
+// EnterNativas_vector is called when production nativas_vector is entered.
+func (s *Basedb_rustparserListener) EnterNativas_vector(ctx *Nativas_vectorContext) {}
+
+// ExitNativas_vector is called when production nativas_vector is exited.
+func (s *Basedb_rustparserListener) ExitNativas_vector(ctx *Nativas_vectorContext) {}
+
 // EnterFun_nativas is called when production fun_nativas is entered.
 func (s *Basedb_rustparserListener) EnterFun_nativas(ctx *Fun_nativasContext) {}
 
