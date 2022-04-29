@@ -537,6 +537,9 @@ nativas_vector returns[interfaces.Expresion p]
   : TK_IDENTIFICADOR TK_PUNTO TK_LEN {
     $p = nativasvect.Nlenvect($TK_IDENTIFICADOR.text, $TK_IDENTIFICADOR.line, localctx.(*Nativas_vectorContext).Get_TK_IDENTIFICADOR().GetColumn())
   }
+  | TK_IDENTIFICADOR TK_PUNTO TK_CAPACITY {
+    $p = nativasvect.Ncapvect($TK_IDENTIFICADOR.text, $TK_IDENTIFICADOR.line, localctx.(*Nativas_vectorContext).Get_TK_IDENTIFICADOR().GetColumn())
+  }
 ;
 
 /* FUNCIONES NATIVAS */
