@@ -171,12 +171,13 @@ func (pushvect PushVect) Compilar_Instruccion(ent *entorno.Entorno, gen *generad
 						//MODIFICACIONES EN EL VECTOR
 						simbvect.ValorLista.Add(pusheo1)
 						ent.Guardar_ArregloVector(simbvect.Nombre, simbvect)
+						ent.Guardar_ArregloVector(simbvect.Nombre, simbvect)
 					}
 				}
 			}
 		}
 	}
 	gen.Agregar_Comentario("FIN PUSH VECTOR -- " + pushvect.Identificador)
-	gen.LiberarTodosTemporales()
+	//gen.LiberarTodosTemporales()
 	return 0
 }

@@ -78,7 +78,7 @@ func (nvect NewVect) Compilar_Instruccion(ent *entorno.Entorno, gen *generador.G
 		gen.Agregar_Logica("HP = HP + 1;")
 		gen.Agregar_Logica("HEAP[(int)HP] = -2;\nHP = HP + 1;")
 		gen.Agregar_Comentario("FIN DECLARACION VECTOR -- " + nvect.Identificador)
-		gen.LiberarTodosTemporales()
+		//gen.LiberarTodosTemporales()
 	}
 	return 0
 }

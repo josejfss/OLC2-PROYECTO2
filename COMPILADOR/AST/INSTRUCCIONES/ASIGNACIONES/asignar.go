@@ -74,6 +74,6 @@ func (as Asignacion) Compilar_Instruccion(ent *entorno.Entorno, gen *generador.G
 		}
 	}
 	gen.Agregar_Comentario("FINALIZANDO ASIGNACION")
-	gen.LiberarTodosTemporales()
+	//gen.LiberarTodosTemporales()
 	return 0
 }

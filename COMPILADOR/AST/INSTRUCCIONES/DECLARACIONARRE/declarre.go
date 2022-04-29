@@ -225,7 +225,7 @@ func (darre DeclaArre) Compilar_Instruccion(ent *entorno.Entorno, gen *generador
 
 		}
 		gen.Agregar_Comentario("FIN DECLARACION ARREGLO -- " + darre.Identificador)
-		gen.LiberarTodosTemporales()
+		//gen.LiberarTodosTemporales()
 	}
 	return 0
 }

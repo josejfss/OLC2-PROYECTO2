@@ -87,7 +87,7 @@ func (wcvect WCapVect) Compilar_Instruccion(ent *entorno.Entorno, gen *generador
 		gen.Agregar_Logica("HP = HP +" + strconv.Itoa(simbvect.EsArreVect) + ";")
 		gen.Agregar_Logica("HEAP[(int)HP] = -2;\nHP = HP + 1;")
 		gen.Agregar_Comentario("FIN DECLARACION VECTOR -- " + wcvect.Identificador)
-		gen.LiberarTodosTemporales()
+		//gen.LiberarTodosTemporales()
 	}
 	return 0
 }

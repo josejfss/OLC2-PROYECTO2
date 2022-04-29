@@ -101,10 +101,9 @@ func (removect RemoveVect) Compilar_Instruccion(ent *entorno.Entorno, gen *gener
 			}
 			simbvect.ValorLista = &nueva_lista
 			ent.Guardar_ArregloVector(simbvect.Nombre, simbvect)
-
 		}
 	}
 	gen.Agregar_Comentario("FIN REMOVE VECTOR -- " + removect.Identificador)
-	gen.LiberarTodosTemporales()
+	//gen.LiberarTodosTemporales()
 	return 0
 }

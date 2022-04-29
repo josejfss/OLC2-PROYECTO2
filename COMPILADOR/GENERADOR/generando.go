@@ -69,9 +69,13 @@ func (g *Generador_C3D) LiberarTemporal(borrar string) {
 	for i := 0; i < g.Lista_temporal.Len(); i++ {
 		temp_act := g.Lista_temporal.GetValue(i)
 		if temp_act == borrar {
-			g.Lista_temporal.RemoveAtIndex(i)
+			// g.Lista_temporal.RemoveAtIndex(i)
+			if g.Temporal-1 == i {
+				g.Temporal = g.Temporal - 1
+			}
 		}
 	}
+
 }
 
 func (g *Generador_C3D) LiberarTodosTemporales() {

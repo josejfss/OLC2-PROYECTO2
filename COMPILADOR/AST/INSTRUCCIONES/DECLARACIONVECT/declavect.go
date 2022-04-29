@@ -200,7 +200,7 @@ func (dvect DeclaVector) Compilar_Instruccion(ent *entorno.Entorno, gen *generad
 			}
 		}
 		gen.Agregar_Comentario("FIN DECLARACION VECTOR -- " + dvect.Identificador)
-		gen.LiberarTodosTemporales()
+		//gen.LiberarTodosTemporales()
 	}
 	return 0
 }

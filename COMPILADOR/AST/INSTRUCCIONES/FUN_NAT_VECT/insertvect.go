@@ -204,6 +204,6 @@ func (insertvect InsertVect) Compilar_Instruccion(ent *entorno.Entorno, gen *gen
 		}
 	}
 	gen.Agregar_Comentario("FIN INSERT VECTOR -- " + insertvect.Identificador)
-	gen.LiberarTodosTemporales()
+	//gen.LiberarTodosTemporales()
 	return 0
 }

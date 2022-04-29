@@ -87,6 +87,6 @@ func (decla Declaracion) Compilar_Instruccion(ent *entorno.Entorno, gen *generad
 
 		gen.Agregar_Comentario("FINALIZANDO DECLARACION")
 	}
-	gen.LiberarTodosTemporales()
+	//gen.LiberarTodosTemporales()
 	return 0
 }
