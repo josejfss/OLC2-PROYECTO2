@@ -113,7 +113,7 @@ func (pushvect PushVect) Compilar_Instruccion(ent *entorno.Entorno, gen *generad
 
 						gen.Agregar_Logica(etiqueta_entrada + ":")
 						gen.Agregar_Logica(temp_conca + " = HEAP[(int)" + tempo_valor + "];")
-						gen.Agregar_Logica("if ( " + temp_conca + " == -2) { goto " + etiqueta_salida + "; }")
+						gen.Agregar_Logica("if ( " + temp_conca + " == -2) goto " + etiqueta_salida + ";")
 
 						gen.Agregar_Logica("HEAP[(int)" + temp3 + "] = " + temp_conca + ";")
 						gen.Agregar_Logica(temp3 + " = " + temp3 + " + 1;")
@@ -139,7 +139,7 @@ func (pushvect PushVect) Compilar_Instruccion(ent *entorno.Entorno, gen *generad
 
 						gen.Agregar_Logica(etiqueta_entrada1 + ":")
 						gen.Agregar_Logica(tconca + " = HEAP[(int)" + temp3 + "];")
-						gen.Agregar_Logica("if ( " + tconca + " == -2) { goto " + etiqueta_salida1 + "; }")
+						gen.Agregar_Logica("if ( " + tconca + " == -2) goto " + etiqueta_salida1 + ";")
 						gen.Agregar_Logica("HEAP[(int)" + temp3 + "] = HP;")
 						gen.Agregar_Logica(otrotemp + " = HP;\nHP = HP + 1;")
 						gen.Agregar_Logica("HEAP[(int)" + otrotemp + "] = -1;")

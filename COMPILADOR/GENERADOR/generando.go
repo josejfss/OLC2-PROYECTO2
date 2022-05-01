@@ -136,7 +136,7 @@ func (g *Generador_C3D) Agregar_Expression(resultado string, opizq string, op st
 
 //METODO PARA AGREGAR EXPRESIONES RELACIONALES A LA LISTA CODIGO
 func (g *Generador_C3D) Agregar_Relacional(opizq string, op string, opder string, ev string, ef string) {
-	rela := "if (" + opizq + " " + op + " " + opder + ") { goto " + ev + "; }\ngoto " + ef + ";\n"
+	rela := "if (" + opizq + " " + op + " " + opder + ") goto " + ev + ";\ngoto " + ef + ";\n"
 	g.Codigo.Add(rela)
 }
 

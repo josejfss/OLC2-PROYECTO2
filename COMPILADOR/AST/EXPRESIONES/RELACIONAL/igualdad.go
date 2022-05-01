@@ -108,19 +108,19 @@ func (igualdad OpIgualdad) Compilar_Expresion(ent *entorno.Entorno, gen *generad
 	if tipo_dominante == simbolos.INTEGER {
 		gen.Agregar_Relacional(operador_izq.Valor, "==", operador_der.Valor, etiqueta_verdadera, etiqueta_falsa)
 		rigual := "/*--INGRESANDO OPERACION IGUALDAD--*/\n"
-		rigual += "if (" + operador_izq.Valor + " " + "==" + " " + operador_der.Valor + ") { goto " + etiqueta_verdadera + "; }\ngoto " + etiqueta_falsa + ";"
+		rigual += "if (" + operador_izq.Valor + " " + "==" + " " + operador_der.Valor + ") goto " + etiqueta_verdadera + "; \ngoto " + etiqueta_falsa + ";"
 		rigual += "\n/*--SALIENDO OPERACION IGUALDAD--*/\n"
 		return simbolos.ValoresC3D{Valor: rigual, EsTemporal: false, Tipo: simbolos.BOOLEAN, Label_verdadera: etiqueta_verdadera, Label_false: etiqueta_falsa}
 	} else if tipo_dominante == simbolos.FLOAT {
 		gen.Agregar_Relacional(operador_izq.Valor, "==", operador_der.Valor, etiqueta_verdadera, etiqueta_falsa)
 		rigual := "/*--INGRESANDO OPERACION IGUALDAD--*/\n"
-		rigual += "if (" + operador_izq.Valor + " " + "==" + " " + operador_der.Valor + ") { goto " + etiqueta_verdadera + "; }\ngoto " + etiqueta_falsa + ";"
+		rigual += "if (" + operador_izq.Valor + " " + "==" + " " + operador_der.Valor + ") goto " + etiqueta_verdadera + "; \ngoto " + etiqueta_falsa + ";"
 		rigual += "\n/*--SALIENDO OPERACION IGUALDAD--*/\n"
 		return simbolos.ValoresC3D{Valor: rigual, EsTemporal: false, Tipo: simbolos.BOOLEAN, Label_verdadera: etiqueta_verdadera, Label_false: etiqueta_falsa}
 	} else if tipo_dominante == simbolos.TEXTO {
 		gen.Agregar_Relacional(operador_izq.Valor, "==", operador_der.Valor, etiqueta_verdadera, etiqueta_falsa)
 		rigual := "/*--INGRESANDO OPERACION IGUALDAD--*/\n"
-		rigual += "if (" + operador_izq.Valor + " " + "==" + " " + operador_der.Valor + ") { goto " + etiqueta_verdadera + "; }\ngoto " + etiqueta_falsa + ";"
+		rigual += "if (" + operador_izq.Valor + " " + "==" + " " + operador_der.Valor + ") goto " + etiqueta_verdadera + "; \ngoto " + etiqueta_falsa + ";"
 		rigual += "\n/*--SALIENDO OPERACION IGUALDAD--*/\n"
 		return simbolos.ValoresC3D{Valor: rigual, EsTemporal: false, Tipo: simbolos.BOOLEAN, Label_verdadera: etiqueta_verdadera, Label_false: etiqueta_falsa}
 	} else {

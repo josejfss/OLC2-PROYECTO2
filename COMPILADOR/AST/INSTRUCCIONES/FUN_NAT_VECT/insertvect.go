@@ -130,7 +130,7 @@ func (insertvect InsertVect) Compilar_Instruccion(ent *entorno.Entorno, gen *gen
 
 						gen.Agregar_Logica(etiqueta_entrada + ":")
 						gen.Agregar_Logica(temp_conca + " = HEAP[(int)" + tempo_valor + "];")
-						gen.Agregar_Logica("if ( " + temp_conca + " == -2) { goto " + etiqueta_salida + "; }")
+						gen.Agregar_Logica("if ( " + temp_conca + " == -2) goto " + etiqueta_salida + ";")
 
 						gen.Agregar_Logica(temp3 + " = " + temp2 + " + " + conta + ";")
 						gen.Agregar_Logica("HEAP[(int)" + temp3 + "] = " + temp_conca + ";")

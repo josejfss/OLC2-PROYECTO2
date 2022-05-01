@@ -57,7 +57,7 @@ func (access AccesoStruct) Compilar_Expresion(ent *entorno.Entorno, gen *generad
 					imprimir += temp4 + " = HEAP[(int)" + temp3 + "];\n"
 					imprimir += etiqueta_entrada + ":\n"
 					imprimir += temp5 + " = HEAP[(int)" + temp4 + "];\n"
-					imprimir += "if ( " + temp5 + " == -1) { goto " + etiqueta_salida + "; }\n"
+					imprimir += "if ( " + temp5 + " == -1) goto " + etiqueta_salida + ";\n"
 					imprimir += "printf(\"%c\", (char)" + temp5 + ");\n"
 					imprimir += temp4 + " = " + temp4 + " + 1;\ngoto " + etiqueta_entrada + ";\n"
 					imprimir += etiqueta_salida + ":\n"

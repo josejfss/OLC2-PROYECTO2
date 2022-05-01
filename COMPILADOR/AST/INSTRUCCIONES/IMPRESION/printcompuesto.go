@@ -134,7 +134,7 @@ func (imp Impres) Compilar_Instruccion(ent *entorno.Entorno, gen *generador.Gene
 									tempo_valor := ss.Valor
 									impr += etiqueta_entrada + ":\n"
 									impr += temp_conca + " = HEAP[(int)" + tempo_valor + "];\n"
-									impr += "if ( " + temp_conca + " == -1) { goto " + etiqueta_salida + "; }\n"
+									impr += "if ( " + temp_conca + " == -1) goto " + etiqueta_salida + ";\n"
 									impr += "printf(\"%c\", (char)" + temp_conca + ");\n"
 									impr += tempo_valor + " = " + tempo_valor + " + 1;\ngoto " + etiqueta_entrada + ";\n"
 									impr += etiqueta_salida + ":\n"
@@ -189,7 +189,7 @@ func (imp Impres) Compilar_Instruccion(ent *entorno.Entorno, gen *generador.Gene
 									tempo_valor := ss.Valor
 									impr += etiqueta_entrada + ":\n"
 									impr += temp_conca + " = HEAP[(int)" + tempo_valor + "];\n"
-									impr += "if ( " + temp_conca + " == -1) { goto " + etiqueta_salida + "; }\n"
+									impr += "if ( " + temp_conca + " == -1) goto " + etiqueta_salida + ";\n"
 									impr += "printf(\"%c\", (char)" + temp_conca + ");\n"
 									impr += tempo_valor + " = " + tempo_valor + " + 1;\ngoto " + etiqueta_entrada + ";\n"
 									impr += etiqueta_salida + ":\n"
@@ -274,7 +274,7 @@ func (imp Impres) Compilar_Instruccion(ent *entorno.Entorno, gen *generador.Gene
 										tempo_valor := ss.Valor
 										impr += etiqueta_entrada + ":\n"
 										impr += temp_conca + " = HEAP[(int)" + tempo_valor + "];\n"
-										impr += "if ( " + temp_conca + " == -2) { goto " + etiqueta_salida + "; }\n"
+										impr += "if ( " + temp_conca + " == -2) goto " + etiqueta_salida + ";\n"
 										impr += "printf(\"%d\",(int)" + temp_conca + ");\n"
 										impr += "printf(\"%c\", (char) 32);\n"
 										impr += tempo_valor + " = " + tempo_valor + " + 1;\ngoto " + etiqueta_entrada + ";\n"
@@ -300,11 +300,11 @@ func (imp Impres) Compilar_Instruccion(ent *entorno.Entorno, gen *generador.Gene
 
 										impr += etiqueta_entrada + ":\n"
 										impr += temp_conca + " = HEAP[(int)" + tempo_valor + "];\n"
-										impr += "if ( " + temp_conca + " == -2) { goto " + etiqueta_salida + "; }\n"
+										impr += "if ( " + temp_conca + " == -2) goto " + etiqueta_salida + ";\n"
 										impr += tempo_valor1 + " = " + temp_conca + ";\n"
 										impr += etiqueta_entrada1 + ":\n"
 										impr += tempo_conca1 + " = HEAP[(int)" + tempo_valor1 + "];\n"
-										impr += "if ( " + tempo_conca1 + " == -1) { goto " + etiqueta_salida1 + "; }\n"
+										impr += "if ( " + tempo_conca1 + " == -1) goto " + etiqueta_salida1 + ";\n"
 										impr += "printf(\"%c\", (char)" + tempo_conca1 + ");\n"
 										impr += tempo_valor1 + " = " + tempo_valor1 + " + 1;\ngoto " + etiqueta_entrada1 + ";\n"
 										impr += etiqueta_salida1 + ":\n"
@@ -361,7 +361,7 @@ func (imp Impres) Compilar_Instruccion(ent *entorno.Entorno, gen *generador.Gene
 										tempo_valor := ss.Valor
 										impr += etiqueta_entrada + ":\n"
 										impr += temp_conca + " = HEAP[(int)" + tempo_valor + "];\n"
-										impr += "if ( " + temp_conca + " == -2) { goto " + etiqueta_salida + "; }\n"
+										impr += "if ( " + temp_conca + " == -2) goto " + etiqueta_salida + ";\n"
 										impr += "printf(\"%d\",(int)" + temp_conca + ");\n"
 										impr += "printf(\"%c\", (char) 32);\n"
 										impr += tempo_valor + " = " + tempo_valor + " + 1;\ngoto " + etiqueta_entrada + ";\n"

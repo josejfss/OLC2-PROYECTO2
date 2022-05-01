@@ -108,19 +108,19 @@ func (menorigual OpMenorIgual) Compilar_Expresion(ent *entorno.Entorno, gen *gen
 	if tipo_dominante == simbolos.INTEGER {
 		gen.Agregar_Relacional(operador_izq.Valor, "<=", operador_der.Valor, etiqueta_verdadera, etiqueta_falsa)
 		rmenorigual := "/*--INGRESANDO OPERACION MENOR IGUAL--*/\n"
-		rmenorigual += "if (" + operador_izq.Valor + " " + "<=" + " " + operador_der.Valor + ") { goto " + etiqueta_verdadera + "; }\ngoto " + etiqueta_falsa + ";"
+		rmenorigual += "if (" + operador_izq.Valor + " " + "<=" + " " + operador_der.Valor + ") goto " + etiqueta_verdadera + ";\ngoto " + etiqueta_falsa + ";"
 		rmenorigual += "\n/*--SALIENDO OPERACION MENOR IGUAL--*/\n"
 		return simbolos.ValoresC3D{Valor: rmenorigual, EsTemporal: false, Tipo: simbolos.BOOLEAN, Label_verdadera: etiqueta_verdadera, Label_false: etiqueta_falsa}
 	} else if tipo_dominante == simbolos.FLOAT {
 		gen.Agregar_Relacional(operador_izq.Valor, "<=", operador_der.Valor, etiqueta_verdadera, etiqueta_falsa)
 		rmenorigual := "/*--INGRESANDO OPERACION MENOR IGUAL--*/\n"
-		rmenorigual += "if (" + operador_izq.Valor + " " + "<=" + " " + operador_der.Valor + ") { goto " + etiqueta_verdadera + "; }\ngoto " + etiqueta_falsa + ";"
+		rmenorigual += "if (" + operador_izq.Valor + " " + "<=" + " " + operador_der.Valor + ") goto " + etiqueta_verdadera + ";\ngoto " + etiqueta_falsa + ";"
 		rmenorigual += "\n/*--SALIENDO OPERACION MENOR IGUAL--*/\n"
 		return simbolos.ValoresC3D{Valor: rmenorigual, EsTemporal: false, Tipo: simbolos.BOOLEAN, Label_verdadera: etiqueta_verdadera, Label_false: etiqueta_falsa}
 	} else if tipo_dominante == simbolos.TEXTO {
 		gen.Agregar_Relacional(operador_izq.Valor, "<=", operador_der.Valor, etiqueta_verdadera, etiqueta_falsa)
 		rmenorigual := "/*--INGRESANDO OPERACION MENOR IGUAL--*/\n"
-		rmenorigual += "if (" + operador_izq.Valor + " " + "<=" + " " + operador_der.Valor + ") { goto " + etiqueta_verdadera + "; }\ngoto " + etiqueta_falsa + ";"
+		rmenorigual += "if (" + operador_izq.Valor + " " + "<=" + " " + operador_der.Valor + ") goto " + etiqueta_verdadera + ";\ngoto " + etiqueta_falsa + ";"
 		rmenorigual += "\n/*--SALIENDO OPERACION MENOR IGUAL--*/\n"
 		return simbolos.ValoresC3D{Valor: rmenorigual, EsTemporal: false, Tipo: simbolos.BOOLEAN, Label_verdadera: etiqueta_verdadera, Label_false: etiqueta_falsa}
 	} else {

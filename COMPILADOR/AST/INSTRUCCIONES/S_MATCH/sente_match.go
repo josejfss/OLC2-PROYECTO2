@@ -85,7 +85,7 @@ func (mat SenteMatch) Compilar_Instruccion(ent *entorno.Entorno, gen *generador.
 					gen.Eliminar_label(eti_verdad)
 					eti_falso := gen.Crear_label()
 					gen.Eliminar_label(eti_falso)
-					gen.Agregar_Logica("if ( " + temp_pivote + " == " + comparar.Valor + " ) { goto " + eti_verdad + "; }\ngoto " + eti_falso + ";\n")
+					gen.Agregar_Logica("if ( " + temp_pivote + " == " + comparar.Valor + " ) goto " + eti_verdad + ";\ngoto " + eti_falso + ";\n")
 					gen.Agregar_label(eti_verdad)
 					if actual.L_instr_match.Len() != 0 {
 						for i := 0; i < actual.L_instr_match.Len(); i++ {
@@ -153,7 +153,7 @@ func (mat SenteMatch) Compilar_Instruccion(ent *entorno.Entorno, gen *generador.
 						gen.Eliminar_label(eti_verdad)
 						eti_falso := gen.Crear_label()
 						gen.Eliminar_label(eti_falso)
-						gen.Agregar_Logica("if ( " + temp_pivote + " == " + nuevo.Valor + " ) { goto " + eti_verdad + "; }\ngoto " + eti_falso + ";\n")
+						gen.Agregar_Logica("if ( " + temp_pivote + " == " + nuevo.Valor + " ) goto " + eti_verdad + ";\ngoto " + eti_falso + ";\n")
 						gen.Agregar_label(eti_falso)
 						etifalse = eti_falso
 						etiverdad += eti_verdad + ":\n"

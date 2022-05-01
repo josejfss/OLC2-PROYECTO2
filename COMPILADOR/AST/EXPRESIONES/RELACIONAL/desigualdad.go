@@ -108,19 +108,19 @@ func (desigualdad OpDesigualdad) Compilar_Expresion(ent *entorno.Entorno, gen *g
 	if tipo_dominante == simbolos.INTEGER {
 		gen.Agregar_Relacional(operador_izq.Valor, "!=", operador_der.Valor, etiqueta_verdadera, etiqueta_falsa)
 		rdesigual := "/*--INGRESANDO OPERACION DESIGUALDAD--*/\n"
-		rdesigual += "if (" + operador_izq.Valor + " " + "!=" + " " + operador_der.Valor + ") { goto " + etiqueta_verdadera + "; }\ngoto " + etiqueta_falsa + ";"
+		rdesigual += "if (" + operador_izq.Valor + " " + "!=" + " " + operador_der.Valor + ") goto " + etiqueta_verdadera + "; \ngoto " + etiqueta_falsa + ";"
 		rdesigual += "\n/*--SALIENDO OPERACION DESIGUALDAD--*/\n"
 		return simbolos.ValoresC3D{Valor: rdesigual, EsTemporal: false, Tipo: simbolos.BOOLEAN, Label_verdadera: etiqueta_verdadera, Label_false: etiqueta_falsa}
 	} else if tipo_dominante == simbolos.FLOAT {
 		gen.Agregar_Relacional(operador_izq.Valor, "!=", operador_der.Valor, etiqueta_verdadera, etiqueta_falsa)
 		rdesigual := "/*--INGRESANDO OPERACION DESIGUALDAD--*/\n"
-		rdesigual += "if (" + operador_izq.Valor + " " + "!=" + " " + operador_der.Valor + ") { goto " + etiqueta_verdadera + "; }\ngoto " + etiqueta_falsa + ";"
+		rdesigual += "if (" + operador_izq.Valor + " " + "!=" + " " + operador_der.Valor + ") goto " + etiqueta_verdadera + "; \ngoto " + etiqueta_falsa + ";"
 		rdesigual += "\n/*--SALIENDO OPERACION DESIGUALDAD--*/\n"
 		return simbolos.ValoresC3D{Valor: rdesigual, EsTemporal: false, Tipo: simbolos.BOOLEAN, Label_verdadera: etiqueta_verdadera, Label_false: etiqueta_falsa}
 	} else if tipo_dominante == simbolos.TEXTO {
 		gen.Agregar_Relacional(operador_izq.Valor, "!=", operador_der.Valor, etiqueta_verdadera, etiqueta_falsa)
 		rdesigual := "/*--INGRESANDO OPERACION DESIGUALDAD--*/\n"
-		rdesigual += "if (" + operador_izq.Valor + " " + "!=" + " " + operador_der.Valor + ") { goto " + etiqueta_verdadera + "; }\ngoto " + etiqueta_falsa + ";"
+		rdesigual += "if (" + operador_izq.Valor + " " + "!=" + " " + operador_der.Valor + ") goto " + etiqueta_verdadera + "; \ngoto " + etiqueta_falsa + ";"
 		rdesigual += "\n/*--SALIENDO OPERACION DESIGUALDAD--*/\n"
 		return simbolos.ValoresC3D{Valor: rdesigual, EsTemporal: false, Tipo: simbolos.BOOLEAN, Label_verdadera: etiqueta_verdadera, Label_false: etiqueta_falsa}
 	} else {

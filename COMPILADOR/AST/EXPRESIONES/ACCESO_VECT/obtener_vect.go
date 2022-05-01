@@ -52,10 +52,16 @@ func (ac AccessVect) Compilar_Expresion(ent *entorno.Entorno, gen *generador.Gen
 			gen.Agregar_Logica(temp1 + " = SP +" + strconv.Itoa(arrvect.PosicionTabla) + ";")
 			gen.Agregar_Logica(temp2 + " = STACK[int(" + temp1 + ")];")
 
+			etiqueta_error := gen.Crear_label()
+			gen.Eliminar_label(etiqueta_error)
+			gen.Agregar_Logica("if (" + posi.Valor + " > " + strconv.Itoa(arrvect.Dimensiones) + ") goto " + etiqueta_error + ";")
+
 			temp3 := gen.Crear_temporal()
 			temp4 := gen.Crear_temporal()
 			gen.Agregar_Logica(temp3 + " = " + temp2 + " + " + posi.Valor + ";")
 			gen.Agregar_Logica(temp4 + " = HEAP[int(" + temp3 + ")];")
+			gen.Agregar_Logica(etiqueta_error + ":")
+			gen.AgregarError("INDICE FUERA DE LIMITE", strconv.Itoa(ac.Linea), strconv.Itoa(ac.Columna))
 			return simbolos.ValoresC3D{Valor: temp4, EsTemporal: true, Tipo: arrvect.TipoVect, Label_verdadera: "", Label_false: ""}
 		}
 

@@ -58,8 +58,8 @@ func (removect RemoveVect) Compilar_Instruccion(ent *entorno.Entorno, gen *gener
 			gen.Agregar_Logica(conta + " = 0;")
 			gen.Agregar_Logica(etiqueta_entrada + ":")
 			gen.Agregar_Logica(temp_conca + " = HEAP[(int)" + tempo_valor + "];")
-			gen.Agregar_Logica("if ( " + conta + " == " + possi.Valor + ") { goto " + etiqueta_salida1 + "; }")
-			gen.Agregar_Logica("if ( " + temp_conca + " == -2) { goto " + etiqueta_salida + "; }")
+			gen.Agregar_Logica("if ( " + conta + " == " + possi.Valor + ") goto " + etiqueta_salida1 + ";")
+			gen.Agregar_Logica("if ( " + temp_conca + " == -2) goto " + etiqueta_salida + ";")
 
 			gen.Agregar_Logica("HEAP[(int)" + temp3 + "] = " + temp_conca + ";")
 			gen.Agregar_Logica(temp3 + " = " + temp3 + " + 1;")
@@ -79,7 +79,7 @@ func (removect RemoveVect) Compilar_Instruccion(ent *entorno.Entorno, gen *gener
 
 			gen.Agregar_Logica(etiqueta_entrada1 + ":")
 			gen.Agregar_Logica(tconca + " = HEAP[(int)" + temp3 + "];")
-			gen.Agregar_Logica("if ( " + tconca + " != 0) { goto " + etiqueta_salida2 + "; }")
+			gen.Agregar_Logica("if ( " + tconca + " != 0) goto " + etiqueta_salida2 + ";")
 			gen.Agregar_Logica("HEAP[(int)" + temp3 + "] = HP;")
 			gen.Agregar_Logica(otrotemp + " = HP;\nHP = HP + 1;")
 			gen.Agregar_Logica("HEAP[(int)" + otrotemp + "] = -1;")

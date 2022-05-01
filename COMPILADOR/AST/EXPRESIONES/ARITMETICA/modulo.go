@@ -141,7 +141,7 @@ func (modulo OpModulo) Compilar_Expresion(ent *entorno.Entorno, gen *generador.G
 	etiqueta_salida := gen.Crear_label()
 
 	if tipo_dominante == simbolos.INTEGER {
-		gen.Agregar_Logica("if (" + operador_derecha.Valor + " != 0) { goto " + etiqueta_verdad + ";}")
+		gen.Agregar_Logica("if (" + operador_derecha.Valor + " != 0) goto " + etiqueta_verdad + ";")
 		gen.AgregarErrorMate(strconv.Itoa(modulo.Linea), strconv.Itoa(modulo.Columna))
 		gen.Agregar_Logica(nuevo_temporal + " = 0;")
 		gen.Agregar_Logica("goto " + etiqueta_salida + ";")
@@ -153,7 +153,7 @@ func (modulo OpModulo) Compilar_Expresion(ent *entorno.Entorno, gen *generador.G
 		gen.Eliminar_label(etiqueta_salida)
 		return simbolos.ValoresC3D{Valor: nuevo_temporal, EsTemporal: true, Tipo: tipo_dominante, Label_verdadera: "", Label_false: ""}
 	} else if tipo_dominante == simbolos.FLOAT {
-		gen.Agregar_Logica("if (" + operador_derecha.Valor + " != 0) { goto " + etiqueta_verdad + ";}")
+		gen.Agregar_Logica("if (" + operador_derecha.Valor + " != 0) goto " + etiqueta_verdad + ";")
 		gen.AgregarErrorMate(strconv.Itoa(modulo.Linea), strconv.Itoa(modulo.Columna))
 		gen.Agregar_Logica(nuevo_temporal + " = 0;")
 		gen.Agregar_Logica("goto " + etiqueta_salida + ";")
