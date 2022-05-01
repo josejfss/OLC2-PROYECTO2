@@ -17,6 +17,7 @@ options {
     import "OLC2-PROYECTO2/COMPILADOR/AST/EXPRESIONES/INICIANDO_ARRE"
     import "OLC2-PROYECTO2/COMPILADOR/AST/EXPRESIONES/ACCESO_ARRE"
     import "OLC2-PROYECTO2/COMPILADOR/AST/EXPRESIONES/ACCESO_VECT"
+    import "OLC2-PROYECTO2/COMPILADOR/AST/EXPRESIONES/ACCESO_STRUCT"
     import "OLC2-PROYECTO2/COMPILADOR/AST/EXPRESIONES/NATIVAS_VECT"
     import "OLC2-PROYECTO2/COMPILADOR/AST/INSTRUCCIONES/IMPRESION"
     import "OLC2-PROYECTO2/COMPILADOR/AST/INSTRUCCIONES/S_CONDICIONAL"
@@ -265,8 +266,8 @@ imprimir returns[interfaces.Instruccion instr]
 
 /* ----------------------------------------------------------DECLARAR VARIABLES, VECTORES Y ARREGLOS--------------------------------------------------------- */
 declaracion returns[interfaces.Instruccion instr]
-  : TK_LET mutable TK_IDENTIFICADOR TK_IGUAL expression TK_PYC {
-    $instr = declaraciones.Ndeclarar($mutable.m, $TK_IDENTIFICADOR.text, $expression.p, $TK_IDENTIFICADOR.line, localctx.(*DeclaracionContext).Get_TK_IDENTIFICADOR().GetColumn())
+  : TK_LET mutable TK_IDENTIFICADOR TK_IGUAL noms = TK_IDENTIFICADOR TK_LI l_asigstruct TK_LD TK_PYC {
+    $instr = declaraciones.Ndeclarar($mutable.m, $TK_IDENTIFICADOR.text, $noms.text, $l_asigstruct.otralista, $TK_IDENTIFICADOR.line, localctx.(*DeclaracionContext).Get_TK_IDENTIFICADOR().GetColumn())
   }
   | TK_LET mutable TK_IDENTIFICADOR tipado TK_IGUAL expression TK_PYC {
     $instr = declaracionvar.Ndeclaracion($mutable.m, $TK_IDENTIFICADOR.text, $tipado.tip, $expression.p, $TK_IDENTIFICADOR.line, localctx.(*DeclaracionContext).Get_TK_IDENTIFICADOR().GetColumn())
@@ -369,6 +370,24 @@ tipos returns[simbolos.TipoExpresion tip]
   | TK_DIRSTRING      {$tip=simbolos.YTEXTO}
   | TK_IDENTIFICADOR  {$tip=simbolos.STRUCT}
   |                   {$tip=simbolos.NULL}
+;
+
+/* LISTA STRUCTS */
+l_asigstruct returns[*arrayList.List otralista]
+  @init {
+    $otralista =  arrayList.New()
+  }
+  : la = l_asigstruct TK_COMA asignacionstruct {
+    $la.otralista.Add($asignacionstruct.astru)
+    $otralista=$la.otralista
+  }
+  | asignacionstruct { $otralista.Add($asignacionstruct.astru) }
+;
+
+asignacionstruct returns [declaraciones.AsigStruct astru]
+  : TK_IDENTIFICADOR TK_DP expression {
+    $astru = declaraciones.Nasigstruct($TK_IDENTIFICADOR.text, $expression.p)
+  }
 ;
 
 /* ------------------------------------------------------------------FUNCIONES NATIVAS VECTORES----------------------------------------------------------- */
@@ -479,6 +498,7 @@ expression returns[interfaces.Expresion p]
     | arreglos_inicio         {$p = $arreglos_inicio.p}
     | accesso_arreglo         {$p = $accesso_arreglo.p}
     | acceso_vector           {$p = $acceso_vector.p}
+    | ingreso_struct          {$p = $ingreso_struct.p}
     | valores                 {$p = $valores.p}
 ;
 
@@ -556,6 +576,12 @@ access returns[interfaces.Expresion p]
 acceso_vector returns[interfaces.Expresion p]
   : TK_IDENTIFICADOR TK_MENOR expression TK_MAYOR {
     $p = accesovect.Naccessvect($TK_IDENTIFICADOR.text,$expression.p, $TK_IDENTIFICADOR.line, localctx.(*Acceso_vectorContext).Get_TK_IDENTIFICADOR().GetColumn())
+  }
+;
+
+ingreso_struct returns[interfaces.Expresion p]
+  : TK_IDENTIFICADOR TK_PUNTO noms = TK_IDENTIFICADOR {
+    $p = accesostruct.NaccesoStruct($TK_IDENTIFICADOR.text,$noms.text, $TK_IDENTIFICADOR.line, localctx.(*Ingreso_structContext).Get_TK_IDENTIFICADOR().GetColumn())
   }
 ;
 

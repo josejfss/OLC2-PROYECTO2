@@ -85,8 +85,8 @@ func (*TreeShapeListener) ExitStart(ctx *parser.StartContext) {
 		}
 	}
 
-	gen.Agregar_Comentario("------------------ENTRANDO FUNCION PRINCIPAL-------------------")
-	gen.Agregar_Logica("int main() {")
+	gen.Agregar_Comentario("\n\n------------------ENTRANDO FUNCION PRINCIPAL-------------------")
+	gen.Agregar_Logica("int main() {\nSP=0;\t\t//INICIANDO PUNTERO STACK\nHP=0;\t\t//INICIANDO PUNTERO HEAP\n\n")
 	for i := 0; i < lista_declas.Len(); i++ {
 		instr := lista_declas.GetValue(i).(interfaces.Instruccion)
 		instr.Compilar_Instruccion(EntGlobal, gen)
@@ -123,9 +123,9 @@ func (*TreeShapeListener) ExitStart(ctx *parser.StartContext) {
 	salida += "/*------DECLARACION STACK------*/\n"
 	salida += "double STACK[100000];\n"
 	salida += "/*------DECLARACION PUNTERO STACK------*/\n"
-	salida += "double SP=0;\n"
+	salida += "double SP;\n"
 	salida += "/*------DECLARACION PUNTERO HEAP------*/\n"
-	salida += "double HP=0;\n"
+	salida += "double HP;\n"
 	salida += "/*------DECLARACION TEMPORALES------*/\n"
 	salida += "double "
 
@@ -216,7 +216,7 @@ func main() {
 	//SE CREA EL MENU PRINCIPAL DONDE ESTARAN LAS FUNCIONES DE
 	//ABRIR ITEMS
 	//var texto string
-	menu_abrir := fyne.NewMenuItem("Abrir", func() {
+	menu_abrir := fyne.NewMenuItem("Abrir DR-Rust", func() {
 		file_Dialog := dialog.NewFileOpen(
 
 			func(r fyne.URIReadCloser, _ error) {
@@ -238,8 +238,32 @@ func main() {
 			storage.NewExtensionFileFilter([]string{".rs"}))
 		file_Dialog.Show()
 	})
+
+	menu_abrir1 := fyne.NewMenuItem("Abrir C3D", func() {
+		file_Dialog := dialog.NewFileOpen(
+
+			func(r fyne.URIReadCloser, _ error) {
+				// read files
+				data, _ := ioutil.ReadAll(r)
+
+				result := fyne.NewStaticResource("name", data)
+
+				entry := widget.NewMultiLineEntry()
+
+				entry.SetText(string(result.StaticContent))
+				//fmt.Println(string(result.StaticContent))
+				entrada.Text = string(result.StaticContent)
+				entrada.Refresh()
+				texto = string(result.StaticContent)
+
+			}, ventana)
+		file_Dialog.SetFilter(
+			storage.NewExtensionFileFilter([]string{".cpp"}))
+		file_Dialog.Show()
+	})
+
 	//MENU ABRIR
-	menu1 := fyne.NewMenu("Archivo", menu_abrir)
+	menu1 := fyne.NewMenu("Archivo", menu_abrir, menu_abrir1)
 	//EJECUTAR ITEMS
 	menu_ejecutar := fyne.NewMenuItem("Compilar", func() {
 		analizar(texto)

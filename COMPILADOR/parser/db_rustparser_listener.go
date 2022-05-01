@@ -95,6 +95,12 @@ type db_rustparserListener interface {
 	// EnterTipos is called when entering the tipos production.
 	EnterTipos(c *TiposContext)
 
+	// EnterL_asigstruct is called when entering the l_asigstruct production.
+	EnterL_asigstruct(c *L_asigstructContext)
+
+	// EnterAsignacionstruct is called when entering the asignacionstruct production.
+	EnterAsignacionstruct(c *AsignacionstructContext)
+
 	// EnterFn_vector is called when entering the fn_vector production.
 	EnterFn_vector(c *Fn_vectorContext)
 
@@ -157,6 +163,9 @@ type db_rustparserListener interface {
 
 	// EnterAcceso_vector is called when entering the acceso_vector production.
 	EnterAcceso_vector(c *Acceso_vectorContext)
+
+	// EnterIngreso_struct is called when entering the ingreso_struct production.
+	EnterIngreso_struct(c *Ingreso_structContext)
 
 	// EnterNativas_vector is called when entering the nativas_vector production.
 	EnterNativas_vector(c *Nativas_vectorContext)
@@ -269,6 +278,12 @@ type db_rustparserListener interface {
 	// ExitTipos is called when exiting the tipos production.
 	ExitTipos(c *TiposContext)
 
+	// ExitL_asigstruct is called when exiting the l_asigstruct production.
+	ExitL_asigstruct(c *L_asigstructContext)
+
+	// ExitAsignacionstruct is called when exiting the asignacionstruct production.
+	ExitAsignacionstruct(c *AsignacionstructContext)
+
 	// ExitFn_vector is called when exiting the fn_vector production.
 	ExitFn_vector(c *Fn_vectorContext)
 
@@ -331,6 +346,9 @@ type db_rustparserListener interface {
 
 	// ExitAcceso_vector is called when exiting the acceso_vector production.
 	ExitAcceso_vector(c *Acceso_vectorContext)
+
+	// ExitIngreso_struct is called when exiting the ingreso_struct production.
+	ExitIngreso_struct(c *Ingreso_structContext)
 
 	// ExitNativas_vector is called when exiting the nativas_vector production.
 	ExitNativas_vector(c *Nativas_vectorContext)

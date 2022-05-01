@@ -195,6 +195,18 @@ func (s *Basedb_rustparserListener) EnterTipos(ctx *TiposContext) {}
 // ExitTipos is called when production tipos is exited.
 func (s *Basedb_rustparserListener) ExitTipos(ctx *TiposContext) {}
 
+// EnterL_asigstruct is called when production l_asigstruct is entered.
+func (s *Basedb_rustparserListener) EnterL_asigstruct(ctx *L_asigstructContext) {}
+
+// ExitL_asigstruct is called when production l_asigstruct is exited.
+func (s *Basedb_rustparserListener) ExitL_asigstruct(ctx *L_asigstructContext) {}
+
+// EnterAsignacionstruct is called when production asignacionstruct is entered.
+func (s *Basedb_rustparserListener) EnterAsignacionstruct(ctx *AsignacionstructContext) {}
+
+// ExitAsignacionstruct is called when production asignacionstruct is exited.
+func (s *Basedb_rustparserListener) ExitAsignacionstruct(ctx *AsignacionstructContext) {}
+
 // EnterFn_vector is called when production fn_vector is entered.
 func (s *Basedb_rustparserListener) EnterFn_vector(ctx *Fn_vectorContext) {}
 
@@ -320,6 +332,12 @@ func (s *Basedb_rustparserListener) EnterAcceso_vector(ctx *Acceso_vectorContext
 
 // ExitAcceso_vector is called when production acceso_vector is exited.
 func (s *Basedb_rustparserListener) ExitAcceso_vector(ctx *Acceso_vectorContext) {}
+
+// EnterIngreso_struct is called when production ingreso_struct is entered.
+func (s *Basedb_rustparserListener) EnterIngreso_struct(ctx *Ingreso_structContext) {}
+
+// ExitIngreso_struct is called when production ingreso_struct is exited.
+func (s *Basedb_rustparserListener) ExitIngreso_struct(ctx *Ingreso_structContext) {}
 
 // EnterNativas_vector is called when production nativas_vector is entered.
 func (s *Basedb_rustparserListener) EnterNativas_vector(ctx *Nativas_vectorContext) {}

@@ -268,6 +268,23 @@ func (ent *Entorno) Guardar_Struct(nom string, stru simbolos.Simbolo_Struct) {
 	ent.Tabla_Struct[nom] = stru
 }
 
+func (ent *Entorno) Obtener_Struct(nom string) simbolos.Simbolo_Struct {
+	var tmpEnv *Entorno = ent
+
+	for {
+		if variable, ok := tmpEnv.Tabla_Struct[nom]; ok {
+			return variable
+		}
+
+		if tmpEnv.Entorno_Anterior == nil {
+			break
+		} else {
+			tmpEnv = tmpEnv.Entorno_Anterior
+		}
+	}
+	return simbolos.Simbolo_Struct{Identificador: "", L_Atributos: arraylist.New(), Linea: 0, Columna: 0}
+}
+
 /*----------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 /*----------------------------------------------------------------------------------------------------------------------------------------------------------------*/

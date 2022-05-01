@@ -123,6 +123,8 @@ func (imp Impres) Compilar_Instruccion(ent *entorno.Entorno, gen *generador.Gene
 									impr += "printf(\"%d\",(int)" + ss.Valor + ");\n"
 								} else if ss.Tipo == simbolos.FLOAT {
 									impr += "printf(\"%f\"," + ss.Valor + ");\n"
+								} else if ss.Tipo == simbolos.STRUCT {
+									impr += ss.Valor
 								} else if ss.EsTemporal {
 									temp_conca := gen.Crear_temporal()
 									etiqueta_entrada := gen.Crear_label()
