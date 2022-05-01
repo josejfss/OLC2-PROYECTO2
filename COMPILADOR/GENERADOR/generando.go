@@ -228,7 +228,7 @@ func (g *Generador_C3D) Agregar_MetodoPrint() {
 	prints += temp_heap + " = STACK[(int)" + temp_puntero + "];\n"
 	prints += etiqueta_entrada + ":\n"
 	prints += temp_conca + " = HEAP[(int)" + temp_heap + "];\n"
-	prints += "if ( " + temp_conca + " == -1) { goto " + etiqueta_salida + "; }\n"
+	prints += "if ( " + temp_conca + " == -1) goto " + etiqueta_salida + ";\n"
 	prints += "printf(\"%c\", (char)" + temp_conca + ");\n"
 	prints += temp_heap + " = " + temp_heap + " + 1;\n"
 	prints += "goto " + etiqueta_entrada + ";\n"
