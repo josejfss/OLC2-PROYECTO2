@@ -95,19 +95,6 @@ func (*TreeShapeListener) ExitStart(ctx *parser.StartContext) {
 	gen.Agregar_Logica("return 0;\n}")
 	gen.Agregar_Comentario("------------------SALIENDO FUNCION PRINCIPAL-------------------")
 
-	//fun_main.Compilar_Instruccion(entorno_global, gen)
-
-	// for i := 0; i < result.Len(); i++ {
-	// 	instract :=result.GetValue(i).(interfaces.Instruccion)
-	// }
-
-	// for i := 0; i < entorno_global.Lista_Entorno.Len(); i++ {
-	// 	act := entorno_global.ListaTodo.GetValue(i).(simbolos.SimboloTodo)
-	// 	if act.Tipo=="variable"{
-
-	// 	}
-	// }
-
 	//Escribir salida
 	f, err := os.Create("/home/iovana/go/src/OLC2-PROYECTO2/REP/salida.cpp")
 	if err != nil {
@@ -117,7 +104,6 @@ func (*TreeShapeListener) ExitStart(ctx *parser.StartContext) {
 
 	salida += "/*------ENACABEZADO------*/\n"
 	salida += "#include <stdio.h>\n"
-	salida += "#include <math.h>\n"
 	salida += "/*------DECLARACION HEAP------*/\n"
 	salida += "double HEAP[100000];\n"
 	salida += "/*------DECLARACION STACK------*/\n"
@@ -186,7 +172,7 @@ func main() {
 	//SE HACE ESTA VENTANA MASTER QUE CUANDO SE CIERRE ESTA VENTANA SE TERMINA LA EJECUCION
 	ventana.SetMaster()
 	//SE CAMBIA EL TAMAÑO DE LA VENTANA
-	ventana.Resize(fyne.NewSize(1220, 650))
+	ventana.Resize(fyne.NewSize(1790, 650))
 	//SE COLOCA QUE LA VENTANA SE ABRA EN EL CENTRO DE LA PANTALLA
 	ventana.CenterOnScreen()
 
@@ -194,11 +180,17 @@ func main() {
 	//SE CREA UN LABEL PARA MOSTRAR EL TITULO
 	lbl := widget.NewLabel("DB-RUST")
 	//SE LE COLOCA UNA NUEVA POSICION
-	lbl.Move(fyne.NewPos(570, 5))
+	lbl.Move(fyne.NewPos(870, 5))
+
+	//SE CREA EL TEXTAREA PARA LA CONSOLA
+	consola1 := widget.NewMultiLineEntry()
+	consola1.SetPlaceHolder("Optimizacion 3 direcciones...")
+	consola1.Resize(fyne.NewSize(550, 550))
+	consola1.Move(fyne.NewPos(1200, 45))
 
 	//SE CREA EL TEXTAREA PARA LA CONSOLA
 	consola := widget.NewMultiLineEntry()
-	consola.SetPlaceHolder("Resultados...")
+	consola.SetPlaceHolder("Codigo 3 direcciones...")
 	consola.Resize(fyne.NewSize(550, 550))
 	consola.Move(fyne.NewPos(620, 45))
 
@@ -239,31 +231,8 @@ func main() {
 		file_Dialog.Show()
 	})
 
-	menu_abrir1 := fyne.NewMenuItem("Abrir C3D", func() {
-		file_Dialog := dialog.NewFileOpen(
-
-			func(r fyne.URIReadCloser, _ error) {
-				// read files
-				data, _ := ioutil.ReadAll(r)
-
-				result := fyne.NewStaticResource("name", data)
-
-				entry := widget.NewMultiLineEntry()
-
-				entry.SetText(string(result.StaticContent))
-				//fmt.Println(string(result.StaticContent))
-				entrada.Text = string(result.StaticContent)
-				entrada.Refresh()
-				texto = string(result.StaticContent)
-
-			}, ventana)
-		file_Dialog.SetFilter(
-			storage.NewExtensionFileFilter([]string{".cpp"}))
-		file_Dialog.Show()
-	})
-
 	//MENU ABRIR
-	menu1 := fyne.NewMenu("Archivo", menu_abrir, menu_abrir1)
+	menu1 := fyne.NewMenu("Archivo", menu_abrir)
 	//EJECUTAR ITEMS
 	menu_ejecutar := fyne.NewMenuItem("Compilar", func() {
 		analizar(texto)
@@ -273,6 +242,16 @@ func main() {
 	//-------------------------------------------------------------------------------------- -----------------------------------------------------
 	//MENU EJECUTAR
 	menu2 := fyne.NewMenu("Compilar", menu_ejecutar)
+
+	menu_optimizar := fyne.NewMenuItem("Optimizar", func() {
+		analizar(texto)
+		consola.Text = salida
+		consola.Refresh()
+	})
+	//-------------------------------------------------------------------------------------- -----------------------------------------------------
+	//MENU EJECUTAR
+	menu5 := fyne.NewMenu("Optimizar", menu_optimizar)
+
 	//REPORTES ITEMS
 	menu_reporte := fyne.NewMenuItem("Tabla de Simbolos", func() {
 		//LLAMADA DEL METODO PARA LA CREACION DEL REPORTE
@@ -333,13 +312,13 @@ func main() {
 	//MENU ACERCA DE
 	menu4 := fyne.NewMenu("Informacion", menu_acerca)
 	//SE CREA EL MENU COMPLETO AGREGANDO TODOS LOS SUBMENUS
-	todo_menu := fyne.NewMainMenu(menu1, menu2, menu3, menu4)
+	todo_menu := fyne.NewMainMenu(menu1, menu2, menu5, menu3, menu4)
 	//SE AGREGA EL MENU A LA VENTANA
 	ventana.SetMainMenu(todo_menu)
 	//--------------------------------------------------------------------------------------------------------------------------------------------
 
 	//SE AGREGAN TODOS LOS COMPONENTES
-	contendo_principal := container.NewWithoutLayout(lbl, entrada, consola)
+	contendo_principal := container.NewWithoutLayout(lbl, entrada, consola, consola1)
 
 	//SE AGREGA EL COMPONENTE A LA VENTANA
 	ventana.SetContent(contendo_principal)
