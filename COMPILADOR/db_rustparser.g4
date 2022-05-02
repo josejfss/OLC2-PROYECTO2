@@ -411,6 +411,13 @@ asignacion returns[interfaces.Instruccion instr]
     }
 ;
 
+/* ------------------------------------------------------------------ASIGNACION DE STRUCTS---------------------------------------------------------------- */
+asignar_struct_mutable returns[interfaces.Instruccion instr]
+  : TK_IDENTIFICADOR TK_PUNTO nom= TK_IDENTIFICADOR TK_IGUAL expression TK_PYC {
+    $instr = asignaciones.Nasigstruct($TK_IDENTIFICADOR.text, $nom.text, $expression.p, $TK_IDENTIFICADOR.line, localctx.(*Asignar_struct_mutableContext).Get_TK_IDENTIFICADOR().GetColumn()) 
+  }
+;
+
 /* ------------------------------------------------------------------LLAMADA DE FUNCIONES---------------------------------------------------------------------- */
 llamada returns[interfaces.Instruccion instr]
   : TK_IDENTIFICADOR TK_PI list_expres TK_PD TK_PYC {
@@ -471,16 +478,17 @@ l_bloque returns[*arrayList.List lbloque]
 
 /* BLOQUE INSTRUCCIONES */
 bloque returns[interfaces.Instruccion instr]
-  : imprimir           {$instr = $imprimir.instr}
-  | sent_if            {$instr = $sent_if.instr}
-  | sent_match         {$instr = $sent_match.instr}
-  | loop               {$instr = $loop.instr}
-  | c_while            {$instr = $c_while.instr}
-  | declaracion        {$instr = $declaracion.instr}
-  | asignacion         {$instr = $asignacion.instr}
-  | transferencia      {$instr = $transferencia.instr}
-  | llamada            {$instr = $llamada.instr}
-  | fn_vector          {$instr = $fn_vector.instr}
+  : imprimir                {$instr = $imprimir.instr}
+  | sent_if                 {$instr = $sent_if.instr}
+  | sent_match              {$instr = $sent_match.instr}
+  | loop                    {$instr = $loop.instr}
+  | c_while                 {$instr = $c_while.instr}
+  | declaracion             {$instr = $declaracion.instr}
+  | asignacion              {$instr = $asignacion.instr}
+  | asignar_struct_mutable  {$instr = $asignar_struct_mutable.instr}
+  | transferencia           {$instr = $transferencia.instr}
+  | llamada                 {$instr = $llamada.instr}
+  | fn_vector               {$instr = $fn_vector.instr}
 ;
 
 /* EXPRESIONES */

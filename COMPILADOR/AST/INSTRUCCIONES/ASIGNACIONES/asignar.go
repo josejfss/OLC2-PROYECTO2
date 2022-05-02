@@ -49,27 +49,29 @@ func (as Asignacion) Compilar_Instruccion(ent *entorno.Entorno, gen *generador.G
 	gen.Agregar_Comentario("COMENZANDO ASIGNACION")
 	if ent.Existe_Variable(as.Identificador) {
 		simbolovar := ent.Obtener_Variable(as.Identificador)
-		val := as.Valor.Compilar_Expresion(ent, gen)
-		if simbolovar.TipoVariable == val.Tipo {
-			if val.Tipo == simbolos.YTEXTO || val.Tipo == simbolos.TEXTO {
-				posi := simbolovar.PosicionTabla
-				temp1 := gen.Crear_temporal()
-				temp2 := gen.Crear_temporal()
-				impr := temp1 + " = HP;\n"
-				for _, txt := range val.Valor {
-					f := int(txt)
-					impr += "HEAP[(int)HP] = " + fmt.Sprintf("%v", f) + "; //LETRA-> " + string(txt) + "\n"
-					impr += "HP = HP + 1;\n"
+		if simbolovar.Mutable {
+			val := as.Valor.Compilar_Expresion(ent, gen)
+			if simbolovar.TipoVariable == val.Tipo {
+				if val.Tipo == simbolos.YTEXTO || val.Tipo == simbolos.TEXTO {
+					posi := simbolovar.PosicionTabla
+					temp1 := gen.Crear_temporal()
+					temp2 := gen.Crear_temporal()
+					impr := temp1 + " = HP;\n"
+					for _, txt := range val.Valor {
+						f := int(txt)
+						impr += "HEAP[(int)HP] = " + fmt.Sprintf("%v", f) + "; //LETRA-> " + string(txt) + "\n"
+						impr += "HP = HP + 1;\n"
+					}
+					impr += "HEAP[(int)HP] = -1;\nHP = HP + 1;\n"
+					gen.Agregar_Logica(impr)
+					gen.Agregar_Logica(temp2 + " = SP + " + strconv.Itoa(posi) + ";\t\t// POSICION: " + as.Identificador)
+					gen.Agregar_Stack(temp2, temp1)
+				} else {
+					posi := simbolovar.PosicionTabla
+					temp := gen.Crear_temporal()
+					gen.Agregar_Logica(temp + "= SP + " + strconv.Itoa(posi) + ";\t\t// POSICION: " + as.Identificador)
+					gen.Agregar_Stack(temp, val.Valor)
 				}
-				impr += "HEAP[(int)HP] = -1;\nHP = HP + 1;\n"
-				gen.Agregar_Logica(impr)
-				gen.Agregar_Logica(temp2 + " = SP + " + strconv.Itoa(posi) + ";\t\t// POSICION: " + as.Identificador)
-				gen.Agregar_Stack(temp2, temp1)
-			} else {
-				posi := simbolovar.PosicionTabla
-				temp := gen.Crear_temporal()
-				gen.Agregar_Logica(temp + "= SP + " + strconv.Itoa(posi) + ";\t\t// POSICION: " + as.Identificador)
-				gen.Agregar_Stack(temp, val.Valor)
 			}
 		}
 	}

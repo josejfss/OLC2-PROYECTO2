@@ -38,7 +38,7 @@ func (llama Llamada) Compilar_Instruccion(ent *entorno.Entorno, gen *generador.G
 			actual := simbfunc.L_Para.GetValue(i).(parametros.Param)
 			val := llama.L_Definiciones.GetValue(i).(interfaces.Expresion).Compilar_Expresion(ent, gen)
 			gen.Agregar_Logica(temp1 + " = " + temppos + " + " + strconv.Itoa(i) + ";\t //Parametro - " + actual.Identificador)
-			gen.Agregar_Logica("STACK[int(" + temp1 + ")] = " + val.Valor + ";")
+			gen.Agregar_Logica("STACK[(int)" + temp1 + "] = " + val.Valor + ";")
 
 		}
 	}

@@ -219,6 +219,12 @@ func (s *Basedb_rustparserListener) EnterAsignacion(ctx *AsignacionContext) {}
 // ExitAsignacion is called when production asignacion is exited.
 func (s *Basedb_rustparserListener) ExitAsignacion(ctx *AsignacionContext) {}
 
+// EnterAsignar_struct_mutable is called when production asignar_struct_mutable is entered.
+func (s *Basedb_rustparserListener) EnterAsignar_struct_mutable(ctx *Asignar_struct_mutableContext) {}
+
+// ExitAsignar_struct_mutable is called when production asignar_struct_mutable is exited.
+func (s *Basedb_rustparserListener) ExitAsignar_struct_mutable(ctx *Asignar_struct_mutableContext) {}
+
 // EnterLlamada is called when production llamada is entered.
 func (s *Basedb_rustparserListener) EnterLlamada(ctx *LlamadaContext) {}
 

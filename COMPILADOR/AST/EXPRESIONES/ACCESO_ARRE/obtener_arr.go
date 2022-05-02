@@ -159,21 +159,25 @@ func (ac AccessArre) Compilar_Expresion(ent *entorno.Entorno, gen *generador.Gen
 
 				etiqueta_error := gen.Crear_label()
 				gen.Eliminar_label(etiqueta_error)
+				etiqueta_salida := gen.Crear_label()
+				gen.Eliminar_label(etiqueta_salida)
 				gen.Agregar_Logica("if (" + temp4 + " > " + strconv.Itoa(arrvect.Dimensiones) + ") goto " + etiqueta_error + ";")
 
 				temp5 := gen.Crear_temporal()
 				temp6 := gen.Crear_temporal()
 				gen.Agregar_Logica(temp5 + " = SP +" + strconv.Itoa(arrvect.PosicionTabla) + ";")
-				gen.Agregar_Logica(temp6 + " = STACK[int(" + temp5 + ")];")
+				gen.Agregar_Logica(temp6 + " = STACK[(int)" + temp5 + "];")
 
 				//MOVIENDOSE A LA POSICION EN EL HEAP
 				temp7 := gen.Crear_temporal()
 				gen.Agregar_Logica(temp7 + " = " + temp6 + " + " + temp4 + ";")
 
 				temp8 := gen.Crear_temporal()
-				gen.Agregar_Logica(temp8 + " = HEAP[int(" + temp7 + ")];")
+				gen.Agregar_Logica(temp8 + " = HEAP[(int)" + temp7 + "];")
+				gen.Agregar_Logica("goto " + etiqueta_salida + ";")
 				gen.Agregar_Logica(etiqueta_error + ":")
 				gen.AgregarError("INDICE FUERA DE LIMITE", strconv.Itoa(ac.Linea), strconv.Itoa(ac.Columna))
+				gen.Agregar_Logica(etiqueta_salida + ":")
 				return simbolos.ValoresC3D{Valor: temp8, EsTemporal: true, Tipo: arrvect.TipoVect, Label_verdadera: "", Label_false: ""}
 
 			} else if arrvect.DimensionesLista.Len() == 2 {
@@ -191,19 +195,23 @@ func (ac AccessArre) Compilar_Expresion(ent *entorno.Entorno, gen *generador.Gen
 
 				etiqueta_error := gen.Crear_label()
 				gen.Eliminar_label(etiqueta_error)
+				etiqueta_salida := gen.Crear_label()
+				gen.Eliminar_label(etiqueta_salida)
 				gen.Agregar_Logica("if (" + temp2 + " > " + strconv.Itoa(arrvect.Dimensiones) + ") goto " + etiqueta_error + ";")
 
 				temp3 := gen.Crear_temporal()
 				temp4 := gen.Crear_temporal()
 				gen.Agregar_Logica(temp3 + " = SP + " + strconv.Itoa(arrvect.PosicionTabla) + ";")
-				gen.Agregar_Logica(temp4 + " = STACK[int(" + temp3 + ")];")
+				gen.Agregar_Logica(temp4 + " = STACK[(int)" + temp3 + "];")
 
 				temp5 := gen.Crear_temporal()
 				temp6 := gen.Crear_temporal()
 				gen.Agregar_Logica(temp5 + " = " + temp4 + " + " + temp2 + ";")
-				gen.Agregar_Logica(temp6 + " = HEAP[int(" + temp5 + ")];")
+				gen.Agregar_Logica(temp6 + " = HEAP[(int)" + temp5 + "];")
+				gen.Agregar_Logica("goto " + etiqueta_salida + ";")
 				gen.Agregar_Logica(etiqueta_error + ":")
 				gen.AgregarError("INDICE FUERA DE LIMITE", strconv.Itoa(ac.Linea), strconv.Itoa(ac.Columna))
+				gen.Agregar_Logica(etiqueta_salida + ":")
 				return simbolos.ValoresC3D{Valor: temp6, EsTemporal: true, Tipo: arrvect.TipoVect, Label_verdadera: "", Label_false: ""}
 
 			} else if arrvect.DimensionesLista.Len() == 1 {
@@ -211,19 +219,23 @@ func (ac AccessArre) Compilar_Expresion(ent *entorno.Entorno, gen *generador.Gen
 				temp1 := gen.Crear_temporal()
 				temp2 := gen.Crear_temporal()
 				gen.Agregar_Logica(temp1 + " = SP +" + strconv.Itoa(arrvect.PosicionTabla) + ";")
-				gen.Agregar_Logica(temp2 + " = STACK[int(" + temp1 + ")];")
+				gen.Agregar_Logica(temp2 + " = STACK[(int)" + temp1 + "];")
 
 				temp3 := gen.Crear_temporal()
 				temp4 := gen.Crear_temporal()
 
 				etiqueta_error := gen.Crear_label()
 				gen.Eliminar_label(etiqueta_error)
+				etiqueta_salida := gen.Crear_label()
+				gen.Eliminar_label(etiqueta_salida)
 				gen.Agregar_Logica("if (" + posi.Valor + " > " + strconv.Itoa(arrvect.Dimensiones) + ") goto " + etiqueta_error + ";")
 
 				gen.Agregar_Logica(temp3 + " = " + temp2 + " + " + posi.Valor + ";")
-				gen.Agregar_Logica(temp4 + " = HEAP[int(" + temp3 + ")];")
+				gen.Agregar_Logica(temp4 + " = HEAP[(int)" + temp3 + "];")
+				gen.Agregar_Logica("goto " + etiqueta_salida + ";")
 				gen.Agregar_Logica(etiqueta_error + ":")
 				gen.AgregarError("INDICE FUERA DE LIMITE", strconv.Itoa(ac.Linea), strconv.Itoa(ac.Columna))
+				gen.Agregar_Logica(etiqueta_salida + ":")
 				return simbolos.ValoresC3D{Valor: temp4, EsTemporal: true, Tipo: arrvect.TipoVect, Label_verdadera: "", Label_false: ""}
 			}
 		} else {

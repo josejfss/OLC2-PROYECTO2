@@ -50,18 +50,22 @@ func (ac AccessVect) Compilar_Expresion(ent *entorno.Entorno, gen *generador.Gen
 			temp1 := gen.Crear_temporal()
 			temp2 := gen.Crear_temporal()
 			gen.Agregar_Logica(temp1 + " = SP +" + strconv.Itoa(arrvect.PosicionTabla) + ";")
-			gen.Agregar_Logica(temp2 + " = STACK[int(" + temp1 + ")];")
+			gen.Agregar_Logica(temp2 + " = STACK[(int)" + temp1 + "];")
 
 			etiqueta_error := gen.Crear_label()
 			gen.Eliminar_label(etiqueta_error)
+			etiqueta_salida := gen.Crear_label()
+			gen.Eliminar_label(etiqueta_salida)
 			gen.Agregar_Logica("if (" + posi.Valor + " > " + strconv.Itoa(arrvect.Dimensiones) + ") goto " + etiqueta_error + ";")
 
 			temp3 := gen.Crear_temporal()
 			temp4 := gen.Crear_temporal()
 			gen.Agregar_Logica(temp3 + " = " + temp2 + " + " + posi.Valor + ";")
-			gen.Agregar_Logica(temp4 + " = HEAP[int(" + temp3 + ")];")
+			gen.Agregar_Logica(temp4 + " = HEAP[(int)" + temp3 + "];")
+			gen.Agregar_Logica("goto " + etiqueta_salida + ";")
 			gen.Agregar_Logica(etiqueta_error + ":")
 			gen.AgregarError("INDICE FUERA DE LIMITE", strconv.Itoa(ac.Linea), strconv.Itoa(ac.Columna))
+			gen.Agregar_Logica(etiqueta_salida + ":")
 			return simbolos.ValoresC3D{Valor: temp4, EsTemporal: true, Tipo: arrvect.TipoVect, Label_verdadera: "", Label_false: ""}
 		}
 

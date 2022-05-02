@@ -175,14 +175,14 @@ func (g *Generador_C3D) AgregarErrorMate(lin string, col string) {
 	errors += "printf(\"%c\", 78);	//LETRA N\n"
 	errors += "printf(\"%c\", 46);	//PUNTO\n"
 	errors += "printf(\"%c\", 32);	//ESPACIO\n"
-	errors += "printf(\"%o\", int(" + lin + "));	//NUM\n"
+	errors += "printf(\"%o\", (int)" + lin + ");	//NUM\n"
 	errors += "printf(\"%c\", 32);	//ESPACIO\n"
 	errors += "printf(\"%c\", 67);	//LETRA C\n"
 	errors += "printf(\"%c\", 79);	//LETRA O\n"
 	errors += "printf(\"%c\", 76);	//LETRA L\n"
 	errors += "printf(\"%c\", 46);	//PUNTO\n"
 	errors += "printf(\"%c\", 32);	//ESPACIO\n"
-	errors += "printf(\"%d\", int(" + col + "));	//NUM\n"
+	errors += "printf(\"%d\", (int)" + col + ");	//NUM\n"
 	errors += "printf(\"%c\", 10);	//SALTO LINEA\n"
 	g.Codigo.Add(errors)
 }
@@ -200,14 +200,14 @@ func (g *Generador_C3D) AgregarError(mensaje string, lin string, col string) {
 		f := int(txt)
 		errores += "printf(\"%c\", " + fmt.Sprintf("%v", f) + "); //LETRA-> " + string(txt) + "\n"
 	}
-	errores += "printf(\"%o\", int(" + lin + "));	//NUM\n"
+	errores += "printf(\"%o\", (int)" + lin + ");	//NUM\n"
 	errores += "printf(\"%c\", 46);	//PUNTO\n"
 	errores += "printf(\"%c\", 32);	//ESPACIO\n"
 	for _, txt := range encolum {
 		f := int(txt)
 		errores += "printf(\"%c\", " + fmt.Sprintf("%v", f) + "); //LETRA-> " + string(txt) + "\n"
 	}
-	errores += "printf(\"%d\", int(" + col + "));	//NUM\n"
+	errores += "printf(\"%d\", (int)" + col + ");	//NUM\n"
 	errores += "printf(\"%c\", 46);	//PUNTO\n"
 	errores += "printf(\"%c\", 10);	//SALTO LINEA\n"
 	g.Codigo.Add(errores)

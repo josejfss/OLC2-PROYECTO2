@@ -107,6 +107,9 @@ type db_rustparserListener interface {
 	// EnterAsignacion is called when entering the asignacion production.
 	EnterAsignacion(c *AsignacionContext)
 
+	// EnterAsignar_struct_mutable is called when entering the asignar_struct_mutable production.
+	EnterAsignar_struct_mutable(c *Asignar_struct_mutableContext)
+
 	// EnterLlamada is called when entering the llamada production.
 	EnterLlamada(c *LlamadaContext)
 
@@ -289,6 +292,9 @@ type db_rustparserListener interface {
 
 	// ExitAsignacion is called when exiting the asignacion production.
 	ExitAsignacion(c *AsignacionContext)
+
+	// ExitAsignar_struct_mutable is called when exiting the asignar_struct_mutable production.
+	ExitAsignar_struct_mutable(c *Asignar_struct_mutableContext)
 
 	// ExitLlamada is called when exiting the llamada production.
 	ExitLlamada(c *LlamadaContext)
