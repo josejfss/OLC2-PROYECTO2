@@ -123,7 +123,6 @@ func (pot Potencia) Compilar_Expresion(ent *entorno.Entorno, gen *generador.Gene
 
 	//SE VALIDA EL TIPO DE LA POTENCIA
 	var tipo_potencia simbolos.TipoExpresion
-	nuevo_temporal := gen.Crear_temporal()
 	//SE VALIDA QUE TIPO DE POTENCIA ES SI ENTERA O DECIMAL
 	switch pot.Tipo {
 	case "i64":
@@ -132,8 +131,21 @@ func (pot Potencia) Compilar_Expresion(ent *entorno.Entorno, gen *generador.Gene
 			tipo_potencia = potencia_dominante[operador_izq.Tipo][operador_der.Tipo]
 			//SE VERIFICA QUE SEA ENTERA
 			if tipo_potencia == simbolos.INTEGER {
-				gen.Agregar_Logica(nuevo_temporal + " = pow(" + operador_izq.Valor + ", " + operador_der.Valor + "); \t\t//OPERACION POTENCIA")
-				return simbolos.ValoresC3D{Valor: nuevo_temporal, EsTemporal: true, Tipo: simbolos.FLOAT, Label_verdadera: "", Label_false: ""}
+				etiqueta_entrada := gen.Crear_label()
+				gen.Eliminar_label(etiqueta_entrada)
+				etiqueta_salida := gen.Crear_label()
+				gen.Eliminar_label(etiqueta_salida)
+				temp1 := gen.Crear_temporal()
+				temp2 := gen.Crear_temporal()
+				gen.Agregar_Logica(temp1 + " = " + operador_izq.Valor + ";")
+				gen.Agregar_Logica(temp2 + " = 1;")
+				gen.Agregar_Logica(etiqueta_entrada + ":")
+				gen.Agregar_Logica("if (" + temp2 + " == " + operador_der.Valor + ") goto " + etiqueta_salida + ";")
+				gen.Agregar_Logica(temp1 + " = " + temp1 + " * " + operador_izq.Valor + ";")
+				gen.Agregar_Logica(temp2 + " = " + temp2 + " + 1;")
+				gen.Agregar_Logica("goto " + etiqueta_entrada + ";")
+				gen.Agregar_Logica(etiqueta_salida + ":")
+				return simbolos.ValoresC3D{Valor: temp1, EsTemporal: true, Tipo: simbolos.INTEGER, Label_verdadera: "", Label_false: ""}
 			} else {
 				//ERROR
 				gen.AgregarError("ERROR-TIPOS--POTENCIA", strconv.Itoa(pot.Linea), strconv.Itoa(pot.Columna))
@@ -145,8 +157,21 @@ func (pot Potencia) Compilar_Expresion(ent *entorno.Entorno, gen *generador.Gene
 			tipo_potencia = potencia_dominante[operador_izq.Tipo][operador_der.Tipo]
 			//SE VERIFICA QUE SEA DECIMAL
 			if tipo_potencia == simbolos.FLOAT {
-				gen.Agregar_Logica(nuevo_temporal + " = pow(" + operador_izq.Valor + ", " + operador_der.Valor + "); \t\t//OPERACION POTENCIA")
-				return simbolos.ValoresC3D{Valor: nuevo_temporal, EsTemporal: true, Tipo: tipo_potencia, Label_verdadera: "", Label_false: ""}
+				etiqueta_entrada := gen.Crear_label()
+				gen.Eliminar_label(etiqueta_entrada)
+				etiqueta_salida := gen.Crear_label()
+				gen.Eliminar_label(etiqueta_salida)
+				temp1 := gen.Crear_temporal()
+				temp2 := gen.Crear_temporal()
+				gen.Agregar_Logica(temp1 + " = " + operador_izq.Valor + ";")
+				gen.Agregar_Logica(temp2 + " = 1;")
+				gen.Agregar_Logica(etiqueta_entrada + ":")
+				gen.Agregar_Logica("if (" + temp2 + " == " + operador_der.Valor + ") goto " + etiqueta_salida + ";")
+				gen.Agregar_Logica(temp1 + " = " + temp1 + " * " + operador_izq.Valor + ";")
+				gen.Agregar_Logica(temp2 + " = " + temp2 + " + 1;")
+				gen.Agregar_Logica("goto " + etiqueta_entrada + ";")
+				gen.Agregar_Logica(etiqueta_salida + ":")
+				return simbolos.ValoresC3D{Valor: temp1, EsTemporal: true, Tipo: simbolos.FLOAT, Label_verdadera: "", Label_false: ""}
 			} else {
 				//ERROR
 				gen.AgregarError("ERROR-TIPOS--POTENCIA", strconv.Itoa(pot.Linea), strconv.Itoa(pot.Columna))

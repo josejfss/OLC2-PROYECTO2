@@ -46,10 +46,19 @@ func (abs Absoluto) Compilar_Expresion(ent *entorno.Entorno, gen *generador.Gene
 	resultado := abs.Val.Compilar_Expresion(ent, gen)
 	nuevo_temporal := gen.Crear_temporal()
 	if resultado.Tipo == simbolos.INTEGER {
-		gen.Agregar_Logica(nuevo_temporal + " = fabs(" + resultado.Valor + "); \t\t//FUN. NATIVA ABSOLUTO")
-		return simbolos.ValoresC3D{Valor: nuevo_temporal, EsTemporal: true, Tipo: simbolos.FLOAT, Label_verdadera: "", Label_false: ""}
+		etiqueta_salida := gen.Crear_label()
+		gen.Eliminar_label(etiqueta_salida)
+		gen.Agregar_Logica("if (" + resultado.Valor + " > 0 ) goto " + etiqueta_salida + ";")
+		gen.Agregar_Logica(nuevo_temporal + " = " + resultado.Valor + " * -1;")
+		gen.Agregar_Logica(etiqueta_salida + ":")
+		gen.Agregar_Logica(nuevo_temporal + " = " + resultado.Valor + ";")
+		return simbolos.ValoresC3D{Valor: nuevo_temporal, EsTemporal: true, Tipo: simbolos.INTEGER, Label_verdadera: "", Label_false: ""}
 	} else if resultado.Tipo == simbolos.FLOAT {
-		gen.Agregar_Logica(nuevo_temporal + " = fabs(" + resultado.Valor + "); \t\t//FUN. NATIVA ABSOLUTO")
+		etiqueta_salida := gen.Crear_label()
+		gen.Eliminar_label(etiqueta_salida)
+		gen.Agregar_Logica("if (" + resultado.Valor + " > 0 ) goto " + etiqueta_salida + ";")
+		gen.Agregar_Logica(nuevo_temporal + " = " + resultado.Valor + " * -1;")
+		gen.Agregar_Logica(etiqueta_salida + ":")
 		return simbolos.ValoresC3D{Valor: nuevo_temporal, EsTemporal: true, Tipo: simbolos.FLOAT, Label_verdadera: "", Label_false: ""}
 	} else {
 		gen.AgregarError("ERROR-TIPOS--ABSOLUTO", strconv.Itoa(abs.Linea), strconv.Itoa(abs.Columna))
