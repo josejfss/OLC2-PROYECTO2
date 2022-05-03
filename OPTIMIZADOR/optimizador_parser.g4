@@ -6,6 +6,7 @@ options {
 
 @header {
     import "OLC2-PROYECTO2/OPTIMIZADOR/INTERFAZ"
+    import "OLC2-PROYECTO2/OPTIMIZADOR/OBJETO"
     import "OLC2-PROYECTO2/OPTIMIZADOR/AST/EXPRESION/OPERACION/ARITMETICA"
     import "OLC2-PROYECTO2/OPTIMIZADOR/AST/EXPRESION/OPERACION/RELACIONAL"
     import "OLC2-PROYECTO2/OPTIMIZADOR/AST/EXPRESION/PRIMITIVOS"
@@ -122,10 +123,10 @@ declaracion returns[interfaz.Instruccion instr]
     $instr = declarar.Ndeclaheap($pos.p, $exp.p)
   }
   | TK_PUNSTACK TK_IGUAL expression TK_PYC {
-    $instr = declarar.Ndeclaracion($TK_PUNSTACK.text, $expression.p)
+    $instr = declarar.Ndeclapstack($TK_PUNSTACK.text, $expression.p)
   }
   | TK_PUNHEAP TK_IGUAL expression TK_PYC {
-    $instr = declarar.Ndeclaracion($TK_PUNHEAP.text, $expression.p)
+    $instr = declarar.Ndeclapheap($TK_PUNHEAP.text, $expression.p)
   }
 ;
 
@@ -235,24 +236,24 @@ expre_aritmetica returns[interfaz.Expresion p]
 /* DATO PRIMITIVO */
 datos returns[interfaz.Expresion p]
   : TK_ENTERO {
-      $p = primitivos.NuevoPrimitivo ($TK_ENTERO.text)
+      $p = primitivos.NuevoPrimitivo ($TK_ENTERO.text,objeto.INTEGER)
     }
   | TK_FLOAT {
-      $p = primitivos.NuevoPrimitivo ($TK_FLOAT.text)
+      $p = primitivos.NuevoPrimitivo ($TK_FLOAT.text,objeto.FLOAT)
     }
   | TK_CADENA { 
-      $p = primitivos.NuevoPrimitivo($TK_CADENA.text)
+      $p = primitivos.NuevoPrimitivo($TK_CADENA.text,objeto.NULL)
     }
   | TK_IDENTIFICADOR {
-      $p = primitivos.NuevoPrimitivo($TK_IDENTIFICADOR.text)
+      $p = primitivos.NuevoPrimitivo($TK_IDENTIFICADOR.text,objeto.NULL)
     }
   | TK_TEMPORAL {
-      $p = primitivos.NuevoPrimitivo($TK_TEMPORAL.text)
+      $p = primitivos.NuevoPrimitivo($TK_TEMPORAL.text,objeto.TEMPORAL)
     }
   | TK_PUNSTACK {
-      $p = primitivos.NuevoPrimitivo($TK_PUNSTACK.text)
+      $p = primitivos.NuevoPrimitivo($TK_PUNSTACK.text,objeto.NULL)
     }
   | TK_PUNHEAP {
-      $p = primitivos.NuevoPrimitivo($TK_PUNHEAP.text)
+      $p = primitivos.NuevoPrimitivo($TK_PUNHEAP.text,objeto.NULL)
     }
 ;

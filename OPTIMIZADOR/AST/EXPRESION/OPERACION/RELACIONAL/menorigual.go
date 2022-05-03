@@ -19,5 +19,9 @@ func (menorigual OperacionMenorIgual) Optimizar_Expresion(block *objeto.Bloque) 
 	operadorizq := menorigual.OpIzquierda.Optimizar_Expresion(block)
 	operadorder := menorigual.OperadorDerecha.Optimizar_Expresion(block)
 
-	return objeto.ObjetoBloque{Operacion: true, Opiz: operadorizq.Valor, Opde: operadorder.Valor, Valor: operadorizq.Valor + " <= " + operadorder.Valor}
+	return objeto.ObjetoBloque{Operacion: true,
+		Opiz:  operadorizq.Valor,
+		Opde:  operadorder.Valor,
+		Ope:   "<=",
+		Valor: operadorizq.Valor + " <= " + operadorder.Valor}
 }

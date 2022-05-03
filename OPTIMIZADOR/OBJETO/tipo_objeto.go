@@ -9,4 +9,5 @@ const (
 	ETIQUETA
 	PUNSTACK
 	PUNHEAP
+	NULL
 )

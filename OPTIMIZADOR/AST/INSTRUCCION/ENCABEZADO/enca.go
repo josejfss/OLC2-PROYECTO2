@@ -30,6 +30,7 @@ func Nenca(lib string, dheap string, dstack string, pheap string, pstack string,
 
 func (enc Enca) Optimizar_Instruccion(block *objeto.Bloque) interface{} {
 	block.ListaTemporales = enc.L_Temporales.Clone()
+	block.Encabezado = enc.Libreria + "\n" + enc.DeclaHeap + "\n" + enc.DeclaStack + "\n" + enc.PuntHeap + "\n" + enc.PuntStack
 	for i := 0; i < enc.L_Funciones.Len(); i++ {
 		act := enc.L_Funciones.GetValue(i).(interfaz.Instruccion)
 		act.Optimizar_Instruccion(block)

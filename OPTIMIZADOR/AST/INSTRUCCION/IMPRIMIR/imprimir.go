@@ -19,9 +19,16 @@ func Nimprimir(cad string, cas string, exp interfaz.Expresion) Imprimir {
 
 func (print Imprimir) Optimizar_Instruccion(block *objeto.Bloque) interface{} {
 	exp := print.Expr.Optimizar_Expresion(block)
-	prints := objeto.ObjetoBloque{Operacion: false, Opiz: exp.Opiz, Opde: exp.Opde, Valor: "printf(" + print.Cadena + ", " + print.Casteo + exp.Valor + ");"}
+	prints := objeto.ObjetoBloque{Operacion: true,
+		Temporal: print.Cadena,
+		Opiz:     exp.Valor,
+		Opde:     print.Casteo,
+		Valor:    "printf(" + print.Cadena + ", " + print.Casteo + exp.Valor + ");",
+		Tipo:     3}
 	nprint := "print" + strconv.Itoa(objeto.ContadorPrint)
 	objeto.ContadorPrint = objeto.ContadorPrint + 1
 	block.Guardar_Declaracion(nprint, prints)
-	return 0
+	block.Guardar_Declaracion1(nprint, prints)
+	block.ListaTemporales.Add(nprint)
+	return nprint
 }

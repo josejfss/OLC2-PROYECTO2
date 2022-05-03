@@ -18,9 +18,17 @@ func Nsenteif(con interfaz.Expresion, eti string) SenteIf {
 
 func (sif SenteIf) Optimizar_Instruccion(block *objeto.Bloque) interface{} {
 	conds := sif.Condicion.Optimizar_Expresion(block)
-	simbif := objeto.ObjetoBloque{Operacion: false, Opiz: conds.Opiz, Opde: conds.Opde, Valor: "if (" + conds.Valor + ") goto " + sif.Etiqueta + ";"}
+	simbif := objeto.ObjetoBloque{Operacion: true,
+		Temporal: sif.Etiqueta,
+		Opiz:     conds.Opiz,
+		Opde:     conds.Opde,
+		Ope:      conds.Ope,
+		Valor:    "if (" + conds.Valor + ") goto " + sif.Etiqueta + ";",
+		Tipo:     2}
 	nomif := "if" + strconv.Itoa(objeto.ContadorIf)
 	objeto.ContadorIf = objeto.ContadorIf + 1
 	block.Guardar_Declaracion(nomif, simbif)
-	return 0
+	block.Guardar_Declaracion1(nomif, simbif)
+	block.ListaTemporales.Add(nomif)
+	return nomif
 }

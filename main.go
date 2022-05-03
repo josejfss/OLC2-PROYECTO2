@@ -248,8 +248,8 @@ func main() {
 	menu_optimizar := fyne.NewMenuItem("Optimizar", func() {
 		texts := consola.Text
 		opt.Optimizar(texts)
-		//consola1.Text = salida
-		//consola1.Refresh()
+		consola1.Text = opt.OptimizadoC3D
+		consola1.Refresh()
 	})
 	//-------------------------------------------------------------------------------------- -----------------------------------------------------
 	//MENU EJECUTAR

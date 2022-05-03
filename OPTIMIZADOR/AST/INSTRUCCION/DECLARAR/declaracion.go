@@ -18,12 +18,18 @@ func Ndeclaracion(tem string, val interfaz.Expresion) Declaracion {
 func (decla Declaracion) Optimizar_Instruccion(block *objeto.Bloque) interface{} {
 	valopt := decla.Valor.Optimizar_Expresion(block)
 	simbdecla := objeto.ObjetoBloque{
-		Operacion: valopt.Operacion,
-		Temporal:  decla.Temporal,
-		Opiz:      valopt.Opiz,
-		Opde:      valopt.Opde,
-		Valor:     valopt.Valor,
+		Operacion:  valopt.Operacion,
+		EsTemporal: valopt.EsTemporal,
+		Constante:  valopt.Constante,
+		Temporal:   decla.Temporal,
+		Opiz:       valopt.Opiz,
+		Opde:       valopt.Opde,
+		Ope:        valopt.Ope,
+		Valor:      valopt.Valor,
+		Tipo:       1,
 	}
 	block.Guardar_Declaracion(decla.Temporal, simbdecla)
-	return 0
+	block.Guardar_Declaracion1(decla.Temporal, simbdecla)
+	block.ListaTemporales.Add(decla.Temporal)
+	return decla.Temporal
 }

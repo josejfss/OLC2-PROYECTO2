@@ -19,5 +19,7 @@ func (got Goto) Optimizar_Instruccion(block *objeto.Bloque) interface{} {
 	nomb := "goto" + strconv.Itoa(objeto.ContadorGoto)
 	objeto.ContadorGoto = objeto.ContadorGoto + 1
 	block.Guardar_Declaracion(nomb, simbgoto)
-	return 0
+	block.Guardar_Declaracion1(nomb, simbgoto)
+	block.ListaTemporales.Add(nomb)
+	return nomb
 }

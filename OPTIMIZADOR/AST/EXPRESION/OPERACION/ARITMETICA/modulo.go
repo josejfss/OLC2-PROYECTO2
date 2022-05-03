@@ -19,5 +19,11 @@ func (modulo OperacionModulo) Optimizar_Expresion(block *objeto.Bloque) objeto.O
 	operadorizq := modulo.OpIzquierda.Optimizar_Expresion(block)
 	operadorder := modulo.OperadorDerecha.Optimizar_Expresion(block)
 
-	return objeto.ObjetoBloque{Operacion: true, Opiz: operadorizq.Valor, Opde: operadorder.Valor, Valor: operadorizq.Valor + " - " + operadorder.Valor}
+	return objeto.ObjetoBloque{Operacion: true,
+		EsTemporal: false,
+		Constante:  false,
+		Opiz:       operadorizq.Valor,
+		Opde:       operadorder.Valor,
+		Ope:        "%",
+		Valor:      operadorizq.Valor + " % " + operadorder.Valor}
 }

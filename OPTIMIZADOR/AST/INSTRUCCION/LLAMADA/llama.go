@@ -19,7 +19,7 @@ func (lla Llama) Optimizar_Instruccion(block *objeto.Bloque) interface{} {
 		Opde:      lla.Nombre,
 		Valor:     lla.Nombre + "();"}
 	//nomstack := "stack" + strconv.Itoa(objeto.ContadorStack)
-	objeto.ContadorStack = objeto.ContadorStack + 1
+	//objeto.ContadorStack = objeto.ContadorStack + 1
 	block.Guardar_Declaracion(lla.Nombre, simbllama)
-	return 0
+	return lla.Nombre
 }

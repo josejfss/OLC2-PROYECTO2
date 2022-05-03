@@ -24,9 +24,10 @@ func (dheap DeclaHeap) Optimizar_Instruccion(block *objeto.Bloque) interface{} {
 		Temporal:  "HEAP",
 		Opiz:      val.Opiz,
 		Opde:      val.Opde,
-		Valor:     "[HEAP[(int)" + posicion.Valor + "]=" + val.Valor + ";"}
-	nomstack := "stack" + strconv.Itoa(objeto.ContadorStack)
-	objeto.ContadorStack = objeto.ContadorStack + 1
+		Valor:     "[HEAP[(int)" + posicion.Valor + "]=" + val.Valor + ";",
+		Tipo:      0}
+	nomstack := "heap" + strconv.Itoa(objeto.ContadorHeap)
+	objeto.ContadorHeap = objeto.ContadorHeap + 1
 	block.Guardar_Declaracion(nomstack, simbstack)
-	return 0
+	return nomstack
 }

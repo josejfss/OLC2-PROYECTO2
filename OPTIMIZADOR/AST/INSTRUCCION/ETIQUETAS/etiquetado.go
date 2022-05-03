@@ -12,5 +12,16 @@ func Netiqueta(nom string) Etiqueta {
 }
 
 func (eti Etiqueta) Optimizar_Instruccion(block *objeto.Bloque) interface{} {
+	//block.ListaTemporales.Add(eti.Nombre)
+	simbetiq := objeto.ObjetoBloque{
+		Operacion: false,
+		Temporal:  eti.Nombre,
+		Opiz:      eti.Nombre,
+		Opde:      eti.Nombre,
+		Valor:     eti.Nombre + ":",
+	}
+	block.Guardar_Declaracion(eti.Nombre, simbetiq)
+	block.Guardar_Declaracion1(eti.Nombre, simbetiq)
+	block.ListaTemporales.Add(eti.Nombre)
 	return eti.Nombre
 }

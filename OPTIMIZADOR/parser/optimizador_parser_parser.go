@@ -11,6 +11,7 @@ import (
 )
 
 import "OLC2-PROYECTO2/OPTIMIZADOR/INTERFAZ"
+import "OLC2-PROYECTO2/OPTIMIZADOR/OBJETO"
 import "OLC2-PROYECTO2/OPTIMIZADOR/AST/EXPRESION/OPERACION/ARITMETICA"
 import "OLC2-PROYECTO2/OPTIMIZADOR/AST/EXPRESION/OPERACION/RELACIONAL"
 import "OLC2-PROYECTO2/OPTIMIZADOR/AST/EXPRESION/PRIMITIVOS"
@@ -2633,7 +2634,7 @@ func (p *optimizador_parser) Declaracion() (localctx IDeclaracionContext) {
 			p.Match(optimizador_parserTK_PYC)
 		}
 
-		localctx.(*DeclaracionContext).instr = declarar.Ndeclaracion((func() string {
+		localctx.(*DeclaracionContext).instr = declarar.Ndeclapstack((func() string {
 			if localctx.(*DeclaracionContext).Get_TK_PUNSTACK() == nil {
 				return ""
 			} else {
@@ -2666,7 +2667,7 @@ func (p *optimizador_parser) Declaracion() (localctx IDeclaracionContext) {
 			p.Match(optimizador_parserTK_PYC)
 		}
 
-		localctx.(*DeclaracionContext).instr = declarar.Ndeclaracion((func() string {
+		localctx.(*DeclaracionContext).instr = declarar.Ndeclapheap((func() string {
 			if localctx.(*DeclaracionContext).Get_TK_PUNHEAP() == nil {
 				return ""
 			} else {
@@ -4959,7 +4960,7 @@ func (p *optimizador_parser) Datos() (localctx IDatosContext) {
 			} else {
 				return localctx.(*DatosContext).Get_TK_ENTERO().GetText()
 			}
-		}()))
+		}()), objeto.INTEGER)
 
 	case optimizador_parserTK_FLOAT:
 		p.EnterOuterAlt(localctx, 2)
@@ -4977,7 +4978,7 @@ func (p *optimizador_parser) Datos() (localctx IDatosContext) {
 			} else {
 				return localctx.(*DatosContext).Get_TK_FLOAT().GetText()
 			}
-		}()))
+		}()), objeto.FLOAT)
 
 	case optimizador_parserTK_CADENA:
 		p.EnterOuterAlt(localctx, 3)
@@ -4995,7 +4996,7 @@ func (p *optimizador_parser) Datos() (localctx IDatosContext) {
 			} else {
 				return localctx.(*DatosContext).Get_TK_CADENA().GetText()
 			}
-		}()))
+		}()), objeto.NULL)
 
 	case optimizador_parserTK_IDENTIFICADOR:
 		p.EnterOuterAlt(localctx, 4)
@@ -5013,7 +5014,7 @@ func (p *optimizador_parser) Datos() (localctx IDatosContext) {
 			} else {
 				return localctx.(*DatosContext).Get_TK_IDENTIFICADOR().GetText()
 			}
-		}()))
+		}()), objeto.NULL)
 
 	case optimizador_parserTK_TEMPORAL:
 		p.EnterOuterAlt(localctx, 5)
@@ -5031,7 +5032,7 @@ func (p *optimizador_parser) Datos() (localctx IDatosContext) {
 			} else {
 				return localctx.(*DatosContext).Get_TK_TEMPORAL().GetText()
 			}
-		}()))
+		}()), objeto.TEMPORAL)
 
 	case optimizador_parserTK_PUNSTACK:
 		p.EnterOuterAlt(localctx, 6)
@@ -5049,7 +5050,7 @@ func (p *optimizador_parser) Datos() (localctx IDatosContext) {
 			} else {
 				return localctx.(*DatosContext).Get_TK_PUNSTACK().GetText()
 			}
-		}()))
+		}()), objeto.NULL)
 
 	case optimizador_parserTK_PUNHEAP:
 		p.EnterOuterAlt(localctx, 7)
@@ -5067,7 +5068,7 @@ func (p *optimizador_parser) Datos() (localctx IDatosContext) {
 			} else {
 				return localctx.(*DatosContext).Get_TK_PUNHEAP().GetText()
 			}
-		}()))
+		}()), objeto.NULL)
 
 	default:
 		panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))

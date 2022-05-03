@@ -16,5 +16,11 @@ func Nnegativo(op interfaz.Expresion) Negativo {
 
 func (nega Negativo) Optimizar_Expresion(block *objeto.Bloque) objeto.ObjetoBloque {
 	neg := nega.Operador.Optimizar_Expresion(block)
-	return objeto.ObjetoBloque{Operacion: false, Opiz: "-" + neg.Valor, Opde: "-" + neg.Valor, Valor: " - " + neg.Valor}
+	return objeto.ObjetoBloque{Operacion: false,
+		EsTemporal: false,
+		Constante:  false,
+		Opiz:       "-" + neg.Valor,
+		Opde:       "-" + neg.Valor,
+		Ope:        "-",
+		Valor:      " - " + neg.Valor}
 }

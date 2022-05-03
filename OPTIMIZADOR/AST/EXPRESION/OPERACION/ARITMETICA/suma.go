@@ -19,5 +19,11 @@ func (suma OperacionSuma) Optimizar_Expresion(block *objeto.Bloque) objeto.Objet
 	operadorizq := suma.OpIzquierda.Optimizar_Expresion(block)
 	operadorder := suma.OperadorDerecha.Optimizar_Expresion(block)
 
-	return objeto.ObjetoBloque{Operacion: true, Opiz: operadorizq.Valor, Opde: operadorder.Valor, Valor: operadorizq.Valor + " + " + operadorder.Valor}
+	return objeto.ObjetoBloque{Operacion: true,
+		EsTemporal: false,
+		Constante:  false,
+		Opiz:       operadorizq.Valor,
+		Opde:       operadorder.Valor,
+		Ope:        "+",
+		Valor:      operadorizq.Valor + " + " + operadorder.Valor}
 }
