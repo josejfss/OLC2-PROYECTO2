@@ -1,6 +1,10 @@
 package reglas
 
-import objeto "OLC2-PROYECTO2/OPTIMIZADOR/OBJETO"
+import (
+	reportes "OLC2-PROYECTO2/COMPILADOR/REPORTES"
+	objeto "OLC2-PROYECTO2/OPTIMIZADOR/OBJETO"
+	"strconv"
+)
 
 var Bloque_regla1 map[string]objeto.ObjetoBloque = make(map[string]objeto.ObjetoBloque)
 
@@ -17,6 +21,7 @@ func Regla1(block *objeto.Bloque) {
 					nom_temp := bloque.ListaTemporales.GetValue(k).(string)
 					bloquesito := Bloque_regla1[nom_temp]
 					if simb_bloque.Valor == bloquesito.Valor {
+						reportes.ReporteOpti("Bloques", "Regla 1", simb_bloque.Valor, bloquesito.Valor, strconv.Itoa(simb_bloque.Linea))
 						simb_bloque.Opiz = bloquesito.Temporal
 						simb_bloque.Opde = bloquesito.Temporal
 						simb_bloque.Valor = bloquesito.Temporal

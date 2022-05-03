@@ -3,6 +3,7 @@ package declarar
 import (
 	interfaz "OLC2-PROYECTO2/OPTIMIZADOR/INTERFAZ"
 	objeto "OLC2-PROYECTO2/OPTIMIZADOR/OBJETO"
+	"strconv"
 )
 
 type DeclaPHeap struct {
@@ -25,6 +26,10 @@ func (decla DeclaPHeap) Optimizar_Instruccion(block *objeto.Bloque) interface{} 
 		Ope:       valopt.Ope,
 		Valor:     decla.Nombre + "=" + valopt.Valor + ";",
 		Tipo:      0}
-	block.Guardar_Declaracion(decla.Nombre, simbdecla)
-	return decla.Nombre
+	nombrepstack := decla.Nombre + strconv.Itoa(objeto.ContadorHeap)
+	objeto.ContadorHeap = objeto.ContadorHeap + 1
+	block.Guardar_Declaracion(nombrepstack, simbdecla)
+	block.Guardar_Declaracion1(nombrepstack, simbdecla)
+	block.ListaTemporales.Add(nombrepstack)
+	return nombrepstack
 }

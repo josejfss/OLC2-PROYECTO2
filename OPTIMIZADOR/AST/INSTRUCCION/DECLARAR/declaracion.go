@@ -8,10 +8,11 @@ import (
 type Declaracion struct {
 	Temporal string
 	Valor    interfaz.Expresion
+	Linea    int
 }
 
-func Ndeclaracion(tem string, val interfaz.Expresion) Declaracion {
-	decla := Declaracion{Temporal: tem, Valor: val}
+func Ndeclaracion(tem string, val interfaz.Expresion, lin int) Declaracion {
+	decla := Declaracion{Temporal: tem, Valor: val, Linea: lin}
 	return decla
 }
 
@@ -27,6 +28,7 @@ func (decla Declaracion) Optimizar_Instruccion(block *objeto.Bloque) interface{}
 		Ope:        valopt.Ope,
 		Valor:      valopt.Valor,
 		Tipo:       1,
+		Linea:      decla.Linea,
 	}
 	block.Guardar_Declaracion(decla.Temporal, simbdecla)
 	block.Guardar_Declaracion1(decla.Temporal, simbdecla)

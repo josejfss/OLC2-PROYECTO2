@@ -29,5 +29,7 @@ func (dstack DeclaStack) Optimizar_Instruccion(block *objeto.Bloque) interface{}
 	nomstack := "stack" + strconv.Itoa(objeto.ContadorStack)
 	objeto.ContadorStack = objeto.ContadorStack + 1
 	block.Guardar_Declaracion(nomstack, simbstack)
+	block.Guardar_Declaracion1(nomstack, simbstack)
+	block.ListaTemporales.Add(nomstack)
 	return nomstack
 }

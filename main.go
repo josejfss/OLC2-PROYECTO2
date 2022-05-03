@@ -276,10 +276,22 @@ func main() {
 		}
 	})
 	menu_reporte2 := fyne.NewMenuItem("Base de Datos Existente", func() {
-
+		reportes.CreandoReporteBasesDatos()
+		//ABRIR EL REPORTE CON COMANDOS
+		prc := exec.Command("xdg-open", "/home/iovana/go/src/OLC2-PROYECTO2/REP/bases_datos.pdf")
+		err := prc.Run()
+		if err != nil {
+			fmt.Printf("error:%v \n", err)
+		}
 	})
 	menu_reporte3 := fyne.NewMenuItem("Optimizacion", func() {
-
+		reportes.CreandoReporteOptimizacion()
+		//ABRIR EL REPORTE CON COMANDOS
+		prc := exec.Command("xdg-open", "/home/iovana/go/src/OLC2-PROYECTO2/REP/reporte_optimizacion.pdf")
+		err := prc.Run()
+		if err != nil {
+			fmt.Printf("error:%v \n", err)
+		}
 	})
 	//MENU REPORTE
 	menu3 := fyne.NewMenu("Reportes", menu_reporte, menu_reporte1, menu_reporte2, menu_reporte3)

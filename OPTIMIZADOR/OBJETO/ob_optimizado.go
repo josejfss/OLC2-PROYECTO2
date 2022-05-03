@@ -13,6 +13,7 @@ var ContadorStack int = 0
 var ContadorPrint int = 0
 var ContadorGoto int = 0
 var ContadorReturn int = 0
+var ContadorLlamada int = 0
 
 type ObjetoBloque struct {
 	Operacion  bool
@@ -24,6 +25,7 @@ type ObjetoBloque struct {
 	Opde       string
 	Valor      string
 	Tipo       int
+	Linea      int
 }
 
 type Bloque struct {

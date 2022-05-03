@@ -10,21 +10,23 @@ type Imprimir struct {
 	Cadena string
 	Casteo string
 	Expr   interfaz.Expresion
+	Linea  int
 }
 
-func Nimprimir(cad string, cas string, exp interfaz.Expresion) Imprimir {
-	print := Imprimir{Cadena: cad, Casteo: cas, Expr: exp}
+func Nimprimir(cad string, cas string, exp interfaz.Expresion, lin int) Imprimir {
+	print := Imprimir{Cadena: cad, Casteo: cas, Expr: exp, Linea: lin}
 	return print
 }
 
 func (print Imprimir) Optimizar_Instruccion(block *objeto.Bloque) interface{} {
 	exp := print.Expr.Optimizar_Expresion(block)
-	prints := objeto.ObjetoBloque{Operacion: true,
+	prints := objeto.ObjetoBloque{Operacion: false,
 		Temporal: print.Cadena,
 		Opiz:     exp.Valor,
 		Opde:     print.Casteo,
 		Valor:    "printf(" + print.Cadena + ", " + print.Casteo + exp.Valor + ");",
-		Tipo:     3}
+		Tipo:     3,
+		Linea:    print.Linea}
 	nprint := "print" + strconv.Itoa(objeto.ContadorPrint)
 	objeto.ContadorPrint = objeto.ContadorPrint + 1
 	block.Guardar_Declaracion(nprint, prints)

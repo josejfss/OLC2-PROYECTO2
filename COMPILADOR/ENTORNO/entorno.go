@@ -30,6 +30,7 @@ func Nuevo_Entorno(nombre string, anterior *Entorno) *Entorno {
 	ent.Tabla_ArreVect = make(map[string]simbolos.Simbolo_ArreVect)
 	ent.Tabla_Funcines = make(map[string]simbolos.Simbolo_Funciones)
 	ent.Tabla_Struct = make(map[string]simbolos.Simbolo_Struct)
+	ent.Tabla_Modulos = make(map[string]simbolos.Simbolos_Modulos)
 	ent.ListaTodo = arraylist.New()
 	ent.ContadorTodo = 0
 	ent.Posicion = 0
@@ -289,4 +290,35 @@ func (ent *Entorno) Obtener_Struct(nom string) simbolos.Simbolo_Struct {
 
 /*----------------------------------------------------------------------------------------------------------------------------------------------------------------*/
 /*----------------------------------------------------------------------METODOS PARA LA TABLA DE MODULOS----------------------------------------------------------*/
+func (ent *Entorno) Existe_Modulos(nom string) bool {
+	var entemp *Entorno
+	for entemp = ent; entemp != nil; entemp = entemp.Entorno_Anterior {
+		if _, ok := entemp.Tabla_Modulos[nom]; ok {
+			return true
+		}
+	}
+	return false
+}
+
+func (ent *Entorno) Guardar_Modulos(nom string, stru simbolos.Simbolos_Modulos) {
+	ent.Tabla_Modulos[nom] = stru
+}
+
+func (ent *Entorno) Obtener_Modulos(nom string) simbolos.Simbolos_Modulos {
+	var tmpEnv *Entorno = ent
+
+	for {
+		if variable, ok := tmpEnv.Tabla_Modulos[nom]; ok {
+			return variable
+		}
+
+		if tmpEnv.Entorno_Anterior == nil {
+			break
+		} else {
+			tmpEnv = tmpEnv.Entorno_Anterior
+		}
+	}
+	return simbolos.Simbolos_Modulos{Identificador: "", L_Declaraciones: arraylist.New(), Linea: 0, Columna: 0}
+}
+
 /*----------------------------------------------------------------------------------------------------------------------------------------------------------------*/

@@ -29,5 +29,7 @@ func (dheap DeclaHeap) Optimizar_Instruccion(block *objeto.Bloque) interface{} {
 	nomstack := "heap" + strconv.Itoa(objeto.ContadorHeap)
 	objeto.ContadorHeap = objeto.ContadorHeap + 1
 	block.Guardar_Declaracion(nomstack, simbstack)
+	block.Guardar_Declaracion1(nomstack, simbstack)
+	block.ListaTemporales.Add(nomstack)
 	return nomstack
 }

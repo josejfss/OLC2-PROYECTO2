@@ -93,7 +93,7 @@ funcas returns[interfaz.Instruccion instr]
 /* CONDICIONAL IF */ 
 sent_if returns [interfaz.Instruccion instr]
   : TK_IF TK_PI expression TK_PD TK_GOTO TK_ETIQUETA TK_PYC {
-    $instr = sif.Nsenteif($expression.p,$TK_ETIQUETA.text)
+    $instr = sif.Nsenteif($expression.p,$TK_ETIQUETA.text, $TK_IF.line)
   }
 ;
 
@@ -101,7 +101,7 @@ sent_if returns [interfaz.Instruccion instr]
 /* IMPRESION */
 imprimir returns[interfaz.Instruccion instr]
   : TK_PRINTF TK_PI TK_CADENA TK_COMA casteo expression TK_PD TK_PYC {
-    $instr = imprimir.Nimprimir($TK_CADENA.text, $casteo.cast, $expression.p)
+    $instr = imprimir.Nimprimir($TK_CADENA.text, $casteo.cast, $expression.p,$TK_PRINTF.line)
   }
 ;
 
@@ -114,7 +114,7 @@ casteo returns[string cast]
 /* ----------------------------------------------------------DECLARAR VARIABLES, VECTORES Y ARREGLOS--------------------------------------------------------- */
 declaracion returns[interfaz.Instruccion instr]
   : TK_TEMPORAL TK_IGUAL expression TK_PYC {
-    $instr = declarar.Ndeclaracion($TK_TEMPORAL.text, $expression.p)
+    $instr = declarar.Ndeclaracion($TK_TEMPORAL.text, $expression.p,$TK_TEMPORAL.line)
   }
   | TK_STACK TK_CI TK_CASTINT pos=expression TK_CD TK_IGUAL exp=expression TK_PYC {
     $instr = declarar.Ndeclastack($pos.p, $exp.p)

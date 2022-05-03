@@ -1695,8 +1695,14 @@ type ISent_ifContext interface {
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
+	// Get_TK_IF returns the _TK_IF token.
+	Get_TK_IF() antlr.Token
+
 	// Get_TK_ETIQUETA returns the _TK_ETIQUETA token.
 	Get_TK_ETIQUETA() antlr.Token
+
+	// Set_TK_IF sets the _TK_IF token.
+	Set_TK_IF(antlr.Token)
 
 	// Set_TK_ETIQUETA sets the _TK_ETIQUETA token.
 	Set_TK_ETIQUETA(antlr.Token)
@@ -1721,6 +1727,7 @@ type Sent_ifContext struct {
 	*antlr.BaseParserRuleContext
 	parser       antlr.Parser
 	instr        interfaz.Instruccion
+	_TK_IF       antlr.Token
 	_expression  IExpressionContext
 	_TK_ETIQUETA antlr.Token
 }
@@ -1747,7 +1754,11 @@ func NewSent_ifContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 
 func (s *Sent_ifContext) GetParser() antlr.Parser { return s.parser }
 
+func (s *Sent_ifContext) Get_TK_IF() antlr.Token { return s._TK_IF }
+
 func (s *Sent_ifContext) Get_TK_ETIQUETA() antlr.Token { return s._TK_ETIQUETA }
+
+func (s *Sent_ifContext) Set_TK_IF(v antlr.Token) { s._TK_IF = v }
 
 func (s *Sent_ifContext) Set_TK_ETIQUETA(v antlr.Token) { s._TK_ETIQUETA = v }
 
@@ -1836,7 +1847,10 @@ func (p *optimizador_parser) Sent_if() (localctx ISent_ifContext) {
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(113)
-		p.Match(optimizador_parserTK_IF)
+
+		var _m = p.Match(optimizador_parserTK_IF)
+
+		localctx.(*Sent_ifContext)._TK_IF = _m
 	}
 	{
 		p.SetState(114)
@@ -1875,6 +1889,12 @@ func (p *optimizador_parser) Sent_if() (localctx ISent_ifContext) {
 		} else {
 			return localctx.(*Sent_ifContext).Get_TK_ETIQUETA().GetText()
 		}
+	}()), (func() int {
+		if localctx.(*Sent_ifContext).Get_TK_IF() == nil {
+			return 0
+		} else {
+			return localctx.(*Sent_ifContext).Get_TK_IF().GetLine()
+		}
 	}()))
 
 	return localctx
@@ -1887,8 +1907,14 @@ type IImprimirContext interface {
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
+	// Get_TK_PRINTF returns the _TK_PRINTF token.
+	Get_TK_PRINTF() antlr.Token
+
 	// Get_TK_CADENA returns the _TK_CADENA token.
 	Get_TK_CADENA() antlr.Token
+
+	// Set_TK_PRINTF sets the _TK_PRINTF token.
+	Set_TK_PRINTF(antlr.Token)
 
 	// Set_TK_CADENA sets the _TK_CADENA token.
 	Set_TK_CADENA(antlr.Token)
@@ -1919,6 +1945,7 @@ type ImprimirContext struct {
 	*antlr.BaseParserRuleContext
 	parser      antlr.Parser
 	instr       interfaz.Instruccion
+	_TK_PRINTF  antlr.Token
 	_TK_CADENA  antlr.Token
 	_casteo     ICasteoContext
 	_expression IExpressionContext
@@ -1946,7 +1973,11 @@ func NewImprimirContext(parser antlr.Parser, parent antlr.ParserRuleContext, inv
 
 func (s *ImprimirContext) GetParser() antlr.Parser { return s.parser }
 
+func (s *ImprimirContext) Get_TK_PRINTF() antlr.Token { return s._TK_PRINTF }
+
 func (s *ImprimirContext) Get_TK_CADENA() antlr.Token { return s._TK_CADENA }
+
+func (s *ImprimirContext) Set_TK_PRINTF(v antlr.Token) { s._TK_PRINTF = v }
 
 func (s *ImprimirContext) Set_TK_CADENA(v antlr.Token) { s._TK_CADENA = v }
 
@@ -2049,7 +2080,10 @@ func (p *optimizador_parser) Imprimir() (localctx IImprimirContext) {
 	p.EnterOuterAlt(localctx, 1)
 	{
 		p.SetState(122)
-		p.Match(optimizador_parserTK_PRINTF)
+
+		var _m = p.Match(optimizador_parserTK_PRINTF)
+
+		localctx.(*ImprimirContext)._TK_PRINTF = _m
 	}
 	{
 		p.SetState(123)
@@ -2095,7 +2129,13 @@ func (p *optimizador_parser) Imprimir() (localctx IImprimirContext) {
 		} else {
 			return localctx.(*ImprimirContext).Get_TK_CADENA().GetText()
 		}
-	}()), localctx.(*ImprimirContext).Get_casteo().GetCast(), localctx.(*ImprimirContext).Get_expression().GetP())
+	}()), localctx.(*ImprimirContext).Get_casteo().GetCast(), localctx.(*ImprimirContext).Get_expression().GetP(), (func() int {
+		if localctx.(*ImprimirContext).Get_TK_PRINTF() == nil {
+			return 0
+		} else {
+			return localctx.(*ImprimirContext).Get_TK_PRINTF().GetLine()
+		}
+	}()))
 
 	return localctx
 }
@@ -2521,7 +2561,13 @@ func (p *optimizador_parser) Declaracion() (localctx IDeclaracionContext) {
 			} else {
 				return localctx.(*DeclaracionContext).Get_TK_TEMPORAL().GetText()
 			}
-		}()), localctx.(*DeclaracionContext).Get_expression().GetP())
+		}()), localctx.(*DeclaracionContext).Get_expression().GetP(), (func() int {
+			if localctx.(*DeclaracionContext).Get_TK_TEMPORAL() == nil {
+				return 0
+			} else {
+				return localctx.(*DeclaracionContext).Get_TK_TEMPORAL().GetLine()
+			}
+		}()))
 
 	case optimizador_parserTK_STACK:
 		p.EnterOuterAlt(localctx, 2)

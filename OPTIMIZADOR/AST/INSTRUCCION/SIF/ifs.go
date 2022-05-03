@@ -9,10 +9,11 @@ import (
 type SenteIf struct {
 	Condicion interfaz.Expresion
 	Etiqueta  string
+	Linea     int
 }
 
-func Nsenteif(con interfaz.Expresion, eti string) SenteIf {
-	sif := SenteIf{Condicion: con, Etiqueta: eti}
+func Nsenteif(con interfaz.Expresion, eti string, lin int) SenteIf {
+	sif := SenteIf{Condicion: con, Etiqueta: eti, Linea: lin}
 	return sif
 }
 
@@ -24,7 +25,8 @@ func (sif SenteIf) Optimizar_Instruccion(block *objeto.Bloque) interface{} {
 		Opde:     conds.Opde,
 		Ope:      conds.Ope,
 		Valor:    "if (" + conds.Valor + ") goto " + sif.Etiqueta + ";",
-		Tipo:     2}
+		Tipo:     2,
+		Linea:    sif.Linea}
 	nomif := "if" + strconv.Itoa(objeto.ContadorIf)
 	objeto.ContadorIf = objeto.ContadorIf + 1
 	block.Guardar_Declaracion(nomif, simbif)

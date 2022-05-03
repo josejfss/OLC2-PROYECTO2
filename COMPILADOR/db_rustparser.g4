@@ -35,7 +35,8 @@ options {
     import "OLC2-PROYECTO2/COMPILADOR/AST/INSTRUCCIONES/FUNCIONES/PARAMETROS"
     import "OLC2-PROYECTO2/COMPILADOR/AST/INSTRUCCIONES/FUNCIONES/TIPOS"
     import "OLC2-PROYECTO2/COMPILADOR/AST/INSTRUCCIONES/FUNCIONES"    
-    import "OLC2-PROYECTO2/COMPILADOR/AST/INSTRUCCIONES/STRUCTS"    
+    import "OLC2-PROYECTO2/COMPILADOR/AST/INSTRUCCIONES/STRUCTS"     
+    import "OLC2-PROYECTO2/COMPILADOR/AST/INSTRUCCIONES/MODULO"    
 	  import "OLC2-PROYECTO2/COMPILADOR/SIMBOLOS"
     import arrayList "github.com/colegno/arraylist"
 }
@@ -57,10 +58,34 @@ instrucciones returns[*arrayList.List lis]
 ;
 
 instruccion returns[interfaces.Instruccion instr]
-  : imprimir          {$instr = $imprimir.instr}
-  | declaracion       {$instr = $declaracion.instr}
+  : declaracion       {$instr = $declaracion.instr}
   | funcas            {$instr = $funcas.instr}
   | stucts            {$instr = $stucts.instr}
+  | modulos           {$instr = $modulos.instr}
+;
+
+modulos returns[interfaces.Instruccion instr]
+  : publi TK_MOD TK_IDENTIFICADOR TK_LI l_modulos TK_LD {
+    $instr = modulo.Nmods($publi.m, $TK_IDENTIFICADOR.text, $l_modulos.lmod, $TK_IDENTIFICADOR.line, localctx.(*ModulosContext).Get_TK_IDENTIFICADOR().GetColumn())
+  }
+;
+
+l_modulos returns[*arrayList.List lmod]
+  @init {
+    $lmod =  arrayList.New()
+  }
+  : mods = l_modulos modulitos {
+    $mods.lmod.Add($modulitos.instr)
+    $lmod=$mods.lmod
+  }
+  | modulitos { $lmod.Add($modulitos.instr) }
+;
+
+modulitos returns[interfaces.Instruccion instr]
+  : funcas        {$instr = $funcas.instr}
+  | stucts        {$instr = $stucts.instr}
+  | modulos       {$instr = $modulos.instr}
+  | declaracion   {$instr = $declaracion.instr}
 ;
 
 /* -------------------------------------------------------------------ESTRUCTURAS------------------------------------------------------------------------------- */
