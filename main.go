@@ -9,6 +9,7 @@ import (
 	interfaces "OLC2-PROYECTO2/COMPILADOR/INTERFACES"
 	reportes "OLC2-PROYECTO2/COMPILADOR/REPORTES"
 	"OLC2-PROYECTO2/COMPILADOR/parser"
+	opt "OLC2-PROYECTO2/OPTIMIZADOR/OPT"
 	"fmt"
 	"log"
 	"os"
@@ -85,7 +86,7 @@ func (*TreeShapeListener) ExitStart(ctx *parser.StartContext) {
 		}
 	}
 
-	gen.Agregar_Comentario("\n\n------------------ENTRANDO FUNCION PRINCIPAL-------------------")
+	gen.Agregar_Comentario("------------------ENTRANDO FUNCION PRINCIPAL-------------------")
 	gen.Agregar_Logica("int main() {\nSP=0;\t\t//INICIANDO PUNTERO STACK\nHP=0;\t\t//INICIANDO PUNTERO HEAP\n\n")
 	for i := 0; i < lista_declas.Len(); i++ {
 		instr := lista_declas.GetValue(i).(interfaces.Instruccion)
@@ -138,7 +139,8 @@ func (*TreeShapeListener) ExitStart(ctx *parser.StartContext) {
 	if err2 != nil {
 		log.Fatal(err2)
 	}
-	fmt.Println("salida")
+
+	fmt.Println("fin compilacion")
 }
 
 //FUNCION PARA LEER LOS TOKENS Y QUE SI JALE LA GRAMATICA GG
@@ -244,9 +246,10 @@ func main() {
 	menu2 := fyne.NewMenu("Compilar", menu_ejecutar)
 
 	menu_optimizar := fyne.NewMenuItem("Optimizar", func() {
-		analizar(texto)
-		consola.Text = salida
-		consola.Refresh()
+		texts := consola.Text
+		opt.Optimizar(texts)
+		//consola1.Text = salida
+		//consola1.Refresh()
 	})
 	//-------------------------------------------------------------------------------------- -----------------------------------------------------
 	//MENU EJECUTAR

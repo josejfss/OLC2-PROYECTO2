@@ -102,7 +102,7 @@ TK_BARRA:   '|';
 TK_GBAJO:   '_';
 TK_REFER:   '&';
 // ********** IGNORAR **********
-COMENTARIO_MUL: '(*' (~[*)])+ '*)' -> skip;
+COMENTARIO_MUL: '/*' (~[*)])+ '*/' -> skip;
 COMENTARIO_LIN: '//'(~[\n])+ -> skip;
 WHITESPACE: [ \\\r\n\t]+ -> skip;
 fragment
