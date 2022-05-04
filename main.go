@@ -278,7 +278,7 @@ func main() {
 	menu_reporte2 := fyne.NewMenuItem("Base de Datos Existente", func() {
 		reportes.CreandoReporteBasesDatos()
 		//ABRIR EL REPORTE CON COMANDOS
-		prc := exec.Command("xdg-open", "/home/iovana/go/src/OLC2-PROYECTO2/REP/bases_datos.pdf")
+		prc := exec.Command("xdg-open", "/home/iovana/go/src/OLC2-PROYECTO2/REP/reporte_bases_datos.pdf")
 		err := prc.Run()
 		if err != nil {
 			fmt.Printf("error:%v \n", err)

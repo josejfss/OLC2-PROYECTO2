@@ -56,5 +56,5 @@ func CreandoReporteBasesDatos() {
 		}
 		pdf.Ln(-1)
 	}
-	pdf.OutputFileAndClose("/home/iovana/go/src/OLC2-PROYECTO2/REP/bases_datos.pdf")
+	pdf.OutputFileAndClose("/home/iovana/go/src/OLC2-PROYECTO2/REP/reporte_bases_datos.pdf")
 }
