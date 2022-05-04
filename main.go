@@ -9,7 +9,7 @@ import (
 	interfaces "OLC2-PROYECTO2/COMPILADOR/INTERFACES"
 	reportes "OLC2-PROYECTO2/COMPILADOR/REPORTES"
 	"OLC2-PROYECTO2/COMPILADOR/parser"
-	opt "OLC2-PROYECTO2/OPTIMIZADOR/OPT"
+	enviar "OLC2-PROYECTO2/OPT_COMPILADOR/ENVIAR"
 	"fmt"
 	"log"
 	"os"
@@ -247,8 +247,8 @@ func main() {
 
 	menu_optimizar := fyne.NewMenuItem("Optimizar", func() {
 		texts := consola.Text
-		opt.Optimizar(texts)
-		consola1.Text = opt.OptimizadoC3D
+		enviar.Optimizar(texts)
+		consola1.Text = enviar.OptimizadoC3D
 		consola1.Refresh()
 	})
 	//-------------------------------------------------------------------------------------- -----------------------------------------------------

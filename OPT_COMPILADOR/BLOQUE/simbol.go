@@ -9,3 +9,13 @@ type ObjetoBloque struct {
 	Valor      string
 	Linea      int
 }
+
+type ObjetoLista struct {
+	Declaracion string
+	Valores     string
+}
+
+func Nobjetolista(d string, v string) ObjetoLista {
+	objlist := ObjetoLista{Declaracion: d, Valores: v}
+	return objlist
+}

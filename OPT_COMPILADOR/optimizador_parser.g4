@@ -5,20 +5,36 @@ options {
 }
 
 @header {
-    import "OLC2-PROYECTO2/OPTIMIZADOR/INTERFAZ"
-    import "OLC2-PROYECTO2/OPTIMIZADOR/OBJETO"
-    import "OLC2-PROYECTO2/OPTIMIZADOR/AST/EXPRESION/OPERACION/ARITMETICA"
-    import "OLC2-PROYECTO2/OPTIMIZADOR/AST/EXPRESION/OPERACION/RELACIONAL"
-    import "OLC2-PROYECTO2/OPTIMIZADOR/AST/EXPRESION/PRIMITIVOS"
-    import "OLC2-PROYECTO2/OPTIMIZADOR/AST/EXPRESION/ASIGNACIONES"
-    import "OLC2-PROYECTO2/OPTIMIZADOR/AST/INSTRUCCION/ENCABEZADO"
-    import "OLC2-PROYECTO2/OPTIMIZADOR/AST/INSTRUCCION/FUNCION"
-    import "OLC2-PROYECTO2/OPTIMIZADOR/AST/INSTRUCCION/LLAMADA"
-    import "OLC2-PROYECTO2/OPTIMIZADOR/AST/INSTRUCCION/DECLARAR"
-    import "OLC2-PROYECTO2/OPTIMIZADOR/AST/INSTRUCCION/SIF"
-    import "OLC2-PROYECTO2/OPTIMIZADOR/AST/INSTRUCCION/IMPRIMIR"
-    import "OLC2-PROYECTO2/OPTIMIZADOR/AST/INSTRUCCION/ETIQUETAS"
-    import "OLC2-PROYECTO2/OPTIMIZADOR/AST/INSTRUCCION/RETORNO"
+    import "OLC2-PROYECTO2/OPT_COMPILADOR/INTER"
+    import "OLC2-PROYECTO2/OPT_COMPILADOR/BLOQUE"
+    /* EXPRESIONES */
+    /* OPERACION ARITMETICA */
+    import "OLC2-PROYECTO2/OPT_COMPILADOR/AST/EXPRESION/OPERACION/ARITMETICA/SUMA"
+    import "OLC2-PROYECTO2/OPT_COMPILADOR/AST/EXPRESION/OPERACION/ARITMETICA/RESTA"
+    import "OLC2-PROYECTO2/OPT_COMPILADOR/AST/EXPRESION/OPERACION/ARITMETICA/MULTIPLICACION"
+    import "OLC2-PROYECTO2/OPT_COMPILADOR/AST/EXPRESION/OPERACION/ARITMETICA/DIVISION"
+    import "OLC2-PROYECTO2/OPT_COMPILADOR/AST/EXPRESION/OPERACION/ARITMETICA/MODULO"
+    import "OLC2-PROYECTO2/OPT_COMPILADOR/AST/EXPRESION/OPERACION/ARITMETICA/NEGATIVO"
+    /* OPERACION RELACIONAL */
+    import "OLC2-PROYECTO2/OPT_COMPILADOR/AST/EXPRESION/OPERACION/RELACIONAL/DESIGUALDAD"
+    import "OLC2-PROYECTO2/OPT_COMPILADOR/AST/EXPRESION/OPERACION/RELACIONAL/IGUALDAD"
+    import "OLC2-PROYECTO2/OPT_COMPILADOR/AST/EXPRESION/OPERACION/RELACIONAL/MAYOR"
+    import "OLC2-PROYECTO2/OPT_COMPILADOR/AST/EXPRESION/OPERACION/RELACIONAL/MAYORIGUAL"
+    import "OLC2-PROYECTO2/OPT_COMPILADOR/AST/EXPRESION/OPERACION/RELACIONAL/MENOR"
+    import "OLC2-PROYECTO2/OPT_COMPILADOR/AST/EXPRESION/OPERACION/RELACIONAL/MENORIGUAL"
+    /* PRIMITIVOS /home/iovana/go/src/  */
+    import "OLC2-PROYECTO2/OPT_COMPILADOR/AST/EXPRESION/PRIMITIIVOS"
+    /* ASIGNACIONES */
+    import "OLC2-PROYECTO2/OPT_COMPILADOR/AST/EXPRESION/ASIGNACIONES"
+    /* FUNCIONES */
+    /* ENCABEZADO */
+    import "OLC2-PROYECTO2/OPT_COMPILADOR/AST/INSTRUCCION/ENCABEZADO"
+    import "OLC2-PROYECTO2/OPT_COMPILADOR/AST/INSTRUCCION/FUNCION"
+    import "OLC2-PROYECTO2/OPT_COMPILADOR/AST/INSTRUCCION/DECLARAR"
+    import "OLC2-PROYECTO2/OPT_COMPILADOR/AST/INSTRUCCION/SIF"
+    import "OLC2-PROYECTO2/OPT_COMPILADOR/AST/INSTRUCCION/IMPRIMIR"
+    import "OLC2-PROYECTO2/OPT_COMPILADOR/AST/INSTRUCCION/ETIQUETAS"
+    import "OLC2-PROYECTO2/OPT_COMPILADOR/AST/INSTRUCCION/LLAMADA"
     import arrayList "github.com/colegno/arraylist"
 }
 
@@ -38,11 +54,11 @@ instrucss returns[*arrayList.List lis]
   }
 ;
 
-instrs returns[interfaz.Instruccion instr]
+instrs returns[inter.Instruccion instr]
   : encabezado            {$instr = $encabezado.instr}
 ;
 
-encabezado returns[interfaz.Instruccion instr]
+encabezado returns[inter.Instruccion instr]
   : TK_STDIOH TK_DHEAP TK_DSTACK TK_PSTAKC TK_PHEAP TK_DOUBLE l_temporales TK_PYC l_funcas {
     $instr = encabezado.Nenca($TK_STDIOH.text,$TK_DHEAP.text,$TK_DSTACK.text,$TK_PSTAKC.text,$TK_PHEAP.text,$l_temporales.ltemps,$l_funcas.lfuncas)
   }
@@ -71,18 +87,18 @@ l_funcas returns[*arrayList.List lfuncas]
 ;
 
 /* -------------------------------------------------------------------FUNCIONES--------------------------------------------------------------------------------- */
-funcas returns[interfaz.Instruccion instr]
-  : TK_VOID TK_IDENTIFICADOR TK_PI TK_PD TK_LI l_bloque TK_LD {
+funcas returns[inter.Instruccion instr]
+  : TK_VOID TK_IDENTIFICADOR TK_PI TK_PD TK_LI l_bloque TK_RETURN TK_LD {
     $instr = funcion.Nfunca($TK_IDENTIFICADOR.text, $l_bloque.lbloque)
   }
-  | TK_INT TK_MAIN TK_PI TK_PD TK_LI l_bloque TK_LD {
-    $instr = funcion.Nfunca($TK_MAIN.text, $l_bloque.lbloque)
+  | TK_INT TK_MAIN TK_PI TK_PD TK_LI TK_ASIGPSTACK TK_ASIGHEAP l_bloque TK_RETMAIN TK_LD {
+    $instr = funcion.Nfuncamain($TK_MAIN.text, $l_bloque.lbloque)
   } 
 ;
 
 /* -------------------------------------------------------------------CICLOS Y SENTENCIAS---------------------------------------------------------------------- */
 /* CONDICIONAL IF */ 
-sent_if returns [interfaz.Instruccion instr]
+sent_if returns [inter.Instruccion instr]
   : TK_IF TK_PI expression TK_PD TK_GOTO TK_ETIQUETA TK_PYC {
     $instr = sif.Nsenteif($expression.p,$TK_ETIQUETA.text, $TK_IF.line)
   }
@@ -90,7 +106,7 @@ sent_if returns [interfaz.Instruccion instr]
 
 /* ------------------------------------------------------------IMPRESION EN CONSOLA------------------------------------------------------------------------ */
 /* IMPRESION */
-imprimir returns[interfaz.Instruccion instr]
+imprimir returns[inter.Instruccion instr]
   : TK_PRINTF TK_PI TK_CADENA TK_COMA casteo expression TK_PD TK_PYC {
     $instr = imprimir.Nimprimir($TK_CADENA.text, $casteo.cast, $expression.p,$TK_PRINTF.line)
   }
@@ -103,25 +119,19 @@ casteo returns[string cast]
 ;
 
 /* ----------------------------------------------------------DECLARAR VARIABLES, VECTORES Y ARREGLOS--------------------------------------------------------- */
-declaracion returns[interfaz.Instruccion instr]
+declaracion returns[inter.Instruccion instr]
   : TK_TEMPORAL TK_IGUAL expression TK_PYC {
     $instr = declarar.Ndeclaracion($TK_TEMPORAL.text, $expression.p,$TK_TEMPORAL.line)
   }
-  | TK_STACK TK_CI TK_CASTINT pos=expression TK_CD TK_IGUAL exp=expression TK_PYC {
-    $instr = declarar.Ndeclastack($pos.p, $exp.p)
+  | nom=(TK_STACK|TK_HEAP) TK_CI TK_CASTINT pos=expression TK_CD TK_IGUAL exp=expression TK_PYC {
+    $instr = declarar.Ndeclapunteros($nom.text, $pos.p, $exp.p, $nom.line)
   }
-  | TK_HEAP TK_CI TK_CASTINT pos=expression TK_CD TK_IGUAL exp=expression TK_PYC {
-    $instr = declarar.Ndeclaheap($pos.p, $exp.p)
-  }
-  | TK_PUNSTACK TK_IGUAL expression TK_PYC {
-    $instr = declarar.Ndeclapstack($TK_PUNSTACK.text, $expression.p)
-  }
-  | TK_PUNHEAP TK_IGUAL expression TK_PYC {
-    $instr = declarar.Ndeclapheap($TK_PUNHEAP.text, $expression.p)
+  | nom=(TK_PUNSTACK|TK_PUNHEAP) TK_IGUAL expression TK_PYC {
+    $instr = declarar.Ndeclapstack($nom.text, $expression.p,$nom.line)
   }
 ;
 
-etiquetas returns[interfaz.Instruccion instr]
+etiquetas returns[inter.Instruccion instr]
   : TK_ETIQUETA TK_DP {
     $instr = etiquetas.Netiqueta($TK_ETIQUETA.text)
   }
@@ -130,12 +140,7 @@ etiquetas returns[interfaz.Instruccion instr]
   }
 ;
 
-retorno returns[interfaz.Instruccion instr]
-  : TK_RETMAIN  {$instr= retorno.Nreturns($TK_RETMAIN.text)}
-  | TK_RETURN   {$instr= retorno.Nreturns($TK_RETURN.text)}
-;
-
-llamada returns[interfaz.Instruccion instr]
+llamada returns[inter.Instruccion instr]
   : TK_IDENTIFICADOR TK_PI TK_PD TK_PYC {
     $instr= llamada.Nllama($TK_IDENTIFICADOR.text)
   }
@@ -154,23 +159,22 @@ l_bloque returns[*arrayList.List lbloque]
 ;
 
 /* BLOQUE INSTRUCCIONES */
-bloque returns[interfaz.Instruccion instr]
+bloque returns[inter.Instruccion instr]
   : imprimir                {$instr = $imprimir.instr}
   | sent_if                 {$instr = $sent_if.instr}
   | declaracion             {$instr = $declaracion.instr}
   | etiquetas               {$instr = $etiquetas.instr}
-  | retorno                 {$instr = $retorno.instr}
   | llamada                 {$instr = $llamada.instr}
 ;
 
 /* EXPRESIONES */
-expression returns[interfaz.Expresion p]
+expression returns[inter.Expresion p]
     : expre_relacional        {$p = $expre_relacional.p}
     | expre_aritmetica        {$p = $expre_aritmetica.p}
     | asignaciones            {$p = $asignaciones.p}
 ;
 
-asignaciones returns[interfaz.Expresion p]
+asignaciones returns[inter.Expresion p]
   : TK_HEAP TK_CI TK_CASTINT expression TK_CD {
     $p = asignaciones.Nasiheap($expression.p)
   }
@@ -180,44 +184,44 @@ asignaciones returns[interfaz.Expresion p]
 ;
 
 /* RELACIONAL */
-expre_relacional returns[interfaz.Expresion p]
+expre_relacional returns[inter.Expresion p]
   : opIz = expre_relacional op = (TK_MAYORIGUAL| TK_MENORIGUAL| TK_IGUALDAD| TK_DESIGUALDAD| TK_MAYOR| TK_MENOR) opDe = expre_relacional {
       if $op.text == "<"{
-        $p = relacional.Noperacionmenor($opIz.p,$opDe.p)
+        $p = menor.Noperacionmenor($opIz.p,$opDe.p)
       }else if $op.text == "<="{
-        $p = relacional.Noperacionmenorigual($opIz.p,$opDe.p)
+        $p = menorigual.Noperacionmenorigual($opIz.p,$opDe.p)
       }else if $op.text == ">"{
-        $p = relacional.Noperacionmayor($opIz.p,$opDe.p)
+        $p = mayor.Noperacionmayor($opIz.p,$opDe.p)
       }else if $op.text == ">="{
-        $p = relacional.Noperacionmayorigual($opIz.p,$opDe.p)
+        $p = mayorigual.Noperacionmayorigual($opIz.p,$opDe.p)
       }else if $op.text == "=="{
-        $p = relacional.Noperacionigualdad($opIz.p,$opDe.p)
+        $p = igualdad.Noperacionigualdad($opIz.p,$opDe.p)
       }else if $op.text == "!="{
-        $p = relacional.Noperaciondesigualdad($opIz.p,$opDe.p)
+        $p = desigualdad.Noperaciondesigualdad($opIz.p,$opDe.p)
       }
   }
   | expre_aritmetica {$p = $expre_aritmetica.p}
 ;
 
 /* ARITMETICA */
-expre_aritmetica returns[interfaz.Expresion p]
+expre_aritmetica returns[inter.Expresion p]
   : opera = TK_RESTA opUn = expre_aritmetica {
-      $p = aritmetica.Nnegativo($opUn.p)
+      $p = negativo.Nnegativo($opUn.p)
     }
   | opIz = expre_aritmetica opera = (TK_MULTI|TK_DIVI|TK_MODULO) opDe = expre_aritmetica {
       if $opera.text == "*"{ 
-        $p = aritmetica.Noperacionmultiplicacion($opIz.p,$opDe.p)
+        $p = multiplicacion.Noperacionmultiplicacion($opIz.p,$opDe.p)
       }else if $opera.text == "/"{
-        $p = aritmetica.Noperaciondivision($opIz.p,$opDe.p)
+        $p = division.Noperaciondivision($opIz.p,$opDe.p)
       }else if $opera.text == "%"{
-        $p = aritmetica.Noperacionmodulo($opIz.p,$opDe.p)
+        $p = modulo.Noperacionmodulo($opIz.p,$opDe.p)
       }
     }
   | opIz = expre_aritmetica opera = (TK_SUMA|TK_RESTA) opDe = expre_aritmetica  {        
       if $opera.text=="+"{
-        $p = aritmetica.Noperacionsuma($opIz.p,$opDe.p)
+        $p = suma.Noperacionsuma($opIz.p,$opDe.p)
       }else{ 
-        $p = aritmetica.Noperacionresta($opIz.p,$opDe.p)
+        $p = resta.Noperacionresta($opIz.p,$opDe.p)
       }
     }
   | datos  {$p = $datos.p}
@@ -225,26 +229,26 @@ expre_aritmetica returns[interfaz.Expresion p]
 
 
 /* DATO PRIMITIVO */
-datos returns[interfaz.Expresion p]
+datos returns[inter.Expresion p]
   : TK_ENTERO {
-      $p = primitivos.NuevoPrimitivo ($TK_ENTERO.text,objeto.INTEGER)
+      $p = primitiivos.NuevoPrimitivo ($TK_ENTERO.text,bloque.INTEGER)
     }
   | TK_FLOAT {
-      $p = primitivos.NuevoPrimitivo ($TK_FLOAT.text,objeto.FLOAT)
+      $p = primitiivos.NuevoPrimitivo ($TK_FLOAT.text,bloque.FLOAT)
     }
   | TK_IDENTIFICADOR {
-      $p = primitivos.NuevoPrimitivo($TK_IDENTIFICADOR.text,objeto.NULL)
+      $p = primitiivos.NuevoPrimitivo($TK_IDENTIFICADOR.text,bloque.NULL)
     }
   | TK_CADENA { 
-      $p = primitivos.NuevoPrimitivo($TK_CADENA.text,objeto.NULL)
+      $p = primitiivos.NuevoPrimitivo($TK_CADENA.text,bloque.NULL)
     }
   | TK_TEMPORAL {
-      $p = primitivos.NuevoPrimitivo($TK_TEMPORAL.text,objeto.TEMPORAL)
+      $p = primitiivos.NuevoPrimitivo($TK_TEMPORAL.text,bloque.TEMPORAL)
     }
   | TK_PUNSTACK {
-      $p = primitivos.NuevoPrimitivo($TK_PUNSTACK.text,objeto.NULL)
+      $p = primitiivos.NuevoPrimitivo($TK_PUNSTACK.text,bloque.NULL)
     }
   | TK_PUNHEAP {
-      $p = primitivos.NuevoPrimitivo($TK_PUNHEAP.text,objeto.NULL)
+      $p = primitiivos.NuevoPrimitivo($TK_PUNHEAP.text,bloque.NULL)
     }
 ;

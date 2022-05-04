@@ -23,6 +23,8 @@ TK_PUNHEAP:     'HP';
 TK_IF:          'if';
 TK_DOUBLE:      'double';
 TK_INT:         'int';
+TK_ASIGPSTACK:  'SP=0;';
+TK_ASIGHEAP:    'HP=0;';
 // ********** EXPRESIONES REGUALES **********
 TK_FLOAT:           [0-9]+('.'[0-9]+);
 TK_ENTERO:          [0-9]+;

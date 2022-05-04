@@ -18,10 +18,10 @@ func (asig AsiStack) Opti_Expresion(block *bloque.BloquesOpt) bloque.ObjetoBloqu
 	expres := asig.Expresion.Opti_Expresion(block)
 
 	return bloque.ObjetoBloque{
-		Tipo:       bloque.NULL,
+		Tipo:       bloque.TEMPORAL,
 		Asignacion: "",
 		OpeIz:      expres.Valor,
-		OpeDe:      expres.Valor,
-		Ope:        expres.Valor,
-		Valor:      "STACK[(int)" + expres.Valor + "]"}
+		OpeDe:      "",
+		Ope:        "STACK",
+		Valor:      expres.Valor}
 }

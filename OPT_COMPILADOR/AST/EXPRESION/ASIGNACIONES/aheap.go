@@ -18,10 +18,10 @@ func (asig AsiHeap) Opti_Expresion(block *bloque.BloquesOpt) bloque.ObjetoBloque
 	expres := asig.Expresion.Opti_Expresion(block)
 
 	return bloque.ObjetoBloque{
-		Tipo:       bloque.NULL,
+		Tipo:       bloque.TEMPORAL,
 		Asignacion: "",
 		OpeIz:      expres.Valor,
-		OpeDe:      expres.Valor,
-		Ope:        expres.Valor,
-		Valor:      "HEAP[(int)" + expres.Valor + "]"}
+		OpeDe:      "",
+		Ope:        "HEAP",
+		Valor:      expres.Valor}
 }
