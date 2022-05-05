@@ -182,7 +182,7 @@ func (decla Declaracion) Opti_Instruccion(block *bloque.BloquesOpt, genopt *gene
 				Valor:      valopt.Valor,
 				Linea:      decla.Linea}
 			block.Guardar(decla.Temporal, simb_decla)
-			guardar := bloque.Nobjetolista(decla.Temporal, decla.Temporal+"="+valopt.Valor)
+			guardar := bloque.Nobjetolista(decla.Temporal, decla.Temporal+"="+valopt.Valor+";")
 			genopt.AgegarCodigoOpt(guardar)
 		} else {
 			simb_decla := bloque.ObjetoBloque{Tipo: valopt.Tipo,
@@ -193,7 +193,7 @@ func (decla Declaracion) Opti_Instruccion(block *bloque.BloquesOpt, genopt *gene
 				Valor:      valopt.Valor,
 				Linea:      decla.Linea}
 			block.Guardar(decla.Temporal, simb_decla)
-			guardar := bloque.Nobjetolista(decla.Temporal, decla.Temporal+"="+valopt.Valor)
+			guardar := bloque.Nobjetolista(decla.Temporal, decla.Temporal+"="+valopt.Valor+";")
 			genopt.AgegarCodigoOpt(guardar)
 		}
 	}

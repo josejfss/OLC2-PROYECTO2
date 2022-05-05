@@ -48,10 +48,14 @@ func (abs Absoluto) Compilar_Expresion(ent *entorno.Entorno, gen *generador.Gene
 	if resultado.Tipo == simbolos.INTEGER {
 		etiqueta_salida := gen.Crear_label()
 		gen.Eliminar_label(etiqueta_salida)
+		etiqueta_salida1 := gen.Crear_label()
+		gen.Eliminar_label(etiqueta_salida1)
 		gen.Agregar_Logica("if (" + resultado.Valor + " > 0 ) goto " + etiqueta_salida + ";")
 		gen.Agregar_Logica(nuevo_temporal + " = " + resultado.Valor + " * -1;")
+		gen.Agregar_Logica("goto " + etiqueta_salida1 + ";")
 		gen.Agregar_Logica(etiqueta_salida + ":")
 		gen.Agregar_Logica(nuevo_temporal + " = " + resultado.Valor + ";")
+		gen.Agregar_Logica(etiqueta_salida1 + ":")
 		return simbolos.ValoresC3D{Valor: nuevo_temporal, EsTemporal: true, Tipo: simbolos.INTEGER, Label_verdadera: "", Label_false: ""}
 	} else if resultado.Tipo == simbolos.FLOAT {
 		etiqueta_salida := gen.Crear_label()

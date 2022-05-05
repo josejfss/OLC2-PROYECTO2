@@ -526,7 +526,6 @@ expression returns[interfaces.Expresion p]
     | sent_if                 {$p = $sent_if.p}
     | sent_match              {$p = $sent_match.p}
     | loop                    {$p = $loop.p}
-    | TK_PI expression TK_PD  {$p = $expression.p}
     | vectores_inicio         {$p = $vectores_inicio.p}
     | arreglos_inicio         {$p = $arreglos_inicio.p}
     | accesso_arreglo         {$p = $accesso_arreglo.p}
@@ -685,9 +684,10 @@ expre_relacional returns[interfaces.Expresion p]
 
 /* ARITMETICA */
 expre_aritmetica returns[interfaces.Expresion p]
-  : opera = TK_RESTA opUn = expre_aritmetica {
+  : opera = TK_RESTA opUn = expression {
       $p = aritmetica.Nopnegativo($opUn.p, $opera.line, localctx.(*Expre_aritmeticaContext).opera.GetColumn())
     }
+  | TK_PI expression TK_PD  {$p = $expression.p}
   | tipito = TK_TIPOINT TK_POW TK_PI opIz = expre_aritmetica TK_COMA opDe = expre_aritmetica TK_PD  {
       $p = aritmetica.Npotencia($tipito.text,$opIz.p,$opDe.p, $TK_POW.line, localctx.(*Expre_aritmeticaContext).Get_TK_POW().GetColumn())
     }

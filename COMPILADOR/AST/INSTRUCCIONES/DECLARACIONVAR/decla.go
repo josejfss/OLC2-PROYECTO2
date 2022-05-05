@@ -29,7 +29,7 @@ func (decla Declaracion) Ejecutar_Instruccion(ent *entorno.Entorno, ent2 *entorn
 	if !ent.Existe_ArreVect(decla.Identificador) {
 		if !ent.Existe_Variable(decla.Identificador) {
 			resultado := decla.Valor_exp.Ejecutar_Expresion(ent)
-			if resultado.Tipo == decla.TipoDecla {
+			if resultado.Tipo == decla.TipoDecla || decla.TipoDecla == simbolos.NULL {
 				if ent.Nombre_Entorno != ent2.Nombre_Entorno {
 					ent2.Posicion = ent2.Posicion - 1
 					simbguardar := simbolos.Simbolo_Vars{Mutable: decla.Mutable, TipoVariable: resultado.Tipo, NombreVariable: decla.Identificador, ValorVariable: resultado.Valor, PosicionTabla: ent.Posicion, Linea: decla.Linea, Columna: decla.Columna}

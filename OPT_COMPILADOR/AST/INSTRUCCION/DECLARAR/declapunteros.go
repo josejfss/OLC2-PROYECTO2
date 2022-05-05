@@ -32,15 +32,8 @@ func (got DeclaPunteros) Opti_Instruccion(block *bloque.BloquesOpt, genopt *gene
 
 		guardar := bloque.Nobjetolista("asignacion", got.Nombre+"[(int)"+pos.Valor+"]="+op_iz.Asignacion+";")
 		genopt.AgegarCodigoOpt(guardar)
-	} else if op_iz.Tipo == bloque.CONSTANTE {
-		reportes.ReporteOpti("Bloques", "Regla 4", got.Nombre+"[(int)"+pos.Valor+"]="+vali.Valor+";", got.Nombre+"[(int)"+pos.Valor+"]="+op_iz.Asignacion+";", strconv.Itoa(got.Linea))
-		genopt.EliminarTempo(op_iz.Asignacion, op_iz.Valor, strconv.Itoa(got.Linea))
-		block.EliminarTemporalLista(op_iz.Asignacion)
-
-		guardar := bloque.Nobjetolista("asignacion", got.Nombre+"[(int)"+pos.Valor+"]="+op_iz.Asignacion+";")
-		genopt.AgegarCodigoOpt(guardar)
 	} else {
-		guardar := bloque.Nobjetolista("asignacion", got.Nombre+"[(int)"+pos.Valor+"]="+op_iz.Asignacion+";")
+		guardar := bloque.Nobjetolista("asignacion", got.Nombre+"[(int)"+pos.Valor+"]="+vali.Valor+";")
 		genopt.AgegarCodigoOpt(guardar)
 	}
 	return 0

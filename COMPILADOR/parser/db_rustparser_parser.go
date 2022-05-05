@@ -133,41 +133,41 @@ var parserATN = []uint16{
 	3, 46, 3, 46, 3, 46, 3, 46, 3, 46, 3, 46, 3, 46, 3, 46, 3, 46, 3, 46, 3,
 	46, 3, 46, 3, 46, 3, 46, 3, 46, 3, 46, 3, 46, 3, 46, 3, 46, 3, 46, 3, 46,
 	3, 46, 3, 46, 3, 46, 3, 46, 3, 46, 3, 46, 3, 46, 3, 46, 3, 46, 3, 46, 3,
-	46, 3, 46, 3, 46, 3, 46, 3, 46, 3, 46, 3, 46, 3, 46, 5, 46, 833, 10, 46,
-	3, 47, 3, 47, 3, 47, 3, 47, 3, 47, 3, 47, 3, 47, 3, 47, 3, 47, 7, 47, 844,
-	10, 47, 12, 47, 14, 47, 847, 11, 47, 3, 48, 3, 48, 3, 48, 3, 48, 3, 48,
-	3, 48, 5, 48, 855, 10, 48, 3, 49, 3, 49, 3, 49, 3, 49, 3, 49, 3, 49, 3,
-	50, 3, 50, 3, 50, 3, 50, 3, 50, 3, 50, 3, 50, 3, 50, 3, 51, 3, 51, 3, 51,
-	3, 51, 3, 51, 3, 51, 5, 51, 877, 10, 51, 3, 52, 3, 52, 3, 52, 3, 52, 3,
-	52, 3, 53, 3, 53, 3, 53, 3, 53, 3, 53, 3, 53, 3, 53, 3, 54, 3, 54, 3, 54,
-	3, 54, 3, 55, 3, 55, 3, 55, 3, 55, 3, 55, 3, 55, 3, 55, 3, 55, 7, 55, 903,
-	10, 55, 12, 55, 14, 55, 906, 11, 55, 3, 56, 3, 56, 3, 56, 3, 56, 3, 56,
-	3, 57, 3, 57, 3, 57, 3, 57, 3, 57, 3, 57, 3, 58, 3, 58, 3, 58, 3, 58, 3,
-	58, 3, 59, 3, 59, 3, 59, 3, 59, 3, 59, 3, 59, 3, 59, 3, 59, 5, 59, 932,
-	10, 59, 3, 60, 3, 60, 3, 60, 3, 60, 3, 60, 3, 60, 3, 60, 3, 60, 3, 60,
+	46, 3, 46, 3, 46, 5, 46, 828, 10, 46, 3, 47, 3, 47, 3, 47, 3, 47, 3, 47,
+	3, 47, 3, 47, 3, 47, 3, 47, 7, 47, 839, 10, 47, 12, 47, 14, 47, 842, 11,
+	47, 3, 48, 3, 48, 3, 48, 3, 48, 3, 48, 3, 48, 5, 48, 850, 10, 48, 3, 49,
+	3, 49, 3, 49, 3, 49, 3, 49, 3, 49, 3, 50, 3, 50, 3, 50, 3, 50, 3, 50, 3,
+	50, 3, 50, 3, 50, 3, 51, 3, 51, 3, 51, 3, 51, 3, 51, 3, 51, 5, 51, 872,
+	10, 51, 3, 52, 3, 52, 3, 52, 3, 52, 3, 52, 3, 53, 3, 53, 3, 53, 3, 53,
+	3, 53, 3, 53, 3, 53, 3, 54, 3, 54, 3, 54, 3, 54, 3, 55, 3, 55, 3, 55, 3,
+	55, 3, 55, 3, 55, 3, 55, 3, 55, 7, 55, 898, 10, 55, 12, 55, 14, 55, 901,
+	11, 55, 3, 56, 3, 56, 3, 56, 3, 56, 3, 56, 3, 57, 3, 57, 3, 57, 3, 57,
+	3, 57, 3, 57, 3, 58, 3, 58, 3, 58, 3, 58, 3, 58, 3, 59, 3, 59, 3, 59, 3,
+	59, 3, 59, 3, 59, 3, 59, 3, 59, 5, 59, 927, 10, 59, 3, 60, 3, 60, 3, 60,
 	3, 60, 3, 60, 3, 60, 3, 60, 3, 60, 3, 60, 3, 60, 3, 60, 3, 60, 3, 60, 3,
-	60, 3, 60, 3, 60, 3, 60, 3, 60, 7, 60, 958, 10, 60, 12, 60, 14, 60, 961,
-	11, 60, 3, 61, 3, 61, 3, 61, 3, 61, 3, 61, 3, 61, 3, 61, 3, 61, 5, 61,
-	971, 10, 61, 3, 61, 3, 61, 3, 61, 3, 61, 3, 61, 7, 61, 978, 10, 61, 12,
-	61, 14, 61, 981, 11, 61, 3, 62, 3, 62, 3, 62, 3, 62, 3, 62, 3, 62, 3, 62,
-	3, 62, 3, 62, 7, 62, 992, 10, 62, 12, 62, 14, 62, 995, 11, 62, 3, 63, 3,
-	63, 3, 63, 3, 63, 3, 63, 3, 63, 3, 63, 3, 63, 3, 63, 3, 63, 3, 63, 3, 63,
+	60, 3, 60, 3, 60, 3, 60, 3, 60, 3, 60, 3, 60, 3, 60, 3, 60, 3, 60, 3, 60,
+	7, 60, 953, 10, 60, 12, 60, 14, 60, 956, 11, 60, 3, 61, 3, 61, 3, 61, 3,
+	61, 3, 61, 3, 61, 3, 61, 3, 61, 5, 61, 966, 10, 61, 3, 61, 3, 61, 3, 61,
+	3, 61, 3, 61, 7, 61, 973, 10, 61, 12, 61, 14, 61, 976, 11, 61, 3, 62, 3,
+	62, 3, 62, 3, 62, 3, 62, 3, 62, 3, 62, 3, 62, 3, 62, 7, 62, 987, 10, 62,
+	12, 62, 14, 62, 990, 11, 62, 3, 63, 3, 63, 3, 63, 3, 63, 3, 63, 3, 63,
 	3, 63, 3, 63, 3, 63, 3, 63, 3, 63, 3, 63, 3, 63, 3, 63, 3, 63, 3, 63, 3,
-	63, 3, 63, 3, 63, 3, 63, 5, 63, 1023, 10, 63, 3, 63, 3, 63, 3, 63, 3, 63,
-	3, 63, 3, 63, 3, 63, 3, 63, 3, 63, 3, 63, 7, 63, 1035, 10, 63, 12, 63,
-	14, 63, 1038, 11, 63, 3, 64, 3, 64, 3, 64, 3, 64, 3, 64, 3, 64, 5, 64,
-	1046, 10, 64, 3, 65, 3, 65, 3, 65, 3, 65, 3, 65, 3, 65, 3, 65, 3, 65, 3,
-	65, 3, 65, 3, 65, 3, 65, 3, 65, 3, 65, 3, 65, 3, 65, 3, 65, 3, 65, 3, 65,
+	63, 3, 63, 3, 63, 3, 63, 3, 63, 3, 63, 3, 63, 3, 63, 3, 63, 3, 63, 3, 63,
+	3, 63, 3, 63, 3, 63, 3, 63, 5, 63, 1023, 10, 63, 3, 63, 3, 63, 3, 63, 3,
+	63, 3, 63, 3, 63, 3, 63, 3, 63, 3, 63, 3, 63, 7, 63, 1035, 10, 63, 12,
+	63, 14, 63, 1038, 11, 63, 3, 64, 3, 64, 3, 64, 3, 64, 3, 64, 3, 64, 5,
+	64, 1046, 10, 64, 3, 65, 3, 65, 3, 65, 3, 65, 3, 65, 3, 65, 3, 65, 3, 65,
 	3, 65, 3, 65, 3, 65, 3, 65, 3, 65, 3, 65, 3, 65, 3, 65, 3, 65, 3, 65, 3,
-	65, 5, 65, 1078, 10, 65, 3, 66, 3, 66, 3, 66, 3, 66, 3, 66, 3, 66, 3, 66,
-	3, 66, 3, 66, 3, 66, 3, 66, 3, 66, 3, 66, 3, 66, 5, 66, 1094, 10, 66, 3,
-	66, 2, 15, 10, 16, 24, 38, 42, 66, 86, 92, 108, 118, 120, 122, 124, 67,
-	2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38,
-	40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74,
-	76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106, 108,
-	110, 112, 114, 116, 118, 120, 122, 124, 126, 128, 130, 2, 6, 3, 2, 64,
-	65, 3, 2, 58, 63, 3, 2, 55, 57, 3, 2, 53, 54, 2, 1148, 2, 132, 3, 2, 2,
-	2, 4, 138, 3, 2, 2, 2, 6, 155, 3, 2, 2, 2, 8, 157, 3, 2, 2, 2, 10, 165,
+	65, 3, 65, 3, 65, 3, 65, 3, 65, 3, 65, 3, 65, 3, 65, 3, 65, 3, 65, 3, 65,
+	3, 65, 5, 65, 1078, 10, 65, 3, 66, 3, 66, 3, 66, 3, 66, 3, 66, 3, 66, 3,
+	66, 3, 66, 3, 66, 3, 66, 3, 66, 3, 66, 3, 66, 3, 66, 5, 66, 1094, 10, 66,
+	3, 66, 2, 15, 10, 16, 24, 38, 42, 66, 86, 92, 108, 118, 120, 122, 124,
+	67, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36,
+	38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72,
+	74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98, 100, 102, 104, 106,
+	108, 110, 112, 114, 116, 118, 120, 122, 124, 126, 128, 130, 2, 6, 3, 2,
+	64, 65, 3, 2, 58, 63, 3, 2, 55, 57, 3, 2, 53, 54, 2, 1148, 2, 132, 3, 2,
+	2, 2, 4, 138, 3, 2, 2, 2, 6, 155, 3, 2, 2, 2, 8, 157, 3, 2, 2, 2, 10, 165,
 	3, 2, 2, 2, 12, 190, 3, 2, 2, 2, 14, 192, 3, 2, 2, 2, 16, 199, 3, 2, 2,
 	2, 18, 213, 3, 2, 2, 2, 20, 250, 3, 2, 2, 2, 22, 255, 3, 2, 2, 2, 24, 257,
 	3, 2, 2, 2, 26, 294, 3, 2, 2, 2, 28, 301, 3, 2, 2, 2, 30, 324, 3, 2, 2,
@@ -179,12 +179,12 @@ var parserATN = []uint16{
 	3, 2, 2, 2, 68, 641, 3, 2, 2, 2, 70, 675, 3, 2, 2, 2, 72, 677, 3, 2, 2,
 	2, 74, 683, 3, 2, 2, 2, 76, 691, 3, 2, 2, 2, 78, 707, 3, 2, 2, 2, 80, 721,
 	3, 2, 2, 2, 82, 731, 3, 2, 2, 2, 84, 733, 3, 2, 2, 2, 86, 737, 3, 2, 2,
-	2, 88, 783, 3, 2, 2, 2, 90, 832, 3, 2, 2, 2, 92, 834, 3, 2, 2, 2, 94, 854,
-	3, 2, 2, 2, 96, 856, 3, 2, 2, 2, 98, 862, 3, 2, 2, 2, 100, 876, 3, 2, 2,
-	2, 102, 878, 3, 2, 2, 2, 104, 883, 3, 2, 2, 2, 106, 890, 3, 2, 2, 2, 108,
-	894, 3, 2, 2, 2, 110, 907, 3, 2, 2, 2, 112, 912, 3, 2, 2, 2, 114, 918,
-	3, 2, 2, 2, 116, 931, 3, 2, 2, 2, 118, 933, 3, 2, 2, 2, 120, 970, 3, 2,
-	2, 2, 122, 982, 3, 2, 2, 2, 124, 1022, 3, 2, 2, 2, 126, 1045, 3, 2, 2,
+	2, 88, 783, 3, 2, 2, 2, 90, 827, 3, 2, 2, 2, 92, 829, 3, 2, 2, 2, 94, 849,
+	3, 2, 2, 2, 96, 851, 3, 2, 2, 2, 98, 857, 3, 2, 2, 2, 100, 871, 3, 2, 2,
+	2, 102, 873, 3, 2, 2, 2, 104, 878, 3, 2, 2, 2, 106, 885, 3, 2, 2, 2, 108,
+	889, 3, 2, 2, 2, 110, 902, 3, 2, 2, 2, 112, 907, 3, 2, 2, 2, 114, 913,
+	3, 2, 2, 2, 116, 926, 3, 2, 2, 2, 118, 928, 3, 2, 2, 2, 120, 965, 3, 2,
+	2, 2, 122, 977, 3, 2, 2, 2, 124, 1022, 3, 2, 2, 2, 126, 1045, 3, 2, 2,
 	2, 128, 1077, 3, 2, 2, 2, 130, 1093, 3, 2, 2, 2, 132, 133, 5, 4, 3, 2,
 	133, 134, 8, 2, 1, 2, 134, 3, 3, 2, 2, 2, 135, 137, 5, 6, 4, 2, 136, 135,
 	3, 2, 2, 2, 137, 140, 3, 2, 2, 2, 138, 136, 3, 2, 2, 2, 138, 139, 3, 2,
@@ -413,93 +413,93 @@ var parserATN = []uint16{
 	3, 2, 2, 2, 783, 759, 3, 2, 2, 2, 783, 762, 3, 2, 2, 2, 783, 765, 3, 2,
 	2, 2, 783, 768, 3, 2, 2, 2, 783, 771, 3, 2, 2, 2, 783, 774, 3, 2, 2, 2,
 	783, 777, 3, 2, 2, 2, 783, 780, 3, 2, 2, 2, 784, 89, 3, 2, 2, 2, 785, 786,
-	5, 118, 60, 2, 786, 787, 8, 46, 1, 2, 787, 833, 3, 2, 2, 2, 788, 789, 5,
-	116, 59, 2, 789, 790, 8, 46, 1, 2, 790, 833, 3, 2, 2, 2, 791, 792, 5, 120,
-	61, 2, 792, 793, 8, 46, 1, 2, 793, 833, 3, 2, 2, 2, 794, 795, 5, 122, 62,
-	2, 795, 796, 8, 46, 1, 2, 796, 833, 3, 2, 2, 2, 797, 798, 5, 124, 63, 2,
-	798, 799, 8, 46, 1, 2, 799, 833, 3, 2, 2, 2, 800, 801, 5, 32, 17, 2, 801,
-	802, 8, 46, 1, 2, 802, 833, 3, 2, 2, 2, 803, 804, 5, 36, 19, 2, 804, 805,
-	8, 46, 1, 2, 805, 833, 3, 2, 2, 2, 806, 807, 5, 44, 23, 2, 807, 808, 8,
-	46, 1, 2, 808, 833, 3, 2, 2, 2, 809, 810, 7, 71, 2, 2, 810, 811, 5, 90,
-	46, 2, 811, 812, 7, 72, 2, 2, 812, 813, 8, 46, 1, 2, 813, 833, 3, 2, 2,
-	2, 814, 815, 5, 94, 48, 2, 815, 816, 8, 46, 1, 2, 816, 833, 3, 2, 2, 2,
-	817, 818, 5, 100, 51, 2, 818, 819, 8, 46, 1, 2, 819, 833, 3, 2, 2, 2, 820,
-	821, 5, 106, 54, 2, 821, 822, 8, 46, 1, 2, 822, 833, 3, 2, 2, 2, 823, 824,
-	5, 112, 57, 2, 824, 825, 8, 46, 1, 2, 825, 833, 3, 2, 2, 2, 826, 827, 5,
-	114, 58, 2, 827, 828, 8, 46, 1, 2, 828, 833, 3, 2, 2, 2, 829, 830, 5, 126,
-	64, 2, 830, 831, 8, 46, 1, 2, 831, 833, 3, 2, 2, 2, 832, 785, 3, 2, 2,
-	2, 832, 788, 3, 2, 2, 2, 832, 791, 3, 2, 2, 2, 832, 794, 3, 2, 2, 2, 832,
-	797, 3, 2, 2, 2, 832, 800, 3, 2, 2, 2, 832, 803, 3, 2, 2, 2, 832, 806,
-	3, 2, 2, 2, 832, 809, 3, 2, 2, 2, 832, 814, 3, 2, 2, 2, 832, 817, 3, 2,
-	2, 2, 832, 820, 3, 2, 2, 2, 832, 823, 3, 2, 2, 2, 832, 826, 3, 2, 2, 2,
-	832, 829, 3, 2, 2, 2, 833, 91, 3, 2, 2, 2, 834, 835, 8, 47, 1, 2, 835,
-	836, 5, 90, 46, 2, 836, 837, 8, 47, 1, 2, 837, 845, 3, 2, 2, 2, 838, 839,
-	12, 4, 2, 2, 839, 840, 7, 75, 2, 2, 840, 841, 5, 90, 46, 2, 841, 842, 8,
-	47, 1, 2, 842, 844, 3, 2, 2, 2, 843, 838, 3, 2, 2, 2, 844, 847, 3, 2, 2,
-	2, 845, 843, 3, 2, 2, 2, 845, 846, 3, 2, 2, 2, 846, 93, 3, 2, 2, 2, 847,
-	845, 3, 2, 2, 2, 848, 849, 5, 96, 49, 2, 849, 850, 8, 48, 1, 2, 850, 855,
-	3, 2, 2, 2, 851, 852, 5, 98, 50, 2, 852, 853, 8, 48, 1, 2, 853, 855, 3,
-	2, 2, 2, 854, 848, 3, 2, 2, 2, 854, 851, 3, 2, 2, 2, 855, 95, 3, 2, 2,
-	2, 856, 857, 7, 23, 2, 2, 857, 858, 7, 69, 2, 2, 858, 859, 5, 92, 47, 2,
-	859, 860, 7, 70, 2, 2, 860, 861, 8, 49, 1, 2, 861, 97, 3, 2, 2, 2, 862,
-	863, 7, 23, 2, 2, 863, 864, 7, 69, 2, 2, 864, 865, 5, 90, 46, 2, 865, 866,
-	7, 73, 2, 2, 866, 867, 5, 90, 46, 2, 867, 868, 7, 70, 2, 2, 868, 869, 8,
-	50, 1, 2, 869, 99, 3, 2, 2, 2, 870, 871, 5, 102, 52, 2, 871, 872, 8, 51,
-	1, 2, 872, 877, 3, 2, 2, 2, 873, 874, 5, 104, 53, 2, 874, 875, 8, 51, 1,
-	2, 875, 877, 3, 2, 2, 2, 876, 870, 3, 2, 2, 2, 876, 873, 3, 2, 2, 2, 877,
-	101, 3, 2, 2, 2, 878, 879, 7, 69, 2, 2, 879, 880, 5, 92, 47, 2, 880, 881,
-	7, 70, 2, 2, 881, 882, 8, 52, 1, 2, 882, 103, 3, 2, 2, 2, 883, 884, 7,
-	69, 2, 2, 884, 885, 5, 90, 46, 2, 885, 886, 7, 73, 2, 2, 886, 887, 5, 90,
-	46, 2, 887, 888, 7, 70, 2, 2, 888, 889, 8, 53, 1, 2, 889, 105, 3, 2, 2,
-	2, 890, 891, 7, 52, 2, 2, 891, 892, 5, 108, 55, 2, 892, 893, 8, 54, 1,
-	2, 893, 107, 3, 2, 2, 2, 894, 895, 8, 55, 1, 2, 895, 896, 5, 110, 56, 2,
-	896, 897, 8, 55, 1, 2, 897, 904, 3, 2, 2, 2, 898, 899, 12, 4, 2, 2, 899,
-	900, 5, 110, 56, 2, 900, 901, 8, 55, 1, 2, 901, 903, 3, 2, 2, 2, 902, 898,
-	3, 2, 2, 2, 903, 906, 3, 2, 2, 2, 904, 902, 3, 2, 2, 2, 904, 905, 3, 2,
-	2, 2, 905, 109, 3, 2, 2, 2, 906, 904, 3, 2, 2, 2, 907, 908, 7, 69, 2, 2,
-	908, 909, 5, 90, 46, 2, 909, 910, 7, 70, 2, 2, 910, 911, 8, 56, 1, 2, 911,
-	111, 3, 2, 2, 2, 912, 913, 7, 52, 2, 2, 913, 914, 7, 62, 2, 2, 914, 915,
-	5, 90, 46, 2, 915, 916, 7, 63, 2, 2, 916, 917, 8, 57, 1, 2, 917, 113, 3,
-	2, 2, 2, 918, 919, 7, 52, 2, 2, 919, 920, 7, 76, 2, 2, 920, 921, 7, 52,
-	2, 2, 921, 922, 8, 58, 1, 2, 922, 115, 3, 2, 2, 2, 923, 924, 7, 52, 2,
-	2, 924, 925, 7, 76, 2, 2, 925, 926, 7, 25, 2, 2, 926, 932, 8, 59, 1, 2,
-	927, 928, 7, 52, 2, 2, 928, 929, 7, 76, 2, 2, 929, 930, 7, 30, 2, 2, 930,
-	932, 8, 59, 1, 2, 931, 923, 3, 2, 2, 2, 931, 927, 3, 2, 2, 2, 932, 117,
-	3, 2, 2, 2, 933, 934, 8, 60, 1, 2, 934, 935, 5, 120, 61, 2, 935, 936, 8,
-	60, 1, 2, 936, 959, 3, 2, 2, 2, 937, 938, 12, 8, 2, 2, 938, 939, 7, 76,
-	2, 2, 939, 940, 7, 17, 2, 2, 940, 958, 8, 60, 1, 2, 941, 942, 12, 7, 2,
-	2, 942, 943, 7, 76, 2, 2, 943, 944, 7, 18, 2, 2, 944, 958, 8, 60, 1, 2,
-	945, 946, 12, 6, 2, 2, 946, 947, 7, 76, 2, 2, 947, 948, 7, 19, 2, 2, 948,
-	958, 8, 60, 1, 2, 949, 950, 12, 5, 2, 2, 950, 951, 7, 76, 2, 2, 951, 952,
-	7, 20, 2, 2, 952, 958, 8, 60, 1, 2, 953, 954, 12, 4, 2, 2, 954, 955, 7,
-	76, 2, 2, 955, 956, 7, 21, 2, 2, 956, 958, 8, 60, 1, 2, 957, 937, 3, 2,
-	2, 2, 957, 941, 3, 2, 2, 2, 957, 945, 3, 2, 2, 2, 957, 949, 3, 2, 2, 2,
-	957, 953, 3, 2, 2, 2, 958, 961, 3, 2, 2, 2, 959, 957, 3, 2, 2, 2, 959,
-	960, 3, 2, 2, 2, 960, 119, 3, 2, 2, 2, 961, 959, 3, 2, 2, 2, 962, 963,
-	8, 61, 1, 2, 963, 964, 7, 66, 2, 2, 964, 965, 5, 90, 46, 2, 965, 966, 8,
-	61, 1, 2, 966, 971, 3, 2, 2, 2, 967, 968, 5, 122, 62, 2, 968, 969, 8, 61,
-	1, 2, 969, 971, 3, 2, 2, 2, 970, 962, 3, 2, 2, 2, 970, 967, 3, 2, 2, 2,
-	971, 979, 3, 2, 2, 2, 972, 973, 12, 4, 2, 2, 973, 974, 9, 2, 2, 2, 974,
-	975, 5, 120, 61, 5, 975, 976, 8, 61, 1, 2, 976, 978, 3, 2, 2, 2, 977, 972,
-	3, 2, 2, 2, 978, 981, 3, 2, 2, 2, 979, 977, 3, 2, 2, 2, 979, 980, 3, 2,
-	2, 2, 980, 121, 3, 2, 2, 2, 981, 979, 3, 2, 2, 2, 982, 983, 8, 62, 1, 2,
-	983, 984, 5, 124, 63, 2, 984, 985, 8, 62, 1, 2, 985, 993, 3, 2, 2, 2, 986,
-	987, 12, 4, 2, 2, 987, 988, 9, 3, 2, 2, 988, 989, 5, 122, 62, 5, 989, 990,
-	8, 62, 1, 2, 990, 992, 3, 2, 2, 2, 991, 986, 3, 2, 2, 2, 992, 995, 3, 2,
-	2, 2, 993, 991, 3, 2, 2, 2, 993, 994, 3, 2, 2, 2, 994, 123, 3, 2, 2, 2,
-	995, 993, 3, 2, 2, 2, 996, 997, 8, 63, 1, 2, 997, 998, 7, 54, 2, 2, 998,
-	999, 5, 124, 63, 8, 999, 1000, 8, 63, 1, 2, 1000, 1023, 3, 2, 2, 2, 1001,
-	1002, 7, 4, 2, 2, 1002, 1003, 7, 44, 2, 2, 1003, 1004, 7, 71, 2, 2, 1004,
-	1005, 5, 124, 63, 2, 1005, 1006, 7, 75, 2, 2, 1006, 1007, 5, 124, 63, 2,
-	1007, 1008, 7, 72, 2, 2, 1008, 1009, 8, 63, 1, 2, 1009, 1023, 3, 2, 2,
-	2, 1010, 1011, 7, 5, 2, 2, 1011, 1012, 7, 45, 2, 2, 1012, 1013, 7, 71,
-	2, 2, 1013, 1014, 5, 124, 63, 2, 1014, 1015, 7, 75, 2, 2, 1015, 1016, 5,
-	124, 63, 2, 1016, 1017, 7, 72, 2, 2, 1017, 1018, 8, 63, 1, 2, 1018, 1023,
-	3, 2, 2, 2, 1019, 1020, 5, 126, 64, 2, 1020, 1021, 8, 63, 1, 2, 1021, 1023,
-	3, 2, 2, 2, 1022, 996, 3, 2, 2, 2, 1022, 1001, 3, 2, 2, 2, 1022, 1010,
-	3, 2, 2, 2, 1022, 1019, 3, 2, 2, 2, 1023, 1036, 3, 2, 2, 2, 1024, 1025,
-	12, 5, 2, 2, 1025, 1026, 9, 4, 2, 2, 1026, 1027, 5, 124, 63, 6, 1027, 1028,
-	8, 63, 1, 2, 1028, 1035, 3, 2, 2, 2, 1029, 1030, 12, 4, 2, 2, 1030, 1031,
+	5, 118, 60, 2, 786, 787, 8, 46, 1, 2, 787, 828, 3, 2, 2, 2, 788, 789, 5,
+	116, 59, 2, 789, 790, 8, 46, 1, 2, 790, 828, 3, 2, 2, 2, 791, 792, 5, 120,
+	61, 2, 792, 793, 8, 46, 1, 2, 793, 828, 3, 2, 2, 2, 794, 795, 5, 122, 62,
+	2, 795, 796, 8, 46, 1, 2, 796, 828, 3, 2, 2, 2, 797, 798, 5, 124, 63, 2,
+	798, 799, 8, 46, 1, 2, 799, 828, 3, 2, 2, 2, 800, 801, 5, 32, 17, 2, 801,
+	802, 8, 46, 1, 2, 802, 828, 3, 2, 2, 2, 803, 804, 5, 36, 19, 2, 804, 805,
+	8, 46, 1, 2, 805, 828, 3, 2, 2, 2, 806, 807, 5, 44, 23, 2, 807, 808, 8,
+	46, 1, 2, 808, 828, 3, 2, 2, 2, 809, 810, 5, 94, 48, 2, 810, 811, 8, 46,
+	1, 2, 811, 828, 3, 2, 2, 2, 812, 813, 5, 100, 51, 2, 813, 814, 8, 46, 1,
+	2, 814, 828, 3, 2, 2, 2, 815, 816, 5, 106, 54, 2, 816, 817, 8, 46, 1, 2,
+	817, 828, 3, 2, 2, 2, 818, 819, 5, 112, 57, 2, 819, 820, 8, 46, 1, 2, 820,
+	828, 3, 2, 2, 2, 821, 822, 5, 114, 58, 2, 822, 823, 8, 46, 1, 2, 823, 828,
+	3, 2, 2, 2, 824, 825, 5, 126, 64, 2, 825, 826, 8, 46, 1, 2, 826, 828, 3,
+	2, 2, 2, 827, 785, 3, 2, 2, 2, 827, 788, 3, 2, 2, 2, 827, 791, 3, 2, 2,
+	2, 827, 794, 3, 2, 2, 2, 827, 797, 3, 2, 2, 2, 827, 800, 3, 2, 2, 2, 827,
+	803, 3, 2, 2, 2, 827, 806, 3, 2, 2, 2, 827, 809, 3, 2, 2, 2, 827, 812,
+	3, 2, 2, 2, 827, 815, 3, 2, 2, 2, 827, 818, 3, 2, 2, 2, 827, 821, 3, 2,
+	2, 2, 827, 824, 3, 2, 2, 2, 828, 91, 3, 2, 2, 2, 829, 830, 8, 47, 1, 2,
+	830, 831, 5, 90, 46, 2, 831, 832, 8, 47, 1, 2, 832, 840, 3, 2, 2, 2, 833,
+	834, 12, 4, 2, 2, 834, 835, 7, 75, 2, 2, 835, 836, 5, 90, 46, 2, 836, 837,
+	8, 47, 1, 2, 837, 839, 3, 2, 2, 2, 838, 833, 3, 2, 2, 2, 839, 842, 3, 2,
+	2, 2, 840, 838, 3, 2, 2, 2, 840, 841, 3, 2, 2, 2, 841, 93, 3, 2, 2, 2,
+	842, 840, 3, 2, 2, 2, 843, 844, 5, 96, 49, 2, 844, 845, 8, 48, 1, 2, 845,
+	850, 3, 2, 2, 2, 846, 847, 5, 98, 50, 2, 847, 848, 8, 48, 1, 2, 848, 850,
+	3, 2, 2, 2, 849, 843, 3, 2, 2, 2, 849, 846, 3, 2, 2, 2, 850, 95, 3, 2,
+	2, 2, 851, 852, 7, 23, 2, 2, 852, 853, 7, 69, 2, 2, 853, 854, 5, 92, 47,
+	2, 854, 855, 7, 70, 2, 2, 855, 856, 8, 49, 1, 2, 856, 97, 3, 2, 2, 2, 857,
+	858, 7, 23, 2, 2, 858, 859, 7, 69, 2, 2, 859, 860, 5, 90, 46, 2, 860, 861,
+	7, 73, 2, 2, 861, 862, 5, 90, 46, 2, 862, 863, 7, 70, 2, 2, 863, 864, 8,
+	50, 1, 2, 864, 99, 3, 2, 2, 2, 865, 866, 5, 102, 52, 2, 866, 867, 8, 51,
+	1, 2, 867, 872, 3, 2, 2, 2, 868, 869, 5, 104, 53, 2, 869, 870, 8, 51, 1,
+	2, 870, 872, 3, 2, 2, 2, 871, 865, 3, 2, 2, 2, 871, 868, 3, 2, 2, 2, 872,
+	101, 3, 2, 2, 2, 873, 874, 7, 69, 2, 2, 874, 875, 5, 92, 47, 2, 875, 876,
+	7, 70, 2, 2, 876, 877, 8, 52, 1, 2, 877, 103, 3, 2, 2, 2, 878, 879, 7,
+	69, 2, 2, 879, 880, 5, 90, 46, 2, 880, 881, 7, 73, 2, 2, 881, 882, 5, 90,
+	46, 2, 882, 883, 7, 70, 2, 2, 883, 884, 8, 53, 1, 2, 884, 105, 3, 2, 2,
+	2, 885, 886, 7, 52, 2, 2, 886, 887, 5, 108, 55, 2, 887, 888, 8, 54, 1,
+	2, 888, 107, 3, 2, 2, 2, 889, 890, 8, 55, 1, 2, 890, 891, 5, 110, 56, 2,
+	891, 892, 8, 55, 1, 2, 892, 899, 3, 2, 2, 2, 893, 894, 12, 4, 2, 2, 894,
+	895, 5, 110, 56, 2, 895, 896, 8, 55, 1, 2, 896, 898, 3, 2, 2, 2, 897, 893,
+	3, 2, 2, 2, 898, 901, 3, 2, 2, 2, 899, 897, 3, 2, 2, 2, 899, 900, 3, 2,
+	2, 2, 900, 109, 3, 2, 2, 2, 901, 899, 3, 2, 2, 2, 902, 903, 7, 69, 2, 2,
+	903, 904, 5, 90, 46, 2, 904, 905, 7, 70, 2, 2, 905, 906, 8, 56, 1, 2, 906,
+	111, 3, 2, 2, 2, 907, 908, 7, 52, 2, 2, 908, 909, 7, 62, 2, 2, 909, 910,
+	5, 90, 46, 2, 910, 911, 7, 63, 2, 2, 911, 912, 8, 57, 1, 2, 912, 113, 3,
+	2, 2, 2, 913, 914, 7, 52, 2, 2, 914, 915, 7, 76, 2, 2, 915, 916, 7, 52,
+	2, 2, 916, 917, 8, 58, 1, 2, 917, 115, 3, 2, 2, 2, 918, 919, 7, 52, 2,
+	2, 919, 920, 7, 76, 2, 2, 920, 921, 7, 25, 2, 2, 921, 927, 8, 59, 1, 2,
+	922, 923, 7, 52, 2, 2, 923, 924, 7, 76, 2, 2, 924, 925, 7, 30, 2, 2, 925,
+	927, 8, 59, 1, 2, 926, 918, 3, 2, 2, 2, 926, 922, 3, 2, 2, 2, 927, 117,
+	3, 2, 2, 2, 928, 929, 8, 60, 1, 2, 929, 930, 5, 120, 61, 2, 930, 931, 8,
+	60, 1, 2, 931, 954, 3, 2, 2, 2, 932, 933, 12, 8, 2, 2, 933, 934, 7, 76,
+	2, 2, 934, 935, 7, 17, 2, 2, 935, 953, 8, 60, 1, 2, 936, 937, 12, 7, 2,
+	2, 937, 938, 7, 76, 2, 2, 938, 939, 7, 18, 2, 2, 939, 953, 8, 60, 1, 2,
+	940, 941, 12, 6, 2, 2, 941, 942, 7, 76, 2, 2, 942, 943, 7, 19, 2, 2, 943,
+	953, 8, 60, 1, 2, 944, 945, 12, 5, 2, 2, 945, 946, 7, 76, 2, 2, 946, 947,
+	7, 20, 2, 2, 947, 953, 8, 60, 1, 2, 948, 949, 12, 4, 2, 2, 949, 950, 7,
+	76, 2, 2, 950, 951, 7, 21, 2, 2, 951, 953, 8, 60, 1, 2, 952, 932, 3, 2,
+	2, 2, 952, 936, 3, 2, 2, 2, 952, 940, 3, 2, 2, 2, 952, 944, 3, 2, 2, 2,
+	952, 948, 3, 2, 2, 2, 953, 956, 3, 2, 2, 2, 954, 952, 3, 2, 2, 2, 954,
+	955, 3, 2, 2, 2, 955, 119, 3, 2, 2, 2, 956, 954, 3, 2, 2, 2, 957, 958,
+	8, 61, 1, 2, 958, 959, 7, 66, 2, 2, 959, 960, 5, 90, 46, 2, 960, 961, 8,
+	61, 1, 2, 961, 966, 3, 2, 2, 2, 962, 963, 5, 122, 62, 2, 963, 964, 8, 61,
+	1, 2, 964, 966, 3, 2, 2, 2, 965, 957, 3, 2, 2, 2, 965, 962, 3, 2, 2, 2,
+	966, 974, 3, 2, 2, 2, 967, 968, 12, 4, 2, 2, 968, 969, 9, 2, 2, 2, 969,
+	970, 5, 120, 61, 5, 970, 971, 8, 61, 1, 2, 971, 973, 3, 2, 2, 2, 972, 967,
+	3, 2, 2, 2, 973, 976, 3, 2, 2, 2, 974, 972, 3, 2, 2, 2, 974, 975, 3, 2,
+	2, 2, 975, 121, 3, 2, 2, 2, 976, 974, 3, 2, 2, 2, 977, 978, 8, 62, 1, 2,
+	978, 979, 5, 124, 63, 2, 979, 980, 8, 62, 1, 2, 980, 988, 3, 2, 2, 2, 981,
+	982, 12, 4, 2, 2, 982, 983, 9, 3, 2, 2, 983, 984, 5, 122, 62, 5, 984, 985,
+	8, 62, 1, 2, 985, 987, 3, 2, 2, 2, 986, 981, 3, 2, 2, 2, 987, 990, 3, 2,
+	2, 2, 988, 986, 3, 2, 2, 2, 988, 989, 3, 2, 2, 2, 989, 123, 3, 2, 2, 2,
+	990, 988, 3, 2, 2, 2, 991, 992, 8, 63, 1, 2, 992, 993, 7, 54, 2, 2, 993,
+	994, 5, 90, 46, 2, 994, 995, 8, 63, 1, 2, 995, 1023, 3, 2, 2, 2, 996, 997,
+	7, 71, 2, 2, 997, 998, 5, 90, 46, 2, 998, 999, 7, 72, 2, 2, 999, 1000,
+	8, 63, 1, 2, 1000, 1023, 3, 2, 2, 2, 1001, 1002, 7, 4, 2, 2, 1002, 1003,
+	7, 44, 2, 2, 1003, 1004, 7, 71, 2, 2, 1004, 1005, 5, 124, 63, 2, 1005,
+	1006, 7, 75, 2, 2, 1006, 1007, 5, 124, 63, 2, 1007, 1008, 7, 72, 2, 2,
+	1008, 1009, 8, 63, 1, 2, 1009, 1023, 3, 2, 2, 2, 1010, 1011, 7, 5, 2, 2,
+	1011, 1012, 7, 45, 2, 2, 1012, 1013, 7, 71, 2, 2, 1013, 1014, 5, 124, 63,
+	2, 1014, 1015, 7, 75, 2, 2, 1015, 1016, 5, 124, 63, 2, 1016, 1017, 7, 72,
+	2, 2, 1017, 1018, 8, 63, 1, 2, 1018, 1023, 3, 2, 2, 2, 1019, 1020, 5, 126,
+	64, 2, 1020, 1021, 8, 63, 1, 2, 1021, 1023, 3, 2, 2, 2, 1022, 991, 3, 2,
+	2, 2, 1022, 996, 3, 2, 2, 2, 1022, 1001, 3, 2, 2, 2, 1022, 1010, 3, 2,
+	2, 2, 1022, 1019, 3, 2, 2, 2, 1023, 1036, 3, 2, 2, 2, 1024, 1025, 12, 5,
+	2, 2, 1025, 1026, 9, 4, 2, 2, 1026, 1027, 5, 124, 63, 6, 1027, 1028, 8,
+	63, 1, 2, 1028, 1035, 3, 2, 2, 2, 1029, 1030, 12, 4, 2, 2, 1030, 1031,
 	9, 5, 2, 2, 1031, 1032, 5, 124, 63, 5, 1032, 1033, 8, 63, 1, 2, 1033, 1035,
 	3, 2, 2, 2, 1034, 1024, 3, 2, 2, 2, 1034, 1029, 3, 2, 2, 2, 1035, 1038,
 	3, 2, 2, 2, 1036, 1034, 3, 2, 2, 2, 1036, 1037, 3, 2, 2, 2, 1037, 125,
@@ -528,8 +528,8 @@ var parserATN = []uint16{
 	3, 2, 2, 2, 1093, 1089, 3, 2, 2, 2, 1093, 1091, 3, 2, 2, 2, 1094, 131,
 	3, 2, 2, 2, 50, 138, 155, 175, 190, 210, 250, 255, 268, 294, 301, 324,
 	353, 375, 394, 407, 444, 462, 535, 540, 554, 570, 591, 608, 625, 638, 675,
-	707, 721, 731, 747, 783, 832, 845, 854, 876, 904, 931, 957, 959, 970, 979,
-	993, 1022, 1034, 1036, 1045, 1077, 1093,
+	707, 721, 731, 747, 783, 827, 840, 849, 871, 899, 926, 952, 954, 965, 974,
+	988, 1022, 1034, 1036, 1045, 1077, 1093,
 }
 var deserializer = antlr.NewATNDeserializer(nil)
 var deserializedATN = deserializer.DeserializeFromUInt16(parserATN)
@@ -10781,9 +10781,6 @@ type IExpressionContext interface {
 	// Get_loop returns the _loop rule contexts.
 	Get_loop() ILoopContext
 
-	// Get_expression returns the _expression rule contexts.
-	Get_expression() IExpressionContext
-
 	// Get_vectores_inicio returns the _vectores_inicio rule contexts.
 	Get_vectores_inicio() IVectores_inicioContext
 
@@ -10826,9 +10823,6 @@ type IExpressionContext interface {
 	// Set_loop sets the _loop rule contexts.
 	Set_loop(ILoopContext)
 
-	// Set_expression sets the _expression rule contexts.
-	Set_expression(IExpressionContext)
-
 	// Set_vectores_inicio sets the _vectores_inicio rule contexts.
 	Set_vectores_inicio(IVectores_inicioContext)
 
@@ -10869,7 +10863,6 @@ type ExpressionContext struct {
 	_sent_if          ISent_ifContext
 	_sent_match       ISent_matchContext
 	_loop             ILoopContext
-	_expression       IExpressionContext
 	_vectores_inicio  IVectores_inicioContext
 	_arreglos_inicio  IArreglos_inicioContext
 	_accesso_arreglo  IAccesso_arregloContext
@@ -10920,8 +10913,6 @@ func (s *ExpressionContext) Get_sent_match() ISent_matchContext { return s._sent
 
 func (s *ExpressionContext) Get_loop() ILoopContext { return s._loop }
 
-func (s *ExpressionContext) Get_expression() IExpressionContext { return s._expression }
-
 func (s *ExpressionContext) Get_vectores_inicio() IVectores_inicioContext { return s._vectores_inicio }
 
 func (s *ExpressionContext) Get_arreglos_inicio() IArreglos_inicioContext { return s._arreglos_inicio }
@@ -10949,8 +10940,6 @@ func (s *ExpressionContext) Set_sent_if(v ISent_ifContext) { s._sent_if = v }
 func (s *ExpressionContext) Set_sent_match(v ISent_matchContext) { s._sent_match = v }
 
 func (s *ExpressionContext) Set_loop(v ILoopContext) { s._loop = v }
-
-func (s *ExpressionContext) Set_expression(v IExpressionContext) { s._expression = v }
 
 func (s *ExpressionContext) Set_vectores_inicio(v IVectores_inicioContext) { s._vectores_inicio = v }
 
@@ -11046,24 +11035,6 @@ func (s *ExpressionContext) Loop() ILoopContext {
 	}
 
 	return t.(ILoopContext)
-}
-
-func (s *ExpressionContext) TK_PI() antlr.TerminalNode {
-	return s.GetToken(db_rustparserTK_PI, 0)
-}
-
-func (s *ExpressionContext) Expression() IExpressionContext {
-	var t = s.GetTypedRuleContext(reflect.TypeOf((*IExpressionContext)(nil)).Elem(), 0)
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IExpressionContext)
-}
-
-func (s *ExpressionContext) TK_PD() antlr.TerminalNode {
-	return s.GetToken(db_rustparserTK_PD, 0)
 }
 
 func (s *ExpressionContext) Vectores_inicio() IVectores_inicioContext {
@@ -11166,7 +11137,7 @@ func (p *db_rustparser) Expression() (localctx IExpressionContext) {
 		}
 	}()
 
-	p.SetState(830)
+	p.SetState(825)
 	p.GetErrorHandler().Sync(p)
 	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 31, p.GetParserRuleContext()) {
 	case 1:
@@ -11261,25 +11232,6 @@ func (p *db_rustparser) Expression() (localctx IExpressionContext) {
 		p.EnterOuterAlt(localctx, 9)
 		{
 			p.SetState(807)
-			p.Match(db_rustparserTK_PI)
-		}
-		{
-			p.SetState(808)
-
-			var _x = p.Expression()
-
-			localctx.(*ExpressionContext)._expression = _x
-		}
-		{
-			p.SetState(809)
-			p.Match(db_rustparserTK_PD)
-		}
-		localctx.(*ExpressionContext).p = localctx.(*ExpressionContext).Get_expression().GetP()
-
-	case 10:
-		p.EnterOuterAlt(localctx, 10)
-		{
-			p.SetState(812)
 
 			var _x = p.Vectores_inicio()
 
@@ -11287,10 +11239,10 @@ func (p *db_rustparser) Expression() (localctx IExpressionContext) {
 		}
 		localctx.(*ExpressionContext).p = localctx.(*ExpressionContext).Get_vectores_inicio().GetP()
 
-	case 11:
-		p.EnterOuterAlt(localctx, 11)
+	case 10:
+		p.EnterOuterAlt(localctx, 10)
 		{
-			p.SetState(815)
+			p.SetState(810)
 
 			var _x = p.Arreglos_inicio()
 
@@ -11298,10 +11250,10 @@ func (p *db_rustparser) Expression() (localctx IExpressionContext) {
 		}
 		localctx.(*ExpressionContext).p = localctx.(*ExpressionContext).Get_arreglos_inicio().GetP()
 
-	case 12:
-		p.EnterOuterAlt(localctx, 12)
+	case 11:
+		p.EnterOuterAlt(localctx, 11)
 		{
-			p.SetState(818)
+			p.SetState(813)
 
 			var _x = p.Accesso_arreglo()
 
@@ -11309,10 +11261,10 @@ func (p *db_rustparser) Expression() (localctx IExpressionContext) {
 		}
 		localctx.(*ExpressionContext).p = localctx.(*ExpressionContext).Get_accesso_arreglo().GetP()
 
-	case 13:
-		p.EnterOuterAlt(localctx, 13)
+	case 12:
+		p.EnterOuterAlt(localctx, 12)
 		{
-			p.SetState(821)
+			p.SetState(816)
 
 			var _x = p.Acceso_vector()
 
@@ -11320,10 +11272,10 @@ func (p *db_rustparser) Expression() (localctx IExpressionContext) {
 		}
 		localctx.(*ExpressionContext).p = localctx.(*ExpressionContext).Get_acceso_vector().GetP()
 
-	case 14:
-		p.EnterOuterAlt(localctx, 14)
+	case 13:
+		p.EnterOuterAlt(localctx, 13)
 		{
-			p.SetState(824)
+			p.SetState(819)
 
 			var _x = p.Ingreso_struct()
 
@@ -11331,10 +11283,10 @@ func (p *db_rustparser) Expression() (localctx IExpressionContext) {
 		}
 		localctx.(*ExpressionContext).p = localctx.(*ExpressionContext).Get_ingreso_struct().GetP()
 
-	case 15:
-		p.EnterOuterAlt(localctx, 15)
+	case 14:
+		p.EnterOuterAlt(localctx, 14)
 		{
-			p.SetState(827)
+			p.SetState(822)
 
 			var _x = p.Valores()
 
@@ -11497,7 +11449,7 @@ func (p *db_rustparser) list_expres(_p int) (localctx IList_expresContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(833)
+		p.SetState(828)
 
 		var _x = p.Expression()
 
@@ -11506,7 +11458,7 @@ func (p *db_rustparser) list_expres(_p int) (localctx IList_expresContext) {
 	localctx.(*List_expresContext).lis_expres.Add(localctx.(*List_expresContext).Get_expression().GetP())
 
 	p.GetParserRuleContext().SetStop(p.GetTokenStream().LT(-1))
-	p.SetState(843)
+	p.SetState(838)
 	p.GetErrorHandler().Sync(p)
 	_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 32, p.GetParserRuleContext())
 
@@ -11519,17 +11471,17 @@ func (p *db_rustparser) list_expres(_p int) (localctx IList_expresContext) {
 			localctx = NewList_expresContext(p, _parentctx, _parentState)
 			localctx.(*List_expresContext).list = _prevctx
 			p.PushNewRecursionContext(localctx, _startState, db_rustparserRULE_list_expres)
-			p.SetState(836)
+			p.SetState(831)
 
 			if !(p.Precpred(p.GetParserRuleContext(), 2)) {
 				panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 2)", ""))
 			}
 			{
-				p.SetState(837)
+				p.SetState(832)
 				p.Match(db_rustparserTK_COMA)
 			}
 			{
-				p.SetState(838)
+				p.SetState(833)
 
 				var _x = p.Expression()
 
@@ -11540,7 +11492,7 @@ func (p *db_rustparser) list_expres(_p int) (localctx IList_expresContext) {
 			localctx.(*List_expresContext).lis_expres = localctx.(*List_expresContext).GetList().GetLis_expres()
 
 		}
-		p.SetState(845)
+		p.SetState(840)
 		p.GetErrorHandler().Sync(p)
 		_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 32, p.GetParserRuleContext())
 	}
@@ -11679,13 +11631,13 @@ func (p *db_rustparser) Vectores_inicio() (localctx IVectores_inicioContext) {
 		}
 	}()
 
-	p.SetState(852)
+	p.SetState(847)
 	p.GetErrorHandler().Sync(p)
 	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 33, p.GetParserRuleContext()) {
 	case 1:
 		p.EnterOuterAlt(localctx, 1)
 		{
-			p.SetState(846)
+			p.SetState(841)
 
 			var _x = p.Inicio_vect()
 
@@ -11696,7 +11648,7 @@ func (p *db_rustparser) Vectores_inicio() (localctx IVectores_inicioContext) {
 	case 2:
 		p.EnterOuterAlt(localctx, 2)
 		{
-			p.SetState(849)
+			p.SetState(844)
 
 			var _x = p.Resumen_vect()
 
@@ -11833,22 +11785,22 @@ func (p *db_rustparser) Inicio_vect() (localctx IInicio_vectContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(854)
+		p.SetState(849)
 		p.Match(db_rustparserTK_VECT)
 	}
 	{
-		p.SetState(855)
+		p.SetState(850)
 		p.Match(db_rustparserTK_CI)
 	}
 	{
-		p.SetState(856)
+		p.SetState(851)
 
 		var _x = p.list_expres(0)
 
 		localctx.(*Inicio_vectContext)._list_expres = _x
 	}
 	{
-		p.SetState(857)
+		p.SetState(852)
 		p.Match(db_rustparserTK_CD)
 	}
 
@@ -12009,33 +11961,33 @@ func (p *db_rustparser) Resumen_vect() (localctx IResumen_vectContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(860)
+		p.SetState(855)
 		p.Match(db_rustparserTK_VECT)
 	}
 	{
-		p.SetState(861)
+		p.SetState(856)
 		p.Match(db_rustparserTK_CI)
 	}
 	{
-		p.SetState(862)
+		p.SetState(857)
 
 		var _x = p.Expression()
 
 		localctx.(*Resumen_vectContext).ex1 = _x
 	}
 	{
-		p.SetState(863)
+		p.SetState(858)
 		p.Match(db_rustparserTK_PYC)
 	}
 	{
-		p.SetState(864)
+		p.SetState(859)
 
 		var _x = p.Expression()
 
 		localctx.(*Resumen_vectContext).ex2 = _x
 	}
 	{
-		p.SetState(865)
+		p.SetState(860)
 		p.Match(db_rustparserTK_CD)
 	}
 
@@ -12179,13 +12131,13 @@ func (p *db_rustparser) Arreglos_inicio() (localctx IArreglos_inicioContext) {
 		}
 	}()
 
-	p.SetState(874)
+	p.SetState(869)
 	p.GetErrorHandler().Sync(p)
 	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 34, p.GetParserRuleContext()) {
 	case 1:
 		p.EnterOuterAlt(localctx, 1)
 		{
-			p.SetState(868)
+			p.SetState(863)
 
 			var _x = p.Inicializando_arreglo()
 
@@ -12196,7 +12148,7 @@ func (p *db_rustparser) Arreglos_inicio() (localctx IArreglos_inicioContext) {
 	case 2:
 		p.EnterOuterAlt(localctx, 2)
 		{
-			p.SetState(871)
+			p.SetState(866)
 
 			var _x = p.Resumen_arre()
 
@@ -12329,18 +12281,18 @@ func (p *db_rustparser) Inicializando_arreglo() (localctx IInicializando_arreglo
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(876)
+		p.SetState(871)
 		p.Match(db_rustparserTK_CI)
 	}
 	{
-		p.SetState(877)
+		p.SetState(872)
 
 		var _x = p.list_expres(0)
 
 		localctx.(*Inicializando_arregloContext)._list_expres = _x
 	}
 	{
-		p.SetState(878)
+		p.SetState(873)
 		p.Match(db_rustparserTK_CD)
 	}
 	localctx.(*Inicializando_arregloContext).p = iniciandoarre.Nvalor_arreglo(localctx.(*Inicializando_arregloContext).Get_list_expres().GetLis_expres())
@@ -12496,29 +12448,29 @@ func (p *db_rustparser) Resumen_arre() (localctx IResumen_arreContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(881)
+		p.SetState(876)
 		p.Match(db_rustparserTK_CI)
 	}
 	{
-		p.SetState(882)
+		p.SetState(877)
 
 		var _x = p.Expression()
 
 		localctx.(*Resumen_arreContext).ex1 = _x
 	}
 	{
-		p.SetState(883)
+		p.SetState(878)
 		p.Match(db_rustparserTK_PYC)
 	}
 	{
-		p.SetState(884)
+		p.SetState(879)
 
 		var _x = p.Expression()
 
 		localctx.(*Resumen_arreContext).ex2 = _x
 	}
 	{
-		p.SetState(885)
+		p.SetState(880)
 		p.Match(db_rustparserTK_CD)
 	}
 
@@ -12654,14 +12606,14 @@ func (p *db_rustparser) Accesso_arreglo() (localctx IAccesso_arregloContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(888)
+		p.SetState(883)
 
 		var _m = p.Match(db_rustparserTK_IDENTIFICADOR)
 
 		localctx.(*Accesso_arregloContext)._TK_IDENTIFICADOR = _m
 	}
 	{
-		p.SetState(889)
+		p.SetState(884)
 
 		var _x = p.lista_acceso(0)
 
@@ -12831,7 +12783,7 @@ func (p *db_rustparser) lista_acceso(_p int) (localctx ILista_accesoContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(893)
+		p.SetState(888)
 
 		var _x = p.Access()
 
@@ -12841,7 +12793,7 @@ func (p *db_rustparser) lista_acceso(_p int) (localctx ILista_accesoContext) {
 	localctx.(*Lista_accesoContext).lacceso.Add(localctx.(*Lista_accesoContext).Get_access().GetP())
 
 	p.GetParserRuleContext().SetStop(p.GetTokenStream().LT(-1))
-	p.SetState(902)
+	p.SetState(897)
 	p.GetErrorHandler().Sync(p)
 	_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 35, p.GetParserRuleContext())
 
@@ -12854,13 +12806,13 @@ func (p *db_rustparser) lista_acceso(_p int) (localctx ILista_accesoContext) {
 			localctx = NewLista_accesoContext(p, _parentctx, _parentState)
 			localctx.(*Lista_accesoContext).lacc = _prevctx
 			p.PushNewRecursionContext(localctx, _startState, db_rustparserRULE_lista_acceso)
-			p.SetState(896)
+			p.SetState(891)
 
 			if !(p.Precpred(p.GetParserRuleContext(), 2)) {
 				panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 2)", ""))
 			}
 			{
-				p.SetState(897)
+				p.SetState(892)
 
 				var _x = p.Access()
 
@@ -12871,7 +12823,7 @@ func (p *db_rustparser) lista_acceso(_p int) (localctx ILista_accesoContext) {
 			localctx.(*Lista_accesoContext).lacceso = localctx.(*Lista_accesoContext).GetLacc().GetLacceso()
 
 		}
-		p.SetState(904)
+		p.SetState(899)
 		p.GetErrorHandler().Sync(p)
 		_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 35, p.GetParserRuleContext())
 	}
@@ -12999,18 +12951,18 @@ func (p *db_rustparser) Access() (localctx IAccessContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(905)
+		p.SetState(900)
 		p.Match(db_rustparserTK_CI)
 	}
 	{
-		p.SetState(906)
+		p.SetState(901)
 
 		var _x = p.Expression()
 
 		localctx.(*AccessContext)._expression = _x
 	}
 	{
-		p.SetState(907)
+		p.SetState(902)
 		p.Match(db_rustparserTK_CD)
 	}
 	localctx.(*AccessContext).p = localctx.(*AccessContext).Get_expression().GetP()
@@ -13153,25 +13105,25 @@ func (p *db_rustparser) Acceso_vector() (localctx IAcceso_vectorContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(910)
+		p.SetState(905)
 
 		var _m = p.Match(db_rustparserTK_IDENTIFICADOR)
 
 		localctx.(*Acceso_vectorContext)._TK_IDENTIFICADOR = _m
 	}
 	{
-		p.SetState(911)
+		p.SetState(906)
 		p.Match(db_rustparserTK_MENOR)
 	}
 	{
-		p.SetState(912)
+		p.SetState(907)
 
 		var _x = p.Expression()
 
 		localctx.(*Acceso_vectorContext)._expression = _x
 	}
 	{
-		p.SetState(913)
+		p.SetState(908)
 		p.Match(db_rustparserTK_MAYOR)
 	}
 
@@ -13317,18 +13269,18 @@ func (p *db_rustparser) Ingreso_struct() (localctx IIngreso_structContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(916)
+		p.SetState(911)
 
 		var _m = p.Match(db_rustparserTK_IDENTIFICADOR)
 
 		localctx.(*Ingreso_structContext)._TK_IDENTIFICADOR = _m
 	}
 	{
-		p.SetState(917)
+		p.SetState(912)
 		p.Match(db_rustparserTK_PUNTO)
 	}
 	{
-		p.SetState(918)
+		p.SetState(913)
 
 		var _m = p.Match(db_rustparserTK_IDENTIFICADOR)
 
@@ -13474,24 +13426,24 @@ func (p *db_rustparser) Nativas_vector() (localctx INativas_vectorContext) {
 		}
 	}()
 
-	p.SetState(929)
+	p.SetState(924)
 	p.GetErrorHandler().Sync(p)
 	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 36, p.GetParserRuleContext()) {
 	case 1:
 		p.EnterOuterAlt(localctx, 1)
 		{
-			p.SetState(921)
+			p.SetState(916)
 
 			var _m = p.Match(db_rustparserTK_IDENTIFICADOR)
 
 			localctx.(*Nativas_vectorContext)._TK_IDENTIFICADOR = _m
 		}
 		{
-			p.SetState(922)
+			p.SetState(917)
 			p.Match(db_rustparserTK_PUNTO)
 		}
 		{
-			p.SetState(923)
+			p.SetState(918)
 			p.Match(db_rustparserTK_LEN)
 		}
 
@@ -13512,18 +13464,18 @@ func (p *db_rustparser) Nativas_vector() (localctx INativas_vectorContext) {
 	case 2:
 		p.EnterOuterAlt(localctx, 2)
 		{
-			p.SetState(925)
+			p.SetState(920)
 
 			var _m = p.Match(db_rustparserTK_IDENTIFICADOR)
 
 			localctx.(*Nativas_vectorContext)._TK_IDENTIFICADOR = _m
 		}
 		{
-			p.SetState(926)
+			p.SetState(921)
 			p.Match(db_rustparserTK_PUNTO)
 		}
 		{
-			p.SetState(927)
+			p.SetState(922)
 			p.Match(db_rustparserTK_CAPACITY)
 		}
 
@@ -13725,7 +13677,7 @@ func (p *db_rustparser) fun_nativas(_p int) (localctx IFun_nativasContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(932)
+		p.SetState(927)
 
 		var _x = p.expre_logica(0)
 
@@ -13734,7 +13686,7 @@ func (p *db_rustparser) fun_nativas(_p int) (localctx IFun_nativasContext) {
 	localctx.(*Fun_nativasContext).p = localctx.(*Fun_nativasContext).Get_expre_logica().GetP()
 
 	p.GetParserRuleContext().SetStop(p.GetTokenStream().LT(-1))
-	p.SetState(957)
+	p.SetState(952)
 	p.GetErrorHandler().Sync(p)
 	_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 38, p.GetParserRuleContext())
 
@@ -13744,27 +13696,27 @@ func (p *db_rustparser) fun_nativas(_p int) (localctx IFun_nativasContext) {
 				p.TriggerExitRuleEvent()
 			}
 			_prevctx = localctx
-			p.SetState(955)
+			p.SetState(950)
 			p.GetErrorHandler().Sync(p)
 			switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 37, p.GetParserRuleContext()) {
 			case 1:
 				localctx = NewFun_nativasContext(p, _parentctx, _parentState)
 				localctx.(*Fun_nativasContext).val = _prevctx
 				p.PushNewRecursionContext(localctx, _startState, db_rustparserRULE_fun_nativas)
-				p.SetState(935)
+				p.SetState(930)
 
 				if !(p.Precpred(p.GetParserRuleContext(), 6)) {
 					panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 6)", ""))
 				}
 				{
-					p.SetState(936)
+					p.SetState(931)
 
 					var _m = p.Match(db_rustparserTK_PUNTO)
 
 					localctx.(*Fun_nativasContext)._TK_PUNTO = _m
 				}
 				{
-					p.SetState(937)
+					p.SetState(932)
 					p.Match(db_rustparserTK_ABS)
 				}
 
@@ -13780,20 +13732,20 @@ func (p *db_rustparser) fun_nativas(_p int) (localctx IFun_nativasContext) {
 				localctx = NewFun_nativasContext(p, _parentctx, _parentState)
 				localctx.(*Fun_nativasContext).val = _prevctx
 				p.PushNewRecursionContext(localctx, _startState, db_rustparserRULE_fun_nativas)
-				p.SetState(939)
+				p.SetState(934)
 
 				if !(p.Precpred(p.GetParserRuleContext(), 5)) {
 					panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 5)", ""))
 				}
 				{
-					p.SetState(940)
+					p.SetState(935)
 
 					var _m = p.Match(db_rustparserTK_PUNTO)
 
 					localctx.(*Fun_nativasContext)._TK_PUNTO = _m
 				}
 				{
-					p.SetState(941)
+					p.SetState(936)
 					p.Match(db_rustparserTK_SQRT)
 				}
 
@@ -13809,20 +13761,20 @@ func (p *db_rustparser) fun_nativas(_p int) (localctx IFun_nativasContext) {
 				localctx = NewFun_nativasContext(p, _parentctx, _parentState)
 				localctx.(*Fun_nativasContext).val = _prevctx
 				p.PushNewRecursionContext(localctx, _startState, db_rustparserRULE_fun_nativas)
-				p.SetState(943)
+				p.SetState(938)
 
 				if !(p.Precpred(p.GetParserRuleContext(), 4)) {
 					panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 4)", ""))
 				}
 				{
-					p.SetState(944)
+					p.SetState(939)
 
 					var _m = p.Match(db_rustparserTK_PUNTO)
 
 					localctx.(*Fun_nativasContext)._TK_PUNTO = _m
 				}
 				{
-					p.SetState(945)
+					p.SetState(940)
 					p.Match(db_rustparserTK_TOSTRING)
 				}
 
@@ -13838,20 +13790,20 @@ func (p *db_rustparser) fun_nativas(_p int) (localctx IFun_nativasContext) {
 				localctx = NewFun_nativasContext(p, _parentctx, _parentState)
 				localctx.(*Fun_nativasContext).val = _prevctx
 				p.PushNewRecursionContext(localctx, _startState, db_rustparserRULE_fun_nativas)
-				p.SetState(947)
+				p.SetState(942)
 
 				if !(p.Precpred(p.GetParserRuleContext(), 3)) {
 					panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 3)", ""))
 				}
 				{
-					p.SetState(948)
+					p.SetState(943)
 
 					var _m = p.Match(db_rustparserTK_PUNTO)
 
 					localctx.(*Fun_nativasContext)._TK_PUNTO = _m
 				}
 				{
-					p.SetState(949)
+					p.SetState(944)
 					p.Match(db_rustparserTK_TOOWNED)
 				}
 
@@ -13867,20 +13819,20 @@ func (p *db_rustparser) fun_nativas(_p int) (localctx IFun_nativasContext) {
 				localctx = NewFun_nativasContext(p, _parentctx, _parentState)
 				localctx.(*Fun_nativasContext).val = _prevctx
 				p.PushNewRecursionContext(localctx, _startState, db_rustparserRULE_fun_nativas)
-				p.SetState(951)
+				p.SetState(946)
 
 				if !(p.Precpred(p.GetParserRuleContext(), 2)) {
 					panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 2)", ""))
 				}
 				{
-					p.SetState(952)
+					p.SetState(947)
 
 					var _m = p.Match(db_rustparserTK_PUNTO)
 
 					localctx.(*Fun_nativasContext)._TK_PUNTO = _m
 				}
 				{
-					p.SetState(953)
+					p.SetState(948)
 					p.Match(db_rustparserTK_CLONE)
 				}
 
@@ -13895,7 +13847,7 @@ func (p *db_rustparser) fun_nativas(_p int) (localctx IFun_nativasContext) {
 			}
 
 		}
-		p.SetState(959)
+		p.SetState(954)
 		p.GetErrorHandler().Sync(p)
 		_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 38, p.GetParserRuleContext())
 	}
@@ -14119,20 +14071,20 @@ func (p *db_rustparser) expre_logica(_p int) (localctx IExpre_logicaContext) {
 	var _alt int
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(968)
+	p.SetState(963)
 	p.GetErrorHandler().Sync(p)
 
 	switch p.GetTokenStream().LA(1) {
 	case db_rustparserTK_NOT:
 		{
-			p.SetState(961)
+			p.SetState(956)
 
 			var _m = p.Match(db_rustparserTK_NOT)
 
 			localctx.(*Expre_logicaContext).op = _m
 		}
 		{
-			p.SetState(962)
+			p.SetState(957)
 
 			var _x = p.Expression()
 
@@ -14147,9 +14099,9 @@ func (p *db_rustparser) expre_logica(_p int) (localctx IExpre_logicaContext) {
 			}
 		}()), localctx.(*Expre_logicaContext).op.GetColumn())
 
-	case db_rustparserTK_TIPOINT, db_rustparserTK_TIPOFLOAT, db_rustparserTK_TRUE, db_rustparserTK_FALSE, db_rustparserTK_FLOAT, db_rustparserTK_ENTERO, db_rustparserTK_CADENA, db_rustparserTK_CARACTER, db_rustparserTK_IDENTIFICADOR, db_rustparserTK_RESTA:
+	case db_rustparserTK_TIPOINT, db_rustparserTK_TIPOFLOAT, db_rustparserTK_TRUE, db_rustparserTK_FALSE, db_rustparserTK_FLOAT, db_rustparserTK_ENTERO, db_rustparserTK_CADENA, db_rustparserTK_CARACTER, db_rustparserTK_IDENTIFICADOR, db_rustparserTK_RESTA, db_rustparserTK_PI:
 		{
-			p.SetState(965)
+			p.SetState(960)
 
 			var _x = p.expre_relacional(0)
 
@@ -14161,7 +14113,7 @@ func (p *db_rustparser) expre_logica(_p int) (localctx IExpre_logicaContext) {
 		panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
 	}
 	p.GetParserRuleContext().SetStop(p.GetTokenStream().LT(-1))
-	p.SetState(977)
+	p.SetState(972)
 	p.GetErrorHandler().Sync(p)
 	_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 40, p.GetParserRuleContext())
 
@@ -14174,13 +14126,13 @@ func (p *db_rustparser) expre_logica(_p int) (localctx IExpre_logicaContext) {
 			localctx = NewExpre_logicaContext(p, _parentctx, _parentState)
 			localctx.(*Expre_logicaContext).opIz = _prevctx
 			p.PushNewRecursionContext(localctx, _startState, db_rustparserRULE_expre_logica)
-			p.SetState(970)
+			p.SetState(965)
 
 			if !(p.Precpred(p.GetParserRuleContext(), 2)) {
 				panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 2)", ""))
 			}
 			{
-				p.SetState(971)
+				p.SetState(966)
 
 				var _lt = p.GetTokenStream().LT(1)
 
@@ -14198,7 +14150,7 @@ func (p *db_rustparser) expre_logica(_p int) (localctx IExpre_logicaContext) {
 				}
 			}
 			{
-				p.SetState(972)
+				p.SetState(967)
 
 				var _x = p.expre_logica(3)
 
@@ -14236,7 +14188,7 @@ func (p *db_rustparser) expre_logica(_p int) (localctx IExpre_logicaContext) {
 			}
 
 		}
-		p.SetState(979)
+		p.SetState(974)
 		p.GetErrorHandler().Sync(p)
 		_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 40, p.GetParserRuleContext())
 	}
@@ -14452,7 +14404,7 @@ func (p *db_rustparser) expre_relacional(_p int) (localctx IExpre_relacionalCont
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(981)
+		p.SetState(976)
 
 		var _x = p.expre_aritmetica(0)
 
@@ -14461,7 +14413,7 @@ func (p *db_rustparser) expre_relacional(_p int) (localctx IExpre_relacionalCont
 	localctx.(*Expre_relacionalContext).p = localctx.(*Expre_relacionalContext).Get_expre_aritmetica().GetP()
 
 	p.GetParserRuleContext().SetStop(p.GetTokenStream().LT(-1))
-	p.SetState(991)
+	p.SetState(986)
 	p.GetErrorHandler().Sync(p)
 	_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 41, p.GetParserRuleContext())
 
@@ -14474,13 +14426,13 @@ func (p *db_rustparser) expre_relacional(_p int) (localctx IExpre_relacionalCont
 			localctx = NewExpre_relacionalContext(p, _parentctx, _parentState)
 			localctx.(*Expre_relacionalContext).opIz = _prevctx
 			p.PushNewRecursionContext(localctx, _startState, db_rustparserRULE_expre_relacional)
-			p.SetState(984)
+			p.SetState(979)
 
 			if !(p.Precpred(p.GetParserRuleContext(), 2)) {
 				panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 2)", ""))
 			}
 			{
-				p.SetState(985)
+				p.SetState(980)
 
 				var _lt = p.GetTokenStream().LT(1)
 
@@ -14498,7 +14450,7 @@ func (p *db_rustparser) expre_relacional(_p int) (localctx IExpre_relacionalCont
 				}
 			}
 			{
-				p.SetState(986)
+				p.SetState(981)
 
 				var _x = p.expre_relacional(3)
 
@@ -14592,7 +14544,7 @@ func (p *db_rustparser) expre_relacional(_p int) (localctx IExpre_relacionalCont
 			}
 
 		}
-		p.SetState(993)
+		p.SetState(988)
 		p.GetErrorHandler().Sync(p)
 		_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 41, p.GetParserRuleContext())
 	}
@@ -14635,7 +14587,10 @@ type IExpre_aritmeticaContext interface {
 	GetOpIz() IExpre_aritmeticaContext
 
 	// GetOpUn returns the opUn rule contexts.
-	GetOpUn() IExpre_aritmeticaContext
+	GetOpUn() IExpressionContext
+
+	// Get_expression returns the _expression rule contexts.
+	Get_expression() IExpressionContext
 
 	// GetOpDe returns the opDe rule contexts.
 	GetOpDe() IExpre_aritmeticaContext
@@ -14647,7 +14602,10 @@ type IExpre_aritmeticaContext interface {
 	SetOpIz(IExpre_aritmeticaContext)
 
 	// SetOpUn sets the opUn rule contexts.
-	SetOpUn(IExpre_aritmeticaContext)
+	SetOpUn(IExpressionContext)
+
+	// Set_expression sets the _expression rule contexts.
+	Set_expression(IExpressionContext)
 
 	// SetOpDe sets the opDe rule contexts.
 	SetOpDe(IExpre_aritmeticaContext)
@@ -14667,16 +14625,17 @@ type IExpre_aritmeticaContext interface {
 
 type Expre_aritmeticaContext struct {
 	*antlr.BaseParserRuleContext
-	parser   antlr.Parser
-	p        interfaces.Expresion
-	opIz     IExpre_aritmeticaContext
-	opera    antlr.Token
-	opUn     IExpre_aritmeticaContext
-	tipito   antlr.Token
-	_TK_POW  antlr.Token
-	opDe     IExpre_aritmeticaContext
-	_TK_POWF antlr.Token
-	_valores IValoresContext
+	parser      antlr.Parser
+	p           interfaces.Expresion
+	opIz        IExpre_aritmeticaContext
+	opera       antlr.Token
+	opUn        IExpressionContext
+	_expression IExpressionContext
+	tipito      antlr.Token
+	_TK_POW     antlr.Token
+	opDe        IExpre_aritmeticaContext
+	_TK_POWF    antlr.Token
+	_valores    IValoresContext
 }
 
 func NewEmptyExpre_aritmeticaContext() *Expre_aritmeticaContext {
@@ -14719,7 +14678,9 @@ func (s *Expre_aritmeticaContext) Set_TK_POWF(v antlr.Token) { s._TK_POWF = v }
 
 func (s *Expre_aritmeticaContext) GetOpIz() IExpre_aritmeticaContext { return s.opIz }
 
-func (s *Expre_aritmeticaContext) GetOpUn() IExpre_aritmeticaContext { return s.opUn }
+func (s *Expre_aritmeticaContext) GetOpUn() IExpressionContext { return s.opUn }
+
+func (s *Expre_aritmeticaContext) Get_expression() IExpressionContext { return s._expression }
 
 func (s *Expre_aritmeticaContext) GetOpDe() IExpre_aritmeticaContext { return s.opDe }
 
@@ -14727,7 +14688,9 @@ func (s *Expre_aritmeticaContext) Get_valores() IValoresContext { return s._valo
 
 func (s *Expre_aritmeticaContext) SetOpIz(v IExpre_aritmeticaContext) { s.opIz = v }
 
-func (s *Expre_aritmeticaContext) SetOpUn(v IExpre_aritmeticaContext) { s.opUn = v }
+func (s *Expre_aritmeticaContext) SetOpUn(v IExpressionContext) { s.opUn = v }
+
+func (s *Expre_aritmeticaContext) Set_expression(v IExpressionContext) { s._expression = v }
 
 func (s *Expre_aritmeticaContext) SetOpDe(v IExpre_aritmeticaContext) { s.opDe = v }
 
@@ -14739,6 +14702,36 @@ func (s *Expre_aritmeticaContext) SetP(v interfaces.Expresion) { s.p = v }
 
 func (s *Expre_aritmeticaContext) TK_RESTA() antlr.TerminalNode {
 	return s.GetToken(db_rustparserTK_RESTA, 0)
+}
+
+func (s *Expre_aritmeticaContext) Expression() IExpressionContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*IExpressionContext)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IExpressionContext)
+}
+
+func (s *Expre_aritmeticaContext) TK_PI() antlr.TerminalNode {
+	return s.GetToken(db_rustparserTK_PI, 0)
+}
+
+func (s *Expre_aritmeticaContext) TK_PD() antlr.TerminalNode {
+	return s.GetToken(db_rustparserTK_PD, 0)
+}
+
+func (s *Expre_aritmeticaContext) TK_POW() antlr.TerminalNode {
+	return s.GetToken(db_rustparserTK_POW, 0)
+}
+
+func (s *Expre_aritmeticaContext) TK_COMA() antlr.TerminalNode {
+	return s.GetToken(db_rustparserTK_COMA, 0)
+}
+
+func (s *Expre_aritmeticaContext) TK_TIPOINT() antlr.TerminalNode {
+	return s.GetToken(db_rustparserTK_TIPOINT, 0)
 }
 
 func (s *Expre_aritmeticaContext) AllExpre_aritmetica() []IExpre_aritmeticaContext {
@@ -14762,26 +14755,6 @@ func (s *Expre_aritmeticaContext) Expre_aritmetica(i int) IExpre_aritmeticaConte
 	}
 
 	return t.(IExpre_aritmeticaContext)
-}
-
-func (s *Expre_aritmeticaContext) TK_POW() antlr.TerminalNode {
-	return s.GetToken(db_rustparserTK_POW, 0)
-}
-
-func (s *Expre_aritmeticaContext) TK_PI() antlr.TerminalNode {
-	return s.GetToken(db_rustparserTK_PI, 0)
-}
-
-func (s *Expre_aritmeticaContext) TK_COMA() antlr.TerminalNode {
-	return s.GetToken(db_rustparserTK_COMA, 0)
-}
-
-func (s *Expre_aritmeticaContext) TK_PD() antlr.TerminalNode {
-	return s.GetToken(db_rustparserTK_PD, 0)
-}
-
-func (s *Expre_aritmeticaContext) TK_TIPOINT() antlr.TerminalNode {
-	return s.GetToken(db_rustparserTK_TIPOINT, 0)
 }
 
 func (s *Expre_aritmeticaContext) TK_POWF() antlr.TerminalNode {
@@ -14877,18 +14850,19 @@ func (p *db_rustparser) expre_aritmetica(_p int) (localctx IExpre_aritmeticaCont
 	switch p.GetTokenStream().LA(1) {
 	case db_rustparserTK_RESTA:
 		{
-			p.SetState(995)
+			p.SetState(990)
 
 			var _m = p.Match(db_rustparserTK_RESTA)
 
 			localctx.(*Expre_aritmeticaContext).opera = _m
 		}
 		{
-			p.SetState(996)
+			p.SetState(991)
 
-			var _x = p.expre_aritmetica(6)
+			var _x = p.Expression()
 
 			localctx.(*Expre_aritmeticaContext).opUn = _x
+			localctx.(*Expre_aritmeticaContext)._expression = _x
 		}
 
 		localctx.(*Expre_aritmeticaContext).p = aritmetica.Nopnegativo(localctx.(*Expre_aritmeticaContext).GetOpUn().GetP(), (func() int {
@@ -14898,6 +14872,24 @@ func (p *db_rustparser) expre_aritmetica(_p int) (localctx IExpre_aritmeticaCont
 				return localctx.(*Expre_aritmeticaContext).GetOpera().GetLine()
 			}
 		}()), localctx.(*Expre_aritmeticaContext).opera.GetColumn())
+
+	case db_rustparserTK_PI:
+		{
+			p.SetState(994)
+			p.Match(db_rustparserTK_PI)
+		}
+		{
+			p.SetState(995)
+
+			var _x = p.Expression()
+
+			localctx.(*Expre_aritmeticaContext)._expression = _x
+		}
+		{
+			p.SetState(996)
+			p.Match(db_rustparserTK_PD)
+		}
+		localctx.(*Expre_aritmeticaContext).p = localctx.(*Expre_aritmeticaContext).Get_expression().GetP()
 
 	case db_rustparserTK_TIPOINT:
 		{

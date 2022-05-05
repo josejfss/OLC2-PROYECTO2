@@ -210,6 +210,18 @@ func (fun Funciones) Compilar_Instruccion(ent *entorno.Entorno, gen *generador.G
 					for i := 0; i < fun.Linstrucc.Len(); i++ {
 						instr := fun.Linstrucc.GetValue(i).(interfaces.Instruccion)
 						instr.Compilar_Instruccion(ento, gen)
+						if gen.Lista_etiqueta.Len() != 0 {
+							for i := 0; i < gen.Lista_etiqueta.Len(); i++ {
+								la := gen.Lista_etiqueta.GetValue(i).(string)
+								gen.Agregar_label(la)
+								// gen.Agregar_Logica(salidas)
+								//gen.Eliminar_label(la)
+							}
+							for i := 0; i < gen.Lista_etiqueta.Len(); i++ {
+								la := gen.Lista_etiqueta.GetValue(i).(string)
+								gen.Eliminar_label(la)
+							}
+						}
 					}
 					gen.Agregar_Logica("\nreturn;\n}")
 					gen.Agregar_Comentario("------------FINALIZANDO FUNCION " + fun.NombreFunca + "------------")

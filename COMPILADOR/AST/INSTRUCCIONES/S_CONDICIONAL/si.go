@@ -155,8 +155,8 @@ func (ifs Si) Compilar_Instruccion(ent *entorno.Entorno, gen *generador.Generado
 	ent.EliminarLTodo()
 	if valtodi.Tipo == "if" {
 		gen.Agregar_Comentario("ENTRANDO SENTENCIA IF")
-		gen.Agregar_Logica("SP = SP + " + strconv.Itoa(valtodi.Pos) + ";")
 		condis := ifs.Condicion.Compilar_Expresion(ent, gen)
+		gen.Agregar_Logica("SP = SP + " + strconv.Itoa(valtodi.Pos) + ";")
 		etiqueta_salida := gen.Crear_label()
 		gen.Eliminar_label(etiqueta_salida)
 		salidas := "goto " + etiqueta_salida + ";"
@@ -201,6 +201,12 @@ func (ifs Si) Compilar_Instruccion(ent *entorno.Entorno, gen *generador.Generado
 				la := gen.Lista_etiqueta.GetValue(i).(string)
 				gen.Agregar_label(la)
 				gen.Agregar_Logica(salidas)
+				// gen.Eliminar_label(la)
+			}
+			for i := 0; i < gen.Lista_etiqueta.Len()+1; i++ {
+				la := gen.Lista_etiqueta.GetValue(i).(string)
+				// gen.Agregar_label(la)
+				// gen.Agregar_Logica(salidas)
 				gen.Eliminar_label(la)
 			}
 		}
