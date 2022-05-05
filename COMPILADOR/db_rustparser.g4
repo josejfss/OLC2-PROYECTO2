@@ -507,6 +507,7 @@ bloque returns[interfaces.Instruccion instr]
   | sent_if                 {$instr = $sent_if.instr}
   | sent_match              {$instr = $sent_match.instr}
   | loop                    {$instr = $loop.instr}
+  | for_in                  {$instr = $for_in.instr}
   | c_while                 {$instr = $c_while.instr}
   | declaracion             {$instr = $declaracion.instr}
   | asignacion              {$instr = $asignacion.instr}
